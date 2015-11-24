@@ -4,10 +4,12 @@ Avtor: Sara Korat
 
 Repozitorij z gradivi pri predmetu APPR v študijskem letu 2015/16.
 
-## Tematika
+## Analiza spreminjanja cen življenjskih potrebščin
 
-Izbrali si boste temo, s katero se bo vaš projekt ukvarjal. Tukaj boste
-napisali, kje ste dobili podatke, ter kakšen je vaš cilj.
+Cene na trgu se vsakodnevno spreminjajo. Zakaj se spreminjajo, je odvisno od velikega števila dejavnikov. V tem projektu se bom bolj osredotočila na statistiko - kako se spreminjajo. Katerim dobrinam in storitvam se cene dvigujejo, katerim se znižujejo. Nekaterim cene nihajo iz meseca v mesec, pri drugih so spremembe na letni ravni. Prav tako so nihanja cen ponekod večja, drugod manjša. Prav tako bom analizirala, katerim dobrinam oz. storitvam se cene najbolj spreminjajo. 
+
+
+Vire bom v večini črpala iz Statističnega urada republike Slovenije.
 
 ## Program
 
