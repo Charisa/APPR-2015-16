@@ -10,6 +10,8 @@ Cene na trgu se vsakodnevno spreminjajo. Zakaj se spreminjajo, je odvisno od vel
 
 
 Vire bom v večini črpala iz Statističnega urada republike Slovenije.
+Mednarodni podatki za cene življenjskih potrebščin: http://www.numbeo.com/cost-of-living/rankings_by_country.jsp
+
 
 ## Program
 
