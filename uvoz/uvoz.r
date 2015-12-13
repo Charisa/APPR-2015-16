@@ -2,6 +2,8 @@
 
 library(XML)
 library(RCurl)
+library(ggplot2)
+library(dplyr)
 
 # RAZPREDELNICA (HTML).
 
@@ -20,7 +22,10 @@ tabela <- data.frame(tabela[, -1], row.names = tabela[, 1]) # Znebimo se prejšn
 colnames(tabela) <- kategorije   # Stolpcem damo imena po kategorijah.
 write.csv2(tabela, "podatki/tabela.csv", fileEncoding = "UTF-8")
 
+indx <- sapply(tabela, is.factor)
+tabela[indx] <- lapply(tabela[indx], function(x) as.numeric(gsub("[.]", ".", x)))
 
+graf <- ggplot(tabela) + aes(x = row.names(tabela), y = "Rent Index", color = "green", size = 5) + geom_point() + xlab("x") + ylab("y")
 
 
 
