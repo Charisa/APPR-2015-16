@@ -30,28 +30,27 @@ tabela[indx] <- lapply(tabela[indx], function(x) as.numeric(gsub("[.]", ".", x))
 
 # Poimenovanje stolpcev:
 
-stolpci <- c("januar 2015 / december 2014", "januar 2015 / januar 2014",
-             "povprečje (januar) 2015 / povprečje (januar) 2014", "povprečna 12-mesečna rast",
-             "februar 2015 / januar 2015", "februar 2015 / februar 2014",
-             "povprečje (januar, februar) 2015 / povprečje (januar, februar) 2014", "povprečna 12-mesečna rast",
-             "marec 2015 / februar 2015", "marec 2015 / marec 2014",
-             "povprečje (januar-marec) 2015 / povprečje (januar-marec) 2014", "povprečna 12-mesečna rast",
-             "april 2015 / marec 2015", "april 2015 / april 2014",
-             "povprečje (januar-april) 2015 / povprečje (januar-april) 2014", "povprečna 12-mesečna rast",
-             "maj 2015 / april 2015", "maj 2015 / maj 2014",
-             "povprečje (januar-maj) 2015 / povprečje (januar-maj) 2014", "povprečna 12-mesečna rast",
-             "junij 2015 / maj 2015", "junij 2015 / junij 2014",
-             "povprečje (januar-junij) 2015 / povprečje (januar-junij) 2014", "povprečna 12-mesečna rast",
-             "julij 2015 / junij 2015", "julij 2015 / julij 2014",
-             "povprečje (januar-julij) 2015 / povprečje (januar-julij) 2014", "povprečna 12-mesečna rast",
-             "avgust 2015 / julij 2015", "avgust 2015 / avgust 2014",
-             "povprečje (januar-avgust) 2015 / povprečje (januar-avgust) 2014", "povprečna 12-mesečna rast",
-             "september 2015 / avgust 2015", "september 2015 / september 2014",
-             "povprečje (januar-september) 2015 / povprečje (januar-september) 2014", "povprečna 12-mesečna rast",
-             "oktober 2015 / september 2015", "oktober 2015 / oktober 2014",
-             "povprečje (januar-oktober) 2015 / povprečje (januar-oktober) 2014", "povprečna 12-mesečna rast",
-             "november 2015 / oktober 2015", "november 2015 / oktober 2014",
-             "povprečje (januar-november) 2015 / povprečje (januar-november) 2014", "povprečna 12-mesečna rast")
+stolpci <- c("januar2015.december2014","januar2015.januar2014","povprečje_januar_2015.povprečje_januar_2014","povprečna12-mesečnarast",
+             "februar2015.januar2015","februar2015.februar2014",
+             "povprečje_januar,februar_2015.povprečje_januar,februar_2014","povprečna12-mesečnarast",
+             "marec2015.februar2015","marec2015.marec2014",
+             "povprečje_januar-marec_2015.povprečje_januar-marec_2014","povprečna12-mesečnarast",
+             "april2015.marec2015","april2015.april2014",
+             "povprečje_januar-april_2015.povprečje_januar-april_2014","povprečna12-mesečnarast",
+             "maj2015.april2015","maj2015.maj2014",
+             "povprečje_januar-maj_2015.povprečje_januar-maj_2014","povprečna12-mesečnarast",
+             "junij2015.maj2015","junij2015.junij2014",
+             "povprečje_januar-junij_2015.povprečje_januar-junij_2014","povprečna12-mesečnarast",
+             "julij2015.junij2015","julij2015.julij2014",
+             "povprečje_januar-julij_2015.povprečje_januar-julij_2014","povprečna12-mesečnarast",
+             "avgust2015.julij2015","avgust2015.avgust2014",
+             "povprečje_januar-avgust_2015.povprečje_januar-avgust_2014","povprečna12-mesečnarast",
+             "september2015.avgust2015","september2015.september2014",
+             "povprečje_januar-september_2015.povprečje_januar-september_2014","povprečna12-mesečnarast",
+             "oktober2015.september2015","oktober2015.oktober2014",
+             "povprečje_januar-oktober_2015.povprečje_januar-oktober_2014","povprečna12-mesečnarast",
+             "november2015.oktober2015","november2015.oktober2014",
+             "povprečje_januar-november_2015.povprečje_januar-november_2014","povprečna12-mesečnarast")
 
 razpredelnica = read.csv2("podatki/indeksi_cen.csv", fileEncoding = "Windows-1250")
 razpredelnica <- data.frame(razpredelnica[, -1], row.names = razpredelnica[, 1])
@@ -63,12 +62,12 @@ write.csv2(razpredelnica, "podatki/razpredelnica.csv", fileEncoding = "UTF-8", r
 
 razpredelnica <- razpredelnica[seq(-4, -length(stolpci), by = -4)]
 
-grupiranje <- c("januar 2015 / december 2014", "februar 2015 / januar 2015",
-                "marec 2015 / februar 2015", "april 2015 / marec 2015",
-                "maj 2015 / april 2015", "junij 2015 / maj 2015",
-                "julij 2015 / junij 2015", "avgust 2015 / julij 2015",
-                "september 2015 / avgust 2015", "oktober 2015 / september 2015",
-                "november 2015 / oktober 2015")
+grupiranje <- c("januar2015.december2014","februar2015.januar2015",
+                "marec2015.februar2015","april2015.marec2015",
+                "maj2015.april2015","junij2015.maj2015",
+                "julij2015.junij2015","avgust2015.julij2015",
+                "september2015.avgust2015","oktober2015.september2015",
+                "november2015.oktober2015")
 
 # NOVA TABELA osnovne_dobrine: spreminjanje indeksa 16-ih dobrin/storitev v letu 2015 (po mesecih)
 
@@ -77,21 +76,8 @@ osnovne_dobrine <- subset(razpredelnica, select = grupiranje)
 osnovne_dobrine <- osnovne_dobrine[-c(2:20, 22:27, 29:32, 34:37, 39:57, 59:65, 67:84, 
                                     86:104, 106:109, 111:118, 120:123, 126:128),]
 
-# Histogram tabele osnovne_dobrine v zadnjem mesecu / predzaden mesec
-
-graf <- ggplot(osnovne_dobrine, aes(x = rownames(osnovne_dobrine), y = "november 2015 / oktober 2015")) + 
-  geom_line(binwidth = 0.001, color = "red", fill = "white")
-
-
-
-
-#graf <- ggplot(osnovne_dobrine$`november 2015 / oktober 2015`, geom = 'histogram')
-#graf <- ggplot(data = osnovne_dobrine, aes(x = created_at)) + 
- # geom_bar(aes(fill=..count..), alpha=0.5, size=0.5, binwidth=60*5) 
-#hgraf <- ggplot(data = osnovne_dobrine, aes(osnovne_dobrine$`november 2015 / oktober 2015`), binwidth = length(rownames(osnovne_dobrine)), size = 0.5)
-#hgraf + (geom_histogram())
-#hgraf + aes(x = rownames(osnovne_dobrine), y = osnovne_dobrine$`november 2015 / oktober 2015`)
-
+legenda1 <- c("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M")
+imena <- rownames(osnovne_dobrine)
 
 # Če bi imeli več funkcij za uvoz in nekaterih npr. še ne bi
 # potrebovali v 3. fazi, bi bilo smiselno funkcije dati v svojo
