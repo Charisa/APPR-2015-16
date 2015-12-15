@@ -25,9 +25,6 @@ write.csv2(tabela, "podatki/tabela.csv", fileEncoding = "UTF-8")
 indx <- sapply(tabela, is.factor)
 tabela[indx] <- lapply(tabela[indx], function(x) as.numeric(gsub("[.]", ".", x)))
 
-graf <- ggplot(tabela) + aes(x = row.names(tabela), y = "Rent Index", color = "green", size = 5) + geom_point() + xlab("x") + ylab("y")
-
-
 
 # RAZPREDELNICA (CSV)
 
@@ -62,7 +59,39 @@ rownames(razpredelnica) <- gsub("^[0-9]+ ", "", rownames(razpredelnica))
 colnames(razpredelnica) <- stolpci
 indx <- sapply(razpredelnica, is.factor)
 razpredelnica[indx] <- lapply(razpredelnica[indx], function(x) as.numeric(gsub("[.]", ".", x)))
-write.csv2(razpredelnica, "podatki/razpredelnica.csv", fileEncoding = "UTF-8")
+write.csv2(razpredelnica, "podatki/razpredelnica.csv", fileEncoding = "UTF-8", row.names = FALSE)
+
+razpredelnica <- razpredelnica[seq(-4, -length(stolpci), by = -4)]
+
+grupiranje <- c("januar 2015 / december 2014", "februar 2015 / januar 2015",
+                "marec 2015 / februar 2015", "april 2015 / marec 2015",
+                "maj 2015 / april 2015", "junij 2015 / maj 2015",
+                "julij 2015 / junij 2015", "avgust 2015 / julij 2015",
+                "september 2015 / avgust 2015", "oktober 2015 / september 2015",
+                "november 2015 / oktober 2015")
+
+# NOVA TABELA osnovne_dobrine: spreminjanje indeksa 16-ih dobrin/storitev v letu 2015 (po mesecih)
+
+osnovne_dobrine <- subset(razpredelnica, select = grupiranje)
+
+osnovne_dobrine <- osnovne_dobrine[-c(2:20, 22:27, 29:32, 34:37, 39:57, 59:65, 67:84, 
+                                    86:104, 106:109, 111:118, 120:123, 126:128),]
+
+# Histogram tabele osnovne_dobrine v zadnjem mesecu / predzaden mesec
+
+graf <- ggplot(osnovne_dobrine, aes(x = rownames(osnovne_dobrine), y = "november 2015 / oktober 2015")) + 
+  geom_line(binwidth = 0.001, color = "red", fill = "white")
+
+
+
+
+#graf <- ggplot(osnovne_dobrine$`november 2015 / oktober 2015`, geom = 'histogram')
+#graf <- ggplot(data = osnovne_dobrine, aes(x = created_at)) + 
+ # geom_bar(aes(fill=..count..), alpha=0.5, size=0.5, binwidth=60*5) 
+#hgraf <- ggplot(data = osnovne_dobrine, aes(osnovne_dobrine$`november 2015 / oktober 2015`), binwidth = length(rownames(osnovne_dobrine)), size = 0.5)
+#hgraf + (geom_histogram())
+#hgraf + aes(x = rownames(osnovne_dobrine), y = osnovne_dobrine$`november 2015 / oktober 2015`)
+
 
 # Če bi imeli več funkcij za uvoz in nekaterih npr. še ne bi
 # potrebovali v 3. fazi, bi bilo smiselno funkcije dati v svojo
