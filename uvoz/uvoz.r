@@ -81,11 +81,22 @@ osnovne_dobrine <- osnovne_dobrine[-c(2:20, 22:27, 29:32, 34:37, 39:57, 59:65, 6
 najvecja_vrednost <- max(osnovne_dobrine$januar2015.december2014)
 najmanjsa_vrednost <- min(osnovne_dobrine$januar2015.december2014)
 
-row.n
 
-group <- c((najvecja_vrednost), najmanjsa_vrednost)
+x <- rownames(osnovne_dobrine)[osnovne_dobrine$januar2015.december2014 == najvecja_vrednost]
+y <- rownames(osnovne_dobrine)[osnovne_dobrine$januar2015.december2014 == najmanjsa_vrednost]
+
+group <- c(x, y)
+
+zacetna_vrednost <- c(najvecja_vrednost, najmanjsa_vrednost)
 meseci <- names(osnovne_dobrine)
-indeks_vrednosti <- c(osnovne_dobrine(najvecja_vrednost), osnovne_dobrine(najmanjsa_vrednost))
+
+vrstica_najvecje_vrednosti <- as.numeric(as.vector(osnovne_dobrine[13,]))
+vrstica_najmanjse_vrednosti <- as.numeric(as.vector(osnovne_dobrine[2,]))
+
+vrstici <- c(vrstica_najvecje_vrednosti, vrstica_najmanjse_vrednosti)
+
+
+
 
 
 # Če bi imeli več funkcij za uvoz in nekaterih npr. še ne bi

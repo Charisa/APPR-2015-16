@@ -43,8 +43,9 @@ head(tabela)
 Slika \ref{fig:histogram} prikazuje razlike v indeksih cen osnovnih dobrin/storitev.
 
 ```{r histogram, echo=FALSE, fig.align='center', fig.cap='Histogram števila naselij v občinah'}
-ggplot(osnovne_dobrine, aes(x = legenda1, y = november2015.oktober2015), 
-       fill = rownames(osnovne_dobrine), legend = imena, col = c("red", "")) + geom_bar(stat = "identity", width = 0.5) + labs(title = "Indeksi osnovnih dobrin/storitev", x = "dobrine/storitve", y = "indeks")
+barplot(podatek, aes(y = vrstici, ), main = "Indeksi cen", xlab = "meseci", beside = TRUE)
+
+#ggplot(data = osnovne_dobrine, aes(x = group, y = osnovne_dobrine, fill = group), geom="bar", stat="identity", position="dodge" ) + geom_line()
 ```
 
 
