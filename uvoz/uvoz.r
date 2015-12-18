@@ -76,8 +76,17 @@ osnovne_dobrine <- subset(razpredelnica, select = grupiranje)
 osnovne_dobrine <- osnovne_dobrine[-c(2:20, 22:27, 29:32, 34:37, 39:57, 59:65, 67:84, 
                                     86:104, 106:109, 111:118, 120:123, 126:128),]
 
-legenda1 <- c("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M")
-imena <- rownames(osnovne_dobrine)
+# Največja in najmanjša vrednost tabele osnovne_dobrine (iz katerih bo sestavljen graf)
+
+najvecja_vrednost <- max(osnovne_dobrine$januar2015.december2014)
+najmanjsa_vrednost <- min(osnovne_dobrine$januar2015.december2014)
+
+row.n
+
+group <- c((najvecja_vrednost), najmanjsa_vrednost)
+meseci <- names(osnovne_dobrine)
+indeks_vrednosti <- c(osnovne_dobrine(najvecja_vrednost), osnovne_dobrine(najmanjsa_vrednost))
+
 
 # Če bi imeli več funkcij za uvoz in nekaterih npr. še ne bi
 # potrebovali v 3. fazi, bi bilo smiselno funkcije dati v svojo
