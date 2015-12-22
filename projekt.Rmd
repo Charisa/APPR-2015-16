@@ -35,7 +35,7 @@ v obliki CSV s Statističnega urada Slovenije ter v obliki HTML iz spletne stran
 ("http://www.numbeo.com/cost-of-living/rankings_by_country.jsp?title=2015-mid&region=150").
 Začetka obeh uvoženih razpredelnic.
 
-```{r uvoz, echo = razpredelnice}
+```{r uvoz1, echo = razpredelnice}
 kable(head(razpredelnica))
 head(tabela)
 ```
