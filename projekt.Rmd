@@ -35,10 +35,12 @@ source("uvoz/uvoz.r", encoding = "UTF-8")
 Uvozila sem podatke o indeksih življenjskih potrebščin v Sloveniji v obliki .CSV s Statističnega urada Slovenije ter v obliki HTML iz spletne strani
 (http://www.numbeo.com/cost-of-living/rankings_by_country.jsp?title=2015-mid&region=150).
 
+
 Razpredelnica s slovenskimi podatki prikazuje različne indekse cen:
 - indeks: tekoči mesec / prejšnji mesec
 - indeks: tekoči mesec / isti mesec prejšnjega leta
 - indeks: povprečje mesecev tekočega leta / povprečje istih mesecev prejšnjega leta (spremembe cen od začetka leta do tekočega meseca gleda na enako obdobje)
+Tabela vsebuje 128 vrstic.
 (Vsak četrti stolpec iz originalne tabele, ki je prikazoval povprečno 12-mesečno rast, sem izbrisala.)
 
 
@@ -46,12 +48,14 @@ Razpredelnica s slovenskimi podatki prikazuje različne indekse cen:
 kable(head(razpredelnica))
 ```
 
-Naredila sem novo tabelo (osnovne_dobrine_graf), ki vsebuje le nekaj podatkov iz prvotne tabele, s pomočjo katere sem dobila podatke za graf. Tabela prikazuje le podatke indeksov, izračunanih na podlagi tekočega in prejšnjega meseca. Dobrine/storitve sem izbrala na podlagi vrednosti indeksov le-teh (dve največji in najmanjši vrednosti v prvem indeksu).
 
-
+Tabela osnovne_dobrine prikazuje le podatke indeksov, izračunane na podlagi tekočega in prejšnjega meseca (11 stolpcev). Izbrala sem tudi nekaj najosnovnejših dobrin/storitev (13 vrstic).
+ 
 ```{r uvoz1, echo = FALSE}
-kable(head(osnovne_dobrine_graf))
+kable(head(osnovne_dobrine))
 ```
+
+Naredila sem novo tabelo (osnovne_dobrine_graf), ki vsebuje le nekaj informacij (4 dobrine) iz tabele osnovne_dobrine (prikazane spodaj), s pomočjo katere sem dobila podatke za graf.  Dobrine/storitve sem izbrala na podlagi vrednosti indeksov le-teh (dve največji in najmanjši vrednosti v prvem indeksu). Za vrednost po stolcih sem vzela prva dva in zadnja dva indeksa v letu.
 
 
 Slika \ref{fig:stolpicni_diagram} prikazuje razlike v indeksih cen osnovnih dobrin/storitev.
@@ -61,14 +65,14 @@ graf
 ```
 
 
-Tabela (prvotno HTML) je v tej fazi bolj kot ne nedotaknjena.
+Tabela (prvotno HTML) je v tej fazi bolj kot ne nedotaknjena. Vsebuje 40 vrstic in 6 stolpcev. Vrstice označujejo imena držav, stolpci pa različne indekse (indeks cen življenjskih potrebščin, indeks najemnin, indeks vsote življenjskih potrebščin in najemnin, indeks hrane in pijače, indeks cen restavracijskih ponudb, indeks lokalne moči nakupa).
 
 ```{r uvoz1, echo = FALSE}
 kable(head(tabela))
 ```
 
 
-V 3. fazi bom analizirala spremembe indeksov določenih dobrin, med katerimi bodo najbolj zanimive ravno tiste z največjimi razlikami v vrednosti indeksa. Seveda pa bom podatke primerjala s podatki drugih evropskih držav.
+V 3. fazi bom analizirala spremembe indeksov določenih dobrin, med katerimi bodo najbolj zanimive ravno tiste z največjimi razlikami v vrednosti indeksa. Seveda pa bom podatke primerjala s podatki drugih evropskih držav. (Za osnovo planiram sicer izbrati tabelo evropskih indeksov (na voljo manj podatkov iz tujine kot pa iz Slovenije), le-te pa bom primerjala z indeksi slovenskih dobrin zadnjega meseca.)
 
 ***
 
