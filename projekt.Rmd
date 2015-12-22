@@ -9,7 +9,7 @@ output:
   word_document: default
 ---
 
-```{r setup, echo=FALSE, results='hide', message=FALSE}
+```{r setup, echo = FALSE, results='hide', message=FALSE}
 # Če želimo nastaviti pisave v PDF-ju, odkomentiramo
 # in sledimo navodilom v programu.
 source("fontconfig.r", encoding = "UTF-8")
@@ -57,8 +57,6 @@ kable(head(osnovne_dobrine))
 
 Naredila sem novo tabelo (osnovne_dobrine_graf), ki vsebuje le nekaj informacij (4 dobrine) iz tabele osnovne_dobrine (prikazane spodaj), s pomočjo katere sem dobila podatke za graf.  Dobrine/storitve sem izbrala na podlagi vrednosti indeksov le-teh (dve največji in najmanjši vrednosti v prvem indeksu). Za vrednost po stolcih sem vzela prva dva in zadnja dva indeksa v letu.
 
-
-Slika \ref{fig:stolpicni_diagram} prikazuje razlike v indeksih cen osnovnih dobrin/storitev.
 
 ```{r stolpicni_diagram, echo = FALSE, fig.align = 'center', fig.cap ='Stolpični diagram indeksov cen dveh največjih in dveh najmanjši vrednosti indeksa.'}
 graf

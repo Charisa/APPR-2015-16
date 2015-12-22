@@ -3,9 +3,10 @@
 library(XML)
 library(RCurl)
 library(ggplot2)
+library(plyr)
 library(dplyr)
 library(reshape2)
-library(plyr)
+
 
 # RAZPREDELNICA (HTML).
 
