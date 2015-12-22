@@ -36,10 +36,7 @@ Uvozila sem podatke o indeksih življenjskih potrebščin v Sloveniji v obliki .
 (http://www.numbeo.com/cost-of-living/rankings_by_country.jsp?title=2015-mid&region=150).
 
 
-Razpredelnica s slovenskimi podatki prikazuje različne indekse cen:
-- indeks: tekoči mesec / prejšnji mesec
-- indeks: tekoči mesec / isti mesec prejšnjega leta
-- indeks: povprečje mesecev tekočega leta / povprečje istih mesecev prejšnjega leta (spremembe cen od začetka leta do tekočega meseca gleda na enako obdobje)
+Razpredelnica s slovenskimi podatki prikazuje različne indekse cen: indeks: tekoči mesec / prejšnji mesec, indeks: tekoči mesec / isti mesec prejšnjega leta, indeks: povprečje mesecev tekočega leta / povprečje istih mesecev prejšnjega leta (spremembe cen od začetka leta do tekočega meseca gleda na enako obdobje).
 Tabela vsebuje 128 vrstic.
 (Vsak četrti stolpec iz originalne tabele, ki je prikazoval povprečno 12-mesečno rast, sem izbrisala.)
 
