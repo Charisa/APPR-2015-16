@@ -51,7 +51,7 @@ kable(head(razpredelnica))
 
 Tabela osnovne_dobrine prikazuje le podatke indeksov, izračunane na podlagi tekočega in prejšnjega meseca (11 stolpcev). Izbrala sem tudi nekaj najosnovnejših dobrin/storitev (13 vrstic).
  
-```{r uvoz1, echo = FALSE}
+```{r uvoz2, echo = FALSE}
 kable(head(osnovne_dobrine))
 ```
 
@@ -67,7 +67,7 @@ graf
 
 Tabela (prvotno HTML) je v tej fazi bolj kot ne nedotaknjena. Vsebuje 40 vrstic in 6 stolpcev. Vrstice označujejo imena držav, stolpci pa različne indekse (indeks cen življenjskih potrebščin, indeks najemnin, indeks vsote življenjskih potrebščin in najemnin, indeks hrane in pijače, indeks cen restavracijskih ponudb, indeks lokalne moči nakupa).
 
-```{r uvoz1, echo = FALSE}
+```{r uvoz3, echo = FALSE}
 kable(head(tabela))
 ```
 
