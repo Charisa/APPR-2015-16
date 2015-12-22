@@ -3,9 +3,10 @@ title: "Poročilo pri predmetu Analiza podatkov s programom R"
 author: "Sara Korat"
 output:
   pdf_document:
-    latex_engine: xelatex
     includes:
       in_header: lib/styles.sty
+    latex_engine: xelatex
+  word_document: default
 ---
 
 ```{r setup, echo=FALSE, results='hide', message=FALSE}
@@ -19,8 +20,8 @@ source("lib/libraries.r", encoding = "UTF-8")
 
 # Izbira teme
 
-# Indeks cen življenjskih potrebščin v Sloveniji v letošnjem letu (2015). Primerjava z ostalimi evropskimi
-# državami.
+Indeks cen življenjskih potrebščin v Sloveniji v letošnjem letu (2015). Primerjava z ostalimi evropskimi državami (3. faza).
+Indeks cen življenjskih potrebščin meri spremembe cen izdelkov in storitev glede na sestavo izdatkov, ki jih domače prebivalstvo namenja za nakupe predmetov končne porabe doma in v tujini.
 
 ***
 
@@ -30,59 +31,44 @@ source("lib/libraries.r", encoding = "UTF-8")
 source("uvoz/uvoz.r", encoding = "UTF-8")
 ```
 
-Uvozili smo podatke o indeksih življenjskih potrebščin v Sloveniji 
-v obliki CSV s Statističnega urada Slovenije ter v obliki HTML iz spletne strani
-("http://www.numbeo.com/cost-of-living/rankings_by_country.jsp?title=2015-mid&region=150").
-Začetka obeh uvoženih razpredelnic.
 
-```{r uvoz1, echo = razpredelnice}
+Uvozila sem podatke o indeksih življenjskih potrebščin v Sloveniji v obliki .CSV s Statističnega urada Slovenije ter v obliki HTML iz spletne strani
+(http://www.numbeo.com/cost-of-living/rankings_by_country.jsp?title=2015-mid&region=150).
+
+Razpredelnica s slovenskimi podatki prikazuje različne indekse cen:
+- indeks: tekoči mesec / prejšnji mesec
+- indeks: tekoči mesec / isti mesec prejšnjega leta
+- indeks: povprečje mesecev tekočega leta / povprečje istih mesecev prejšnjega leta (spremembe cen od začetka leta do tekočega meseca gleda na enako obdobje)
+(Vsak četrti stolpec iz originalne tabele, ki je prikazoval povprečno 12-mesečno rast, sem izbrisala.)
+
+
+```{r uvoz1, echo = FALSE}
 kable(head(razpredelnica))
-head(tabela)
 ```
 
-Slika \ref{fig:histogram} prikazuje razlike v indeksih cen osnovnih dobrin/storitev.
+Naredila sem novo tabelo (osnovne_dobrine_graf), ki vsebuje le nekaj podatkov iz prvotne tabele, s pomočjo katere sem dobila podatke za graf. Tabela prikazuje le podatke indeksov, izračunanih na podlagi tekočega in prejšnjega meseca. Dobrine/storitve sem izbrala na podlagi vrednosti indeksov le-teh (dve največji in najmanjši vrednosti v prvem indeksu).
 
-```{r stolpični diagram, echo=FALSE, fig.align = 'center', fig.cap ='Stolpični diagram indeksov cen dveh največjih in dveh najmanjši vrednosti indeksa.'}
+
+```{r uvoz1, echo = FALSE}
+kable(head(osnovne_dobrine_graf))
+```
+
+
+Slika \ref{fig:stolpicni_diagram} prikazuje razlike v indeksih cen osnovnih dobrin/storitev.
+
+```{r stolpicni_diagram, echo = FALSE, fig.align = 'center', fig.cap ='Stolpični diagram indeksov cen dveh največjih in dveh najmanjši vrednosti indeksa.'}
 graf
 ```
 
 
-***
+Tabela (prvotno HTML) je v tej fazi bolj kot ne nedotaknjena.
 
-# Analiza in vizualizacija podatkov
+```{r uvoz1, echo = FALSE}
+kable(head(tabela))
+```
 
-#```{r vizualizacija, echo=FALSE}
-#source("vizualizacija/vizualizacija.r", encoding = "UTF-8")
-#```
 
-#Slika \ref{fig:zemljevid} prikazuje povprečno velikost družine za vsako občino.
-
-#```{r zemljevid, echo=FALSE, fig.align='center', fig.cap='Zemljevid povprečnega števila otrok v družini'}
-#n <- 100
-#barve <- topo.colors(n)[1+(n-1)*(druzine$povprecje-min.povprecje)/(max.povprecje-min.povprecje)]
-#plot(zemljevid, col = barve)
-#title("Povprečno število otrok v družini")
-#```
+V 3. fazi bom analizirala spremembe indeksov določenih dobrin, med katerimi bodo najbolj zanimive ravno tiste z največjimi razlikami v vrednosti indeksa. Seveda pa bom podatke primerjala s podatki drugih evropskih držav.
 
 ***
 
-# Napredna analiza podatkov
-
-#```{r analiza, echo=FALSE}
-#source("analiza/analiza.r", encoding = "UTF-8")
-#```
-
-# Slika \ref{fig:graf} prikazuje povezavo med številom naselij in površino občine.
-
-#```{r graf, echo=FALSE, fig.align='center', fig.cap='Povezava med številom naselij in površino občine'}
-#plot(obcine[[1]], obcine[[4]],
- #    main = "Število naselij glede na površino občine",
-  #   xlab = expression("Površina (km"^2 * ")"),
-   #  ylab = "Št. naselij",
-    # col = barve[obcine[[7]]],
-     #pch = 18)
-#legend("topright", legend = names(barve), col = barve,
-       pch = 18, cex = 0.5, bg = "white")
-#```
-
-***

@@ -40,27 +40,28 @@ tabela[indx] <- lapply(tabela[indx], function(x) as.numeric(gsub("[.]", ".", x))
 
 # Poimenovanje stolpcev:
 
-stolpci <- c("januar2015.december2014","januar2015.januar2014","povprečje_januar_2015.povprečje_januar_2014","povprečna12-mesečnarast",
+stolpci <- c("januar2015.december2014","januar2015.januar2014","povprečje_januar_2015.povprečje_januar_2014",
+             "povprečna12-mesečna_rast",
              "februar2015.januar2015","februar2015.februar2014",
-             "povprečje_januar,februar_2015.povprečje_januar,februar_2014","povprečna12-mesečnarast",
+             "povprečje_januar,februar_2015.povprečje_januar,februar_2014","povprečna12-mesečna_rast",
              "marec2015.februar2015","marec2015.marec2014",
-             "povprečje_januar-marec_2015.povprečje_januar-marec_2014","povprečna12-mesečnarast",
+             "povprečje_januar-marec_2015.povprečje_januar-marec_2014","povprečna12-mesečna_rast",
              "april2015.marec2015","april2015.april2014",
-             "povprečje_januar-april_2015.povprečje_januar-april_2014","povprečna12-mesečnarast",
+             "povprečje_januar-april_2015.povprečje_januar-april_2014","povprečna12-mesečna_rast",
              "maj2015.april2015","maj2015.maj2014",
-             "povprečje_januar-maj_2015.povprečje_januar-maj_2014","povprečna12-mesečnarast",
+             "povprečje_januar-maj_2015.povprečje_januar-maj_2014","povprečna12-mesečna_rast",
              "junij2015.maj2015","junij2015.junij2014",
-             "povprečje_januar-junij_2015.povprečje_januar-junij_2014","povprečna12-mesečnarast",
+             "povprečje_januar-junij_2015.povprečje_januar-junij_2014","povprečna12-mesečna_rast",
              "julij2015.junij2015","julij2015.julij2014",
-             "povprečje_januar-julij_2015.povprečje_januar-julij_2014","povprečna12-mesečnarast",
+             "povprečje_januar-julij_2015.povprečje_januar-julij_2014","povprečna12-mesečna_rast",
              "avgust2015.julij2015","avgust2015.avgust2014",
-             "povprečje_januar-avgust_2015.povprečje_januar-avgust_2014","povprečna12-mesečnarast",
+             "povprečje_januar-avgust_2015.povprečje_januar-avgust_2014","povprečna12-mesečna_rast",
              "september2015.avgust2015","september2015.september2014",
-             "povprečje_januar-september_2015.povprečje_januar-september_2014","povprečna12-mesečnarast",
+             "povprečje_januar-september_2015.povprečje_januar-september_2014","povprečna12-mesečna_rast",
              "oktober2015.september2015","oktober2015.oktober2014",
-             "povprečje_januar-oktober_2015.povprečje_januar-oktober_2014","povprečna12-mesečnarast",
+             "povprečje_januar-oktober_2015.povprečje_januar-oktober_2014","povprečna12-mesečna_rast",
              "november2015.oktober2015","november2015.oktober2014",
-             "povprečje_januar-november_2015.povprečje_januar-november_2014","povprečna12-mesečnarast")
+             "povprečje_januar-november_2015.povprečje_januar-november_2014","povprečna12-mesečna_rast")
 
 razpredelnica = read.csv2("podatki/indeksi_cen.csv", fileEncoding = "Windows-1250")
                                                                   # Odpremo datoteko .csv.
@@ -73,10 +74,11 @@ colnames(razpredelnica) <- stolpci                                # Preimenujemo
 indx <- sapply(razpredelnica, is.factor)                          # 'Vrednosti' so faktorji. 
 razpredelnica[indx] <- lapply(razpredelnica[indx], function(x) as.numeric(gsub("[.]", ".", x)))
                                                                   # Faktorje spremenimo v numerične vrednosti.
-write.csv2(razpredelnica, "podatki/razpredelnica.csv", fileEncoding = "UTF-8", row.names = FALSE)
-                                                                  # Ustvarimo datoteko .csv.
 
 razpredelnica <- razpredelnica[seq(-4, -length(stolpci), by = -4)]# Odstranimo vsak četrti stolpec.
+
+write.csv2(razpredelnica, "podatki/razpredelnica.csv", fileEncoding = "UTF-8", row.names = FALSE)
+                                                                  # Ustvarimo datoteko .csv.
 
 grupiranje <- c("januar2015.december2014","februar2015.januar2015",
                 "marec2015.februar2015","april2015.marec2015",
@@ -129,25 +131,6 @@ graf <- ggplot(osnovne_dobrine_graf, stat = "identity", main = "Indeksi cen") +
   aes(x = Var1, y = value, fill = Var2, stat = "identity") + 
   geom_bar(stat = "identity", position = "dodge") + xlab("obdobja") + ylab("vrednost indeksa") + 
   scale_fill_manual("Dobrine in storitve", values = c("darkred", "darkblue", "yellow", "darkgreen"))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
