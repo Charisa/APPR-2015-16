@@ -130,6 +130,7 @@ osnovne_dobrine_graf <- melt(osnovne_dobrine_graf, id = row.names(osnovne_dobrin
 
 graf <- ggplot(osnovne_dobrine_graf, stat = "identity", main = "Indeksi cen") + 
   aes(x = Var1, y = value, fill = Var2, stat = "identity") + 
+  theme(axis.text.x = element_text(angle = 65, vjust = 0.5)) +
   geom_bar(stat = "identity", position = "dodge") + xlab("obdobja") + ylab("vrednost indeksa") + 
   scale_fill_manual("Dobrine in storitve", values = c("darkred", "darkblue", "yellow", "darkgreen"))
 

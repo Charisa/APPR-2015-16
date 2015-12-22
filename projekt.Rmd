@@ -68,6 +68,8 @@ kable(head(tabela))
 
 
 V 3. fazi bom analizirala spremembe indeksov določenih dobrin, med katerimi bodo najbolj zanimive ravno tiste z največjimi razlikami v vrednosti indeksa. Seveda pa bom podatke primerjala s podatki drugih evropskih držav. (Za osnovo planiram sicer izbrati tabelo evropskih indeksov (na voljo manj podatkov iz tujine kot pa iz Slovenije), le-te pa bom primerjala z indeksi slovenskih dobrin zadnjega meseca.)
+Primerjala bom tudi podatke ostalih držav med sabo, kakšne so največje razlike v cenah.
+Predvidevam, da imajo revnejše države nižje indekse od bogatejših.
 
 ***
 
