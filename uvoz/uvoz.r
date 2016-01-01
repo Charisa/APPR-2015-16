@@ -8,36 +8,56 @@ library(dplyr)
 library(reshape2)
 
 
-# RAZPREDELNICA (HTML).
+# RAZPREDELNICE (HTML).
 
-povezava = getURL("http://www.numbeo.com/cost-of-living/rankings_by_country.jsp?title=2015-mid&region=150")
-tables = readHTMLTable(povezava, fileEncoding = "UTF-8")
-names(tables)
-tabela = tables[[3]]
-tabela <- tabela[,-1]
-kategorije <- c(names(tabela))[-1]                                # Vektor imen stolpcev; c je vektor; names(tmp) - imena stolpcev
-                                                                  # [-1] - se znebimo Country
-kategorije
+# Uvožene razpredelnice s pomočjo funkcije html_razpredelnice, kateri podamo,
+# kam shrani novo tabelo in iz katere spletne strani jo uvozimo.
 
-tabela <- data.frame(tabela[, -1], row.names = tabela[, 1]) 
-                                                                  # Znebimo se prejšnjega stolpca (držav), vsem
-                                                                  # vrsticam (row) damo vektor vseh imen. 
-                                                                  # Čeprav smo ga že odstranli, ga lahko
-                                                                  # spet uporabimo, ker smo naredili vse v enem koraku
+tabela_2009 <- html_razpredelnice("podatki/tabela_2009", 
+                                  "http://www.numbeo.com/cost-of-living/rankings_by_country.jsp?title=2009&region=150")
 
-colnames(tabela) <- kategorije                                    # Stolpcem damo imena po kategorijah.
-write.csv2(tabela, "podatki/tabela.csv", fileEncoding = "UTF-8")
-                                                                  # Ustvarimo datoteko .csv.
+tabela_2010 <- html_razpredelnice("podatki/tabela_2010",
+                                  "http://www.numbeo.com/cost-of-living/rankings_by_country.jsp?title=2010&region=150")
 
-indx <- sapply(tabela, is.factor)                                 # "Vrednosti" so faktorji.
-tabela[indx] <- lapply(tabela[indx], function(x) as.numeric(gsub("[.]", ".", x)))
-                                                                  # Faktorje spremenimo v numerične vrednosti, da lahko
-                                                                  # z njimi operiramo in rišemo grafe.
+tabela_2011 <- html_razpredelnice("podatki/tabela_2011",
+                                  "http://www.numbeo.com/cost-of-living/rankings_by_country.jsp?title=2011&region=150")
 
+tabela_2012 <- html_razpredelnice("podatki/tabela_2012",
+                                  "http://www.numbeo.com/cost-of-living/rankings_by_country.jsp?title=2012&region=150")
 
+tabela_2013 <- html_razpredelnice("podatki/tabela_2013",
+                                  "http://www.numbeo.com/cost-of-living/rankings_by_country.jsp?title=2013&region=150")
+
+tabela_2014 <- html_razpredelnice("podatki/tabela_2014", 
+                                  "http://www.numbeo.com/cost-of-living/rankings_by_country.jsp?title=2014&region=150")
+
+tabela_2015 <- html_razpredelnice("podatki/tabela_2015",
+                                  "http://www.numbeo.com/cost-of-living/rankings_by_country.jsp?title=2015&region=150")
 
 
-# RAZPREDELNICA (CSV)
+
+
+# RAZPREDELNICE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# RAZPREDELNICA za graf(CSV)
 
 # Poimenovanje stolpcev:
 
@@ -133,26 +153,3 @@ graf <- ggplot(osnovne_dobrine_graf, stat = "identity", main = "Indeksi cen") +
   theme(axis.text.x = element_text(angle = 65, vjust = 0.5)) +
   geom_bar(stat = "identity", position = "dodge") + xlab("obdobja") + ylab("vrednost indeksa") + 
   scale_fill_manual("Dobrine in storitve", values = c("darkred", "darkblue", "yellow", "darkgreen"))
-
-
-
-
-
-
-
-
-
-
-
-
-
-#najvecja_vrednost <- max(osnovne_dobrine$januar2015.december2014)
-#najmanjsa_vrednost <- min(osnovne_dobrine$januar2015.december2014)
-#x <- rownames(osnovne_dobrine)[osnovne_dobrine$januar2015.december2014 == najvecja_vrednost]
-#y <- rownames(osnovne_dobrine)[osnovne_dobrine$januar2015.december2014 == najmanjsa_vrednost]
-#group <- c(x, y)
-#zacetna_vrednost <- c(najvecja_vrednost, najmanjsa_vrednost)
-#meseci <- (names(osnovne_dobrine))[c(1, 2, 3, 9, 10, 11)]
-#vrstica_najvecje_vrednosti <- as.numeric(as.vector(osnovne_dobrine[x,]))
-#vrstica_najmanjse_vrednosti <- as.numeric(as.vector(osnovne_dobrine[y,]))
-#vrstici <- c(vrstica_najvecje_vrednosti, vrstica_najmanjse_vrednosti)

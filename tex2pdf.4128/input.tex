@@ -1,0 +1,303 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+    \usepackage{xltxtra,xunicode}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
+  \newcommand{\euro}{€}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{natbib}
+\bibliographystyle{plainnat}
+\usepackage{longtable,booktabs}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\ifxetex
+  \usepackage[setpagesize=false, % page size defined by xetex
+              unicode=false, % unicode breaks when used with xetex
+              xetex]{hyperref}
+\else
+  \usepackage[unicode=true]{hyperref}
+\fi
+\hypersetup{breaklinks=true,
+            bookmarks=true,
+            pdfauthor={Sara Korat},
+            pdftitle={Poročilo pri predmetu Analiza podatkov s programom R},
+            colorlinks=true,
+            citecolor=blue,
+            urlcolor=blue,
+            linkcolor=magenta,
+            pdfborder={0 0 0}}
+\urlstyle{same}  % don't use monospace font for urls
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\setcounter{secnumdepth}{0}
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\newcommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+  \title{Poročilo pri predmetu Analiza podatkov s programom R}
+  \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+  \author{Sara Korat}
+  \preauthor{\centering\large\emph}
+  \postauthor{\par}
+  \date{}
+  \predate{}\postdate{}
+
+\usepackage[slovene]{babel}
+\usepackage{graphicx}
+
+
+\begin{document}
+
+\maketitle
+
+
+\begin{verbatim}
+## Warning: package 'knitr' was built under R version 3.2.3
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: package 'XML' was built under R version 3.2.3
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: package 'RCurl' was built under R version 3.2.3
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: package 'bitops' was built under R version 3.2.3
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: package 'ggplot2' was built under R version 3.2.3
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: package 'plyr' was built under R version 3.2.3
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: package 'dplyr' was built under R version 3.2.3
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: package 'reshape2' was built under R version 3.2.3
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: package 'httr' was built under R version 3.2.3
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: package 'sp' was built under R version 3.2.3
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: package 'maptools' was built under R version 3.2.3
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: package 'digest' was built under R version 3.2.3
+\end{verbatim}
+
+\section{Izbira teme}\label{izbira-teme}
+
+Indeks cen življenjskih potrebščin v Sloveniji v letošnjem letu (2015).
+Primerjava z ostalimi evropskimi državami (3. faza). Indeks cen
+življenjskih potrebščin meri spremembe cen izdelkov in storitev glede na
+sestavo izdatkov, ki jih domače prebivalstvo namenja za nakupe predmetov
+končne porabe doma in v tujini.
+
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+\section{Obdelava, uvoz in čiščenje
+podatkov}\label{obdelava-uvoz-in-ciscenje-podatkov}
+
+Uvozila sem podatke o indeksih življenjskih potrebščin v Sloveniji v
+obliki .CSV s Statističnega urada Slovenije ter v obliki HTML iz spletne
+strani
+(\url{http://www.numbeo.com/cost-of-living/rankings_by_country.jsp?title=2015-mid\&region=150}).
+
+Razpredelnica s slovenskimi podatki prikazuje različne indekse cen:
+indeks: tekoči mesec / prejšnji mesec, indeks: tekoči mesec / isti mesec
+prejšnjega leta, indeks: povprečje mesecev tekočega leta / povprečje
+istih mesecev prejšnjega leta (spremembe cen od začetka leta do tekočega
+meseca gleda na enako obdobje). Tabela vsebuje 128 vrstic. (Vsak četrti
+stolpec iz originalne tabele, ki je prikazoval povprečno 12-mesečno
+rast, sem izbrisala.)
+
+\begin{longtable}[c]{@{}lrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr@{}}
+\toprule
+& januar2015.december2014 & januar2015.januar2014 &
+povprečje\_januar\_2015.povprečje\_januar\_2014 & februar2015.januar2015
+& februar2015.februar2014 &
+povprečje\_januar,februar\_2015.povprečje\_januar,februar\_2014 &
+marec2015.februar2015 & marec2015.marec2014 &
+povprečje\_januar-marec\_2015.povprečje\_januar-marec\_2014 &
+april2015.marec2015 & april2015.april2014 &
+povprečje\_januar-april\_2015.povprečje\_januar-april\_2014 &
+maj2015.april2015 & maj2015.maj2014 &
+povprečje\_januar-maj\_2015.povprečje\_januar-maj\_2014 &
+junij2015.maj2015 & junij2015.junij2014 &
+povprečje\_januar-junij\_2015.povprečje\_januar-junij\_2014 &
+julij2015.junij2015 & julij2015.julij2014 &
+povprečje\_januar-julij\_2015.povprečje\_januar-julij\_2014 &
+avgust2015.julij2015 & avgust2015.avgust2014 &
+povprečje\_januar-avgust\_2015.povprečje\_januar-avgust\_2014 &
+september2015.avgust2015 & september2015.september2014 &
+povprečje\_januar-september\_2015.povprečje\_januar-september\_2014 &
+oktober2015.september2015 & oktober2015.oktober2014 &
+povprečje\_januar-oktober\_2015.povprečje\_januar-oktober\_2014 &
+november2015.oktober2015 & november2015.oktober2014 &
+povprečje\_januar-november\_2015.povprečje\_januar-november\_2014\tabularnewline
+\midrule
+\endhead
+Hrana & 101.4 & 98.8 & 98.8 & 100.1 & 99.7 & 99.2 & 100.5 & 100.7 & 99.7
+& 100.5 & 100.8 & 100.0 & 101.8 & 101.3 & 100.2 & 98.9 & 101.2 & 100.4 &
+99.3 & 101.4 & 100.5 & 99.6 & 101.8 & 100.7 & 100.3 & 101.1 & 100.7 &
+99.3 & 101.0 & 100.8 & 99.9 & 101.0 & 100.8\tabularnewline
+Kruh in drugi izdelki iz žit & 100.8 & 99.0 & 99.0 & 98.1 & 98.1 & 98.5
+& 102.1 & 99.9 & 99.0 & 98.7 & 99.1 & 99.0 & 100.4 & 99.0 & 99.0 & 99.7
+& 98.7 & 99.0 & 100.1 & 98.7 & 98.9 & 100.6 & 99.2 & 99.0 & 100.0 & 99.7
+& 99.1 & 99.8 & 99.9 & 99.1 & 100.4 & 100.2 & 99.2\tabularnewline
+Meso & 99.8 & 98.9 & 98.9 & 99.4 & 97.9 & 98.4 & 100.0 & 98.8 & 98.5 &
+99.9 & 99.1 & 98.7 & 99.9 & 98.7 & 98.7 & 100.1 & 98.7 & 98.7 & 101.3 &
+100.4 & 98.9 & 99.6 & 99.9 & 99.0 & 100.1 & 100.1 & 99.2 & 99.3 & 100.0
+& 99.2 & 100.1 & 99.1 & 99.2\tabularnewline
+Ribe & 102.2 & 99.8 & 99.8 & 99.2 & 98.0 & 98.9 & 100.2 & 100.3 & 99.4 &
+99.8 & 99.7 & 99.4 & 101.7 & 100.4 & 99.6 & 99.8 & 101.4 & 99.9 & 98.7 &
+100.2 & 99.9 & 101.5 & 102.5 & 100.3 & 100.6 & 103.8 & 100.6 & 98.5 &
+103.7 & 100.9 & 100.5 & 103.2 & 101.1\tabularnewline
+Mleko, mlečni izdelki in jajca & 99.6 & 98.9 & 98.9 & 99.6 & 99.6 & 99.2
+& 100.1 & 99.5 & 99.3 & 99.9 & 99.5 & 99.4 & 99.7 & 98.4 & 99.2 & 100.9
+& 99.1 & 99.2 & 99.3 & 98.6 & 99.1 & 100.3 & 99.0 & 99.1 & 100.1 & 99.1
+& 99.1 & 99.5 & 99.1 & 99.1 & 100.4 & 98.9 & 99.1\tabularnewline
+Olje in maščoba & 101.6 & 100.3 & 100.3 & 98.4 & 98.8 & 99.5 & 102.6 &
+101.0 & 100.0 & 98.4 & 100.0 & 100.0 & 101.2 & 101.1 & 100.2 & 99.5 &
+100.1 & 100.2 & 100.0 & 99.7 & 100.1 & 100.7 & 101.2 & 100.3 & 100.3 &
+101.4 & 100.4 & 98.9 & 101.2 & 100.5 & 101.1 & 102.3 &
+100.6\tabularnewline
+\bottomrule
+\end{longtable}
+
+Tabela osnovne\_dobrine prikazuje le podatke indeksov, izračunane na
+podlagi tekočega in prejšnjega meseca (11 stolpcev). Izbrala sem tudi
+nekaj najosnovnejših dobrin/storitev (13 vrstic).
+
+\begin{longtable}[c]{@{}lrrrrrrrrrrr@{}}
+\toprule
+& januar2015.december2014 & februar2015.januar2015 &
+marec2015.februar2015 & april2015.marec2015 & maj2015.april2015 &
+junij2015.maj2015 & julij2015.junij2015 & avgust2015.julij2015 &
+september2015.avgust2015 & oktober2015.september2015 &
+november2015.oktober2015\tabularnewline
+\midrule
+\endhead
+Hrana & 101.9 & 100.0 & 100.0 & 100.0 & 100.0 & 100.0 & 100.0 & 100.0 &
+100.0 & 100.0 & 100.0\tabularnewline
+Obleka in storitve za obleko & 101.4 & 100.1 & 100.5 & 100.5 & 101.8 &
+98.9 & 99.3 & 99.6 & 100.3 & 99.3 & 99.9\tabularnewline
+Stanovanje & 101.2 & 100.0 & 100.0 & 100.0 & 100.0 & 100.2 & 100.0 &
+100.0 & 100.1 & 100.2 & 100.0\tabularnewline
+Komunalne in druge storitve & 100.3 & 100.0 & 100.1 & 100.0 & 99.8 &
+100.0 & 100.0 & 100.0 & 100.0 & 100.0 & 100.1\tabularnewline
+Goriva in energija & 100.1 & 103.5 & 99.3 & 99.2 & 100.0 & 99.2 & 104.5
+& 100.1 & 99.5 & 100.8 & 100.0\tabularnewline
+Zdravje & 100.1 & 99.4 & 100.3 & 100.1 & 100.0 & 100.2 & 100.6 & 100.2 &
+100.0 & 99.8 & 100.0\tabularnewline
+\bottomrule
+\end{longtable}
+
+Naredila sem novo tabelo (osnovne\_dobrine\_graf), ki vsebuje le nekaj
+informacij (4 dobrine) iz tabele osnovne\_dobrine (prikazane spodaj), s
+pomočjo katere sem dobila podatke za graf. Dobrine/storitve sem izbrala
+na podlagi vrednosti indeksov le-teh (dve največji in najmanjši
+vrednosti v prvem indeksu). Za vrednost po stolcih sem vzela prva dva in
+zadnja dva indeksa v letu.
+
+\begin{figure}
+
+{\centering \includegraphics{projekt_files/figure-latex/stolpicni_diagram-1} 
+
+}
+
+\caption{Stolpični diagram indeksov cen dveh največjih in dveh najmanjši vrednosti indeksa.}\label{fig:stolpicni_diagram}
+\end{figure}
+
+Tabela (prvotno HTML) je v tej fazi bolj kot ne nedotaknjena. Vsebuje 40
+vrstic in 6 stolpcev. Vrstice označujejo imena držav, stolpci pa
+različne indekse (indeks cen življenjskih potrebščin, indeks najemnin,
+indeks vsote življenjskih potrebščin in najemnin, indeks hrane in
+pijače, indeks cen restavracijskih ponudb, indeks lokalne moči nakupa).
+
+\begin{longtable}[c]{@{}lrrrrrr@{}}
+\toprule
+& Consumer Price Index & Rent Index & Consumer Price Plus Rent Index &
+Groceries Index & Restaurant Price Index & Local Purchasing Power
+Index\tabularnewline
+\midrule
+\endhead
+Switzerland & 124.51 & 54.53 & 88.82 & 114.81 & 137.82 &
+210.00\tabularnewline
+Norway & 109.30 & 40.41 & 74.17 & 95.90 & 136.81 & 139.78\tabularnewline
+Iceland & 95.41 & 29.04 & 61.57 & 88.13 & 113.07 & 111.09\tabularnewline
+Denmark & 88.31 & 26.33 & 56.70 & 71.67 & 112.78 & 164.26\tabularnewline
+United Kingdom & 86.68 & 33.50 & 59.56 & 75.10 & 96.69 &
+133.64\tabularnewline
+Luxembourg & 80.81 & 50.91 & 65.56 & 65.30 & 104.96 &
+153.61\tabularnewline
+\bottomrule
+\end{longtable}
+
+V 3. fazi bom analizirala spremembe indeksov določenih dobrin, med
+katerimi bodo najbolj zanimive ravno tiste z največjimi razlikami v
+vrednosti indeksa. Seveda pa bom podatke primerjala s podatki drugih
+evropskih držav. (Za osnovo planiram sicer izbrati tabelo evropskih
+indeksov (na voljo manj podatkov iz tujine kot pa iz Slovenije), le-te
+pa bom primerjala z indeksi slovenskih dobrin zadnjega meseca.)
+Primerjala bom tudi podatke ostalih držav med sabo, kakšne so največje
+razlike v cenah. Predvidevam, da imajo revnejše države nižje indekse od
+bogatejših.
+
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+\end{document}
