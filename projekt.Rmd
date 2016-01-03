@@ -72,5 +72,11 @@ V 3. fazi bom analizirala spremembe indeksov določenih dobrin, med katerimi bod
 Primerjala bom tudi podatke ostalih držav med sabo, kakšne so največje razlike v cenah.
 Predvidevam, da imajo revnejše države nižje indekse od bogatejših.
 
+
+Quality of Life Index (higher is better) is an estimation of overall quality of life by using empirical formula which takes into account purchasing power index (higher is better), pollution index (lower is better), house price to income ratio (lower is better), consumer price index (lower is better), safety index (higher is better), health care index (higher is better), traffic commute time index (lower is better) and climate index (higher is better).
+Formula: http://www.numbeo.com/quality-of-life/indices_explained.jsp
+
+
+
 ***
 
