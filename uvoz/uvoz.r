@@ -306,3 +306,16 @@ write.csv2(tabela_restaurant_price_2015, "podatki/tabela_restaurant_price_2015",
    #                     "podatki/indeksi_2012", indeksi_2012)
 
 
+s <- c("Country","Consumer Price Index", "Rent Index", "Groceries Index", "Restaurant Price Index")
+r <- list(tabela_2012, tabela_2013, tabela_2014, tabela_2015)
+leta <- 2012:2015
+names(r) <- leta
+sk <- lapply(leta, function(ll)
+  lapply(s, function(ss)
+    data.frame(leto = ll, index = ss, vrednost = r[[paste0(ll)]][[ss]], stringsAsFactors = FALSE)) %>%
+    bind_rows()
+  ) %>% bind_rows()
+
+# k <- lapply(r,function(r) r[s])
+
+

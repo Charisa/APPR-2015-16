@@ -1,136 +1,136 @@
-"";"Pollution Index"
-"Senegal";110,34
-"Ghana";109,27
-"Afghanistan";100,34
-"Iraq";96,72
-"Egypt";96,62
-"Liberia";95,29
-"Mongolia";94,55
-"Bolivia";94,05
-"Bangladesh";93,59
-"China";89,36
-"Lebanon";89,11
-"Yemen";88,53
-"Myanmar";87,89
-"Qatar";87,73
-"El Salvador";87,52
-"Bahrain";87,36
-"Peru";86,5
-"Jordan";85,64
-"Botswana";85,06
-"Vietnam";84,34
-"Pakistan";83,73
-"Nepal";83,39
-"Macedonia";82,31
-"Iran";82,28
-"Azerbaijan";81,3
-"Trinidad And Tobago";80,15
-"Cambodia";80,06
-"Venezuela";79,19
-"India";77,72
-"Jamaica";77,2
-"South Korea";77,11
-"Nigeria";76,29
-"Albania";76,21
-"Zambia";76,12
-"Honduras";75,2
-"Indonesia";74,41
-"Turkey";74,31
-"Philippines";74,17
-"Kazakhstan";73,69
-"Tunisia";73,54
-"Armenia";73,03
-"Thailand";72,81
-"Russia";72,77
-"Chile";72,4
-"Maldives";71,89
-"Guatemala";71,14
-"Saudi Arabia";71,02
-"Ukraine";69,85
-"Monaco";68,89
-"Mexico";68,83
-"Laos";68,56
-"Algeria";68,37
-"Taiwan";67,65
-"Tanzania";66,78
-"Ethiopia";66,74
-"Zimbabwe";65,86
-"Sri Lanka";65,72
-"Greenland";65,52
-"Dominican Republic";65,32
-"Israel";65,21
-"South Africa";65,19
-"Malaysia";64,73
-"Bulgaria";63,96
-"Malta";63,17
-"Morocco";62,73
-"Kenya";62,2
-"Colombia";61,41
-"United Arab Emirates";61,34
-"Sudan";61,01
-"Fiji";60,79
-"Kuwait";59,63
-"Hong Kong";59,5
-"Paraguay";59,13
-"Guyana";59,09
-"Georgia";58,79
-"Bosnia And Herzegovina";58,54
-"Brazil";58,03
-"Italy";57,75
-"Oman";57,43
-"Moldova";57,24
-"Serbia";56,6
-"Argentina";55,88
-"Kyrgyzstan";55,46
-"Costa Rica";55,32
-"Libya";54,07
-"Belgium";53,84
-"Namibia";53,28
-"Ecuador";53,2
-"Belize";51,6
-"Panama";50,91
-"Poland";50,55
-"Romania";50,55
-"Montenegro";48,99
-"Puerto Rico";48,03
-"Slovakia";47,94
-"Syria";47,42
-"Mauritius";47,32
-"Spain";46,3
-"Hungary";46,25
-"France";45,94
-"Belarus";45,12
-"Greece";44,87
-"Latvia";43,43
-"Czech Republic";42,87
-"Brunei";40,79
-"Singapore";40,4
-"Japan";38,22
-"Netherlands";34,97
-"Bahamas";34,65
-"Austria";33,96
-"United Kingdom";33,95
-"Luxembourg";33,5
-"Cyprus";32,88
-"Croatia";32,76
-"Portugal";32,61
-"Denmark";31,79
-"Uruguay";31,72
-"United States";31,45
-"Slovenia";31,45
-"Lithuania";29,6
-"Turkmenistan";28,45
-"Germany";28,32
-"Ireland";27,97
-"Canada";27,3
-"Switzerland";24,07
-"Uzbekistan";23,79
-"Norway";23,7
-"Australia";21,63
-"New Zealand";17,61
-"Estonia";15,53
-"Sweden";15,14
-"Finland";14,91
-"Iceland";13,78
-"Reunion";11,03
-"Bermuda";3,24
+"";"Country"
+"1";"Senegal"
+"2";"Ghana"
+"3";"Afghanistan"
+"4";"Iraq"
+"5";"Egypt"
+"6";"Liberia"
+"7";"Mongolia"
+"8";"Bolivia"
+"9";"Bangladesh"
+"10";"China"
+"11";"Lebanon"
+"12";"Yemen"
+"13";"Myanmar"
+"14";"Qatar"
+"15";"El Salvador"
+"16";"Bahrain"
+"17";"Peru"
+"18";"Jordan"
+"19";"Botswana"
+"20";"Vietnam"
+"21";"Pakistan"
+"22";"Nepal"
+"23";"Macedonia"
+"24";"Iran"
+"25";"Azerbaijan"
+"26";"Trinidad And Tobago"
+"27";"Cambodia"
+"28";"Venezuela"
+"29";"India"
+"30";"Jamaica"
+"31";"South Korea"
+"32";"Nigeria"
+"33";"Albania"
+"34";"Zambia"
+"35";"Honduras"
+"36";"Indonesia"
+"37";"Turkey"
+"38";"Philippines"
+"39";"Kazakhstan"
+"40";"Tunisia"
+"41";"Armenia"
+"42";"Thailand"
+"43";"Russia"
+"44";"Chile"
+"45";"Maldives"
+"46";"Guatemala"
+"47";"Saudi Arabia"
+"48";"Ukraine"
+"49";"Monaco"
+"50";"Mexico"
+"51";"Laos"
+"52";"Algeria"
+"53";"Taiwan"
+"54";"Tanzania"
+"55";"Ethiopia"
+"56";"Zimbabwe"
+"57";"Sri Lanka"
+"58";"Greenland"
+"59";"Dominican Republic"
+"60";"Israel"
+"61";"South Africa"
+"62";"Malaysia"
+"63";"Bulgaria"
+"64";"Malta"
+"65";"Morocco"
+"66";"Kenya"
+"67";"Colombia"
+"68";"United Arab Emirates"
+"69";"Sudan"
+"70";"Fiji"
+"71";"Kuwait"
+"72";"Hong Kong"
+"73";"Paraguay"
+"74";"Guyana"
+"75";"Georgia"
+"76";"Bosnia And Herzegovina"
+"77";"Brazil"
+"78";"Italy"
+"79";"Oman"
+"80";"Moldova"
+"81";"Serbia"
+"82";"Argentina"
+"83";"Kyrgyzstan"
+"84";"Costa Rica"
+"85";"Libya"
+"86";"Belgium"
+"87";"Namibia"
+"88";"Ecuador"
+"89";"Belize"
+"90";"Panama"
+"91";"Poland"
+"92";"Romania"
+"93";"Montenegro"
+"94";"Puerto Rico"
+"95";"Slovakia"
+"96";"Syria"
+"97";"Mauritius"
+"98";"Spain"
+"99";"Hungary"
+"100";"France"
+"101";"Belarus"
+"102";"Greece"
+"103";"Latvia"
+"104";"Czech Republic"
+"105";"Brunei"
+"106";"Singapore"
+"107";"Japan"
+"108";"Netherlands"
+"109";"Bahamas"
+"110";"Austria"
+"111";"United Kingdom"
+"112";"Luxembourg"
+"113";"Cyprus"
+"114";"Croatia"
+"115";"Portugal"
+"116";"Denmark"
+"117";"Uruguay"
+"118";"United States"
+"119";"Slovenia"
+"120";"Lithuania"
+"121";"Turkmenistan"
+"122";"Germany"
+"123";"Ireland"
+"124";"Canada"
+"125";"Switzerland"
+"126";"Uzbekistan"
+"127";"Norway"
+"128";"Australia"
+"129";"New Zealand"
+"130";"Estonia"
+"131";"Sweden"
+"132";"Finland"
+"133";"Iceland"
+"134";"Reunion"
+"135";"Bermuda"

@@ -1,116 +1,116 @@
-"";"Pollution Index"
-"Ghana";111,18
-"Bangladesh";95,87
-"Mongolia";94,98
-"Egypt";91,23
-"Peru";88,65
-"Myanmar";86,93
-"Lebanon";86,72
-"El Salvador";86,28
-"Iran";86,07
-"Trinidad And Tobago";85,71
-"Nepal";85,43
-"Macedonia";85,35
-"China";84,72
-"Azerbaijan";82,02
-"Jordan";81,84
-"Qatar";81,03
-"Jamaica";80,86
-"Pakistan";80,25
-"Laos";78,91
-"Albania";77,3
-"Turkey";77,11
-"Russia";76,45
-"Guatemala";75,92
-"Philippines";74,88
-"Cambodia";74,71
-"Tunisia";74,55
-"Kazakhstan";74,36
-"India";74,34
-"Sri Lanka";74,26
-"South Korea";74,24
-"Venezuela";73,96
-"Bolivia";73,79
-"Indonesia";73,78
-"Ukraine";73,32
-"Vietnam";72,62
-"Armenia";71,57
-"Saudi Arabia";71,54
-"Mexico";71,17
-"Thailand";71,13
-"Chile";70,98
-"Taiwan";70,81
-"Moldova";70,34
-"Morocco";70,1
-"Malta";68,92
-"Dominican Republic";68,76
-"Guyana";67,67
-"Bulgaria";66,72
-"Colombia";65,67
-"Georgia";65,28
-"Ethiopia";64,89
-"Tanzania";64,47
-"Hong Kong";63,79
-"Israel";63,75
-"Libya";63,54
-"Algeria";62,59
-"Romania";62,55
-"Malaysia";61,12
-"Kyrgyzstan";61,03
-"Sudan";61,01
-"Kenya";60,71
-"Italy";60,42
-"Kuwait";59,99
-"Costa Rica";59,57
-"Zimbabwe";58,36
-"Bosnia And Herzegovina";58,22
-"South Africa";57,93
-"Brazil";57,58
-"Paraguay";57,47
-"Argentina";57,45
-"Belgium";56,16
-"Mauritius";53,86
-"United Arab Emirates";53,84
-"Ecuador";53,66
-"Fiji";52,06
-"Poland";50,54
-"Panama";49,85
-"Spain";49,76
-"Serbia";49,56
-"Hungary";48,33
-"Belize";47,59
-"Puerto Rico";47,41
-"France";46,92
-"Cyprus";46,14
-"Greece";45,28
-"Luxembourg";45,17
-"Montenegro";44,58
-"Latvia";43,61
-"Belarus";42,72
-"Singapore";41,93
-"Slovakia";40,81
-"Japan";40,78
-"Brunei";38,45
-"Czech Republic";38,34
-"Syria";35,92
-"United States";35,13
-"Denmark";34,76
-"United Kingdom";33,81
-"Slovenia";32,97
-"Netherlands";32,4
-"Austria";31,68
-"Portugal";30,9
-"Germany";30,2
-"Ireland";29,32
-"Croatia";28,69
-"Canada";27,7
-"Switzerland";26,8
-"Norway";22,57
-"Uruguay";21,33
-"Lithuania";21,13
-"New Zealand";21,02
-"Australia";19,38
-"Iceland";18,04
-"Sweden";17,51
-"Finland";16,68
-"Estonia";13,43
+"";"Country"
+"1";"Ghana"
+"2";"Bangladesh"
+"3";"Mongolia"
+"4";"Egypt"
+"5";"Peru"
+"6";"Myanmar"
+"7";"Lebanon"
+"8";"El Salvador"
+"9";"Iran"
+"10";"Trinidad And Tobago"
+"11";"Nepal"
+"12";"Macedonia"
+"13";"China"
+"14";"Azerbaijan"
+"15";"Jordan"
+"16";"Qatar"
+"17";"Jamaica"
+"18";"Pakistan"
+"19";"Laos"
+"20";"Albania"
+"21";"Turkey"
+"22";"Russia"
+"23";"Guatemala"
+"24";"Philippines"
+"25";"Cambodia"
+"26";"Tunisia"
+"27";"Kazakhstan"
+"28";"India"
+"29";"Sri Lanka"
+"30";"South Korea"
+"31";"Venezuela"
+"32";"Bolivia"
+"33";"Indonesia"
+"34";"Ukraine"
+"35";"Vietnam"
+"36";"Armenia"
+"37";"Saudi Arabia"
+"38";"Mexico"
+"39";"Thailand"
+"40";"Chile"
+"41";"Taiwan"
+"42";"Moldova"
+"43";"Morocco"
+"44";"Malta"
+"45";"Dominican Republic"
+"46";"Guyana"
+"47";"Bulgaria"
+"48";"Colombia"
+"49";"Georgia"
+"50";"Ethiopia"
+"51";"Tanzania"
+"52";"Hong Kong"
+"53";"Israel"
+"54";"Libya"
+"55";"Algeria"
+"56";"Romania"
+"57";"Malaysia"
+"58";"Kyrgyzstan"
+"59";"Sudan"
+"60";"Kenya"
+"61";"Italy"
+"62";"Kuwait"
+"63";"Costa Rica"
+"64";"Zimbabwe"
+"65";"Bosnia And Herzegovina"
+"66";"South Africa"
+"67";"Brazil"
+"68";"Paraguay"
+"69";"Argentina"
+"70";"Belgium"
+"71";"Mauritius"
+"72";"United Arab Emirates"
+"73";"Ecuador"
+"74";"Fiji"
+"75";"Poland"
+"76";"Panama"
+"77";"Spain"
+"78";"Serbia"
+"79";"Hungary"
+"80";"Belize"
+"81";"Puerto Rico"
+"82";"France"
+"83";"Cyprus"
+"84";"Greece"
+"85";"Luxembourg"
+"86";"Montenegro"
+"87";"Latvia"
+"88";"Belarus"
+"89";"Singapore"
+"90";"Slovakia"
+"91";"Japan"
+"92";"Brunei"
+"93";"Czech Republic"
+"94";"Syria"
+"95";"United States"
+"96";"Denmark"
+"97";"United Kingdom"
+"98";"Slovenia"
+"99";"Netherlands"
+"100";"Austria"
+"101";"Portugal"
+"102";"Germany"
+"103";"Ireland"
+"104";"Croatia"
+"105";"Canada"
+"106";"Switzerland"
+"107";"Norway"
+"108";"Uruguay"
+"109";"Lithuania"
+"110";"New Zealand"
+"111";"Australia"
+"112";"Iceland"
+"113";"Sweden"
+"114";"Finland"
+"115";"Estonia"

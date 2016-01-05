@@ -1,129 +1,129 @@
-"";"Crime Index"
-"Afghanistan";82,51
-"Venezuela";81,5
-"Guatemala";79,31
-"Kenya";78,9
-"Trinidad And Tobago";78,69
-"South Africa";78,53
-"Nigeria";77,86
-"Haiti";72,5
-"Jamaica";71,03
-"Bolivia";68,97
-"Honduras";68,87
-"Brazil";67
-"Malaysia";66,41
-"Dominican Republic";66,36
-"Mongolia";66,23
-"El Salvador";64,35
-"Uzbekistan";64,3
-"Pakistan";63,75
-"Angola";63,05
-"Uganda";62,24
-"Bangladesh";62,17
-"Libya";61,42
-"Costa Rica";61,4
-"Zimbabwe";60,82
-"Ecuador";59,97
-"Puerto Rico";59,3
-"Colombia";58,54
-"Peru";58,14
-"Kyrgyzstan";57,94
-"Argentina";57,48
-"Tanzania";57,11
-"Syria";57,07
-"Mauritius";55,72
-"Iran";55,01
-"Paraguay";53,83
-"Ireland";53,59
-"Vietnam";53,26
-"Russia";52,67
-"Mexico";52,46
-"Egypt";52,43
-"Algeria";52,31
-"Nepal";51,82
-"Albania";51,31
-"United States";50,15
-"Lebanon";50,1
-"Kazakhstan";49,41
-"Ukraine";49,37
-"Morocco";48,39
-"Jordan";47,58
-"France";47,28
-"Chile";47,09
-"Nicaragua";47,05
-"Botswana";47,03
-"Tunisia";47,03
-"Indonesia";46,67
-"Uruguay";46,64
-"Iraq";46,64
-"Ghana";46,38
-"Moldova";46,32
-"Italy";45,59
-"Namibia";45,53
-"Bosnia And Herzegovina";44,98
-"Barbados";44,38
-"Latvia";43,74
-"India";43,7
-"Greece";43,05
-"New Zealand";42,85
-"United Kingdom";42,62
-"Laos";42,5
-"Sri Lanka";42,43
-"Philippines";41,9
-"Macedonia";41,67
-"Panama";41,59
-"Belgium";41,53
-"Australia";41,23
-"Cambodia";40,76
-"Bulgaria";40,02
-"Turkey";39,95
-"Serbia";39,28
-"Eritrea";39,14
-"Fiji";38,98
-"Sweden";38,28
-"Thailand";37,56
-"Cyprus";37,56
-"Poland";37,53
-"Hungary";37,52
-"Netherlands";37,07
-"Kuwait";36,44
-"Canada";36,29
-"Ethiopia";36,07
-"Portugal";35,06
-"Armenia";35,01
-"Sudan";34,84
-"Lithuania";34,71
-"Azerbaijan";34,16
-"Czech Republic";33,88
-"Norway";33,73
-"Israel";33,28
-"Slovenia";33,21
-"Belarus";32,89
-"Slovakia";32,72
-"Spain";32,42
-"Luxembourg";31,88
-"Switzerland";31,79
-"Iceland";31,68
-"Brunei";31,5
-"China";30,13
-"Saudi Arabia";29,38
-"Denmark";29,27
-"Finland";29,16
-"Oman";29,1
-"Estonia";29,07
-"Monaco";29,01
-"Croatia";28,9
-"Romania";28,73
-"Germany";27,14
-"Austria";25,83
-"Hong Kong";22,68
-"Qatar";21,76
-"Taiwan";21,47
-"Singapore";21,35
-"United Arab Emirates";20,79
-"Bahrain";20,52
-"Georgia";19,91
-"Japan";18,1
-"Isle Of Man";16,95
-"South Korea";16,35
-"Malta";14,17
+"";"Country"
+"1";"Afghanistan"
+"2";"Venezuela"
+"3";"Guatemala"
+"4";"Kenya"
+"5";"Trinidad And Tobago"
+"6";"South Africa"
+"7";"Nigeria"
+"8";"Haiti"
+"9";"Jamaica"
+"10";"Bolivia"
+"11";"Honduras"
+"12";"Brazil"
+"13";"Malaysia"
+"14";"Dominican Republic"
+"15";"Mongolia"
+"16";"El Salvador"
+"17";"Uzbekistan"
+"18";"Pakistan"
+"19";"Angola"
+"20";"Uganda"
+"21";"Bangladesh"
+"22";"Libya"
+"23";"Costa Rica"
+"24";"Zimbabwe"
+"25";"Ecuador"
+"26";"Puerto Rico"
+"27";"Colombia"
+"28";"Peru"
+"29";"Kyrgyzstan"
+"30";"Argentina"
+"31";"Tanzania"
+"32";"Syria"
+"33";"Mauritius"
+"34";"Iran"
+"35";"Paraguay"
+"36";"Ireland"
+"37";"Vietnam"
+"38";"Russia"
+"39";"Mexico"
+"40";"Egypt"
+"41";"Algeria"
+"42";"Nepal"
+"43";"Albania"
+"44";"United States"
+"45";"Lebanon"
+"46";"Kazakhstan"
+"47";"Ukraine"
+"48";"Morocco"
+"49";"Jordan"
+"50";"France"
+"51";"Chile"
+"52";"Nicaragua"
+"53";"Botswana"
+"54";"Tunisia"
+"55";"Indonesia"
+"56";"Uruguay"
+"57";"Iraq"
+"58";"Ghana"
+"59";"Moldova"
+"60";"Italy"
+"61";"Namibia"
+"62";"Bosnia And Herzegovina"
+"63";"Barbados"
+"64";"Latvia"
+"65";"India"
+"66";"Greece"
+"67";"New Zealand"
+"68";"United Kingdom"
+"69";"Laos"
+"70";"Sri Lanka"
+"71";"Philippines"
+"72";"Macedonia"
+"73";"Panama"
+"74";"Belgium"
+"75";"Australia"
+"76";"Cambodia"
+"77";"Bulgaria"
+"78";"Turkey"
+"79";"Serbia"
+"80";"Eritrea"
+"81";"Fiji"
+"82";"Sweden"
+"83";"Thailand"
+"84";"Cyprus"
+"85";"Poland"
+"86";"Hungary"
+"87";"Netherlands"
+"88";"Kuwait"
+"89";"Canada"
+"90";"Ethiopia"
+"91";"Portugal"
+"92";"Armenia"
+"93";"Sudan"
+"94";"Lithuania"
+"95";"Azerbaijan"
+"96";"Czech Republic"
+"97";"Norway"
+"98";"Israel"
+"99";"Slovenia"
+"100";"Belarus"
+"101";"Slovakia"
+"102";"Spain"
+"103";"Luxembourg"
+"104";"Switzerland"
+"105";"Iceland"
+"106";"Brunei"
+"107";"China"
+"108";"Saudi Arabia"
+"109";"Denmark"
+"110";"Finland"
+"111";"Oman"
+"112";"Estonia"
+"113";"Monaco"
+"114";"Croatia"
+"115";"Romania"
+"116";"Germany"
+"117";"Austria"
+"118";"Hong Kong"
+"119";"Qatar"
+"120";"Taiwan"
+"121";"Singapore"
+"122";"United Arab Emirates"
+"123";"Bahrain"
+"124";"Georgia"
+"125";"Japan"
+"126";"Isle Of Man"
+"127";"South Korea"
+"128";"Malta"

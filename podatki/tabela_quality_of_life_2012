@@ -1,52 +1,52 @@
-"";"Quality of Life Index"
-"Switzerland";194,11
-"Germany";184,42
-"Norway";183,43
-"United Arab Emirates";177,07
-"New Zealand";174,28
-"Sweden";171,72
-"Canada";164,99
-"Denmark";163,12
-"Australia";162,03
-"Austria";159,89
-"Netherlands";158,07
-"United States";140,62
-"Japan";130,52
-"Ireland";125,14
-"Slovenia";121,94
-"France";119,51
-"Israel";118,25
-"United Kingdom";110,09
-"Portugal";105,1
-"Spain";100,93
-"Belgium";100,68
-"Croatia";93,06
-"Czech Republic";88,14
-"Singapore";87,08
-"South Africa";83,59
-"Saudi Arabia";71,02
-"Turkey";66,7
-"Malaysia";65,31
-"Poland";60,63
-"Mexico";60,31
-"Italy";49,65
-"Hungary";48,74
-"India";44,01
-"Indonesia";37,22
-"Serbia";34,59
-"Argentina";32,58
-"Bulgaria";30,77
-"Bosnia And Herzegovina";28,04
-"Romania";25,52
-"Thailand";24,89
-"Colombia";23,38
-"Greece";23,28
-"Chile";21,04
-"Brazil";10,81
-"Pakistan";-3,05
-"Philippines";-3,77
-"Russia";-7,39
-"Ukraine";-14,61
-"Egypt";-22,17
-"Iran";-35,23
-"China";-49,55
+"";"Country";"Quality of Life Index"
+"1";"Switzerland";194,11
+"2";"Germany";184,42
+"3";"Norway";183,43
+"4";"United Arab Emirates";177,07
+"5";"New Zealand";174,28
+"6";"Sweden";171,72
+"7";"Canada";164,99
+"8";"Denmark";163,12
+"9";"Australia";162,03
+"10";"Austria";159,89
+"11";"Netherlands";158,07
+"12";"United States";140,62
+"13";"Japan";130,52
+"14";"Ireland";125,14
+"15";"Slovenia";121,94
+"16";"France";119,51
+"17";"Israel";118,25
+"18";"United Kingdom";110,09
+"19";"Portugal";105,1
+"20";"Spain";100,93
+"21";"Belgium";100,68
+"22";"Croatia";93,06
+"23";"Czech Republic";88,14
+"24";"Singapore";87,08
+"25";"South Africa";83,59
+"26";"Saudi Arabia";71,02
+"27";"Turkey";66,7
+"28";"Malaysia";65,31
+"29";"Poland";60,63
+"30";"Mexico";60,31
+"31";"Italy";49,65
+"32";"Hungary";48,74
+"33";"India";44,01
+"34";"Indonesia";37,22
+"35";"Serbia";34,59
+"36";"Argentina";32,58
+"37";"Bulgaria";30,77
+"38";"Bosnia And Herzegovina";28,04
+"39";"Romania";25,52
+"40";"Thailand";24,89
+"41";"Colombia";23,38
+"42";"Greece";23,28
+"43";"Chile";21,04
+"44";"Brazil";10,81
+"45";"Pakistan";-3,05
+"46";"Philippines";-3,77
+"47";"Russia";-7,39
+"48";"Ukraine";-14,61
+"49";"Egypt";-22,17
+"50";"Iran";-35,23
+"51";"China";-49,55

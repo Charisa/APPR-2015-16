@@ -1,68 +1,68 @@
-"";"Health Care Index"
-"Japan";96,11
-"Indonesia";94,12
-"Sri Lanka";93,52
-"Thailand";92,59
-"Israel";91,67
-"Denmark";89,81
-"Colombia";88,89
-"Malta";87,04
-"New Zealand";86,81
-"Sweden";86,76
-"Austria";83,18
-"Slovenia";82,87
-"Panama";82,41
-"Belgium";82,22
-"France";80,74
-"Mexico";80,06
-"Switzerland";79,51
-"Bolivia";79,17
-"Australia";79,11
-"Norway";79,04
-"Ecuador";77,78
-"Finland";77,08
-"Argentina";76,74
-"Philippines";76,11
-"United Kingdom";76,04
-"Taiwan";74,07
-"Canada";71,99
-"Germany";71,96
-"Jordan";70,83
-"Netherlands";70,37
-"Slovakia";70,37
-"Turkey";69,97
-"Portugal";69,96
-"Spain";69,92
-"Estonia";69,44
-"Malaysia";69,06
-"Italy";67,77
-"Georgia";67,13
-"Egypt";65,74
-"United States";65,52
-"Croatia";65
-"Czech Republic";65
-"Lithuania";64,58
-"United Arab Emirates";63,89
-"Pakistan";60,42
-"Bulgaria";60,3
-"Hungary";59,95
-"South Africa";59,54
-"India";59,42
-"Chile";59,26
-"Brazil";59,09
-"Singapore";58,97
-"Serbia";57,41
-"Bosnia And Herzegovina";57,41
-"Poland";55,79
-"Greece";51,76
-"Romania";48,41
-"Venezuela";45,37
-"Puerto Rico";44,68
-"Iran";43,4
-"Lebanon";43,33
-"Mongolia";43,06
-"Ireland";41,06
-"Saudi Arabia";40,74
-"Ukraine";40,28
-"China";36,15
-"Russia";35,52
+"";"Country"
+"1";"Japan"
+"2";"Indonesia"
+"3";"Sri Lanka"
+"4";"Thailand"
+"5";"Israel"
+"6";"Denmark"
+"7";"Colombia"
+"8";"Malta"
+"9";"New Zealand"
+"10";"Sweden"
+"11";"Austria"
+"12";"Slovenia"
+"13";"Panama"
+"14";"Belgium"
+"15";"France"
+"16";"Mexico"
+"17";"Switzerland"
+"18";"Bolivia"
+"19";"Australia"
+"20";"Norway"
+"21";"Ecuador"
+"22";"Finland"
+"23";"Argentina"
+"24";"Philippines"
+"25";"United Kingdom"
+"26";"Taiwan"
+"27";"Canada"
+"28";"Germany"
+"29";"Jordan"
+"30";"Netherlands"
+"31";"Slovakia"
+"32";"Turkey"
+"33";"Portugal"
+"34";"Spain"
+"35";"Estonia"
+"36";"Malaysia"
+"37";"Italy"
+"38";"Georgia"
+"39";"Egypt"
+"40";"United States"
+"41";"Croatia"
+"42";"Czech Republic"
+"43";"Lithuania"
+"44";"United Arab Emirates"
+"45";"Pakistan"
+"46";"Bulgaria"
+"47";"Hungary"
+"48";"South Africa"
+"49";"India"
+"50";"Chile"
+"51";"Brazil"
+"52";"Singapore"
+"53";"Serbia"
+"54";"Bosnia And Herzegovina"
+"55";"Poland"
+"56";"Greece"
+"57";"Romania"
+"58";"Venezuela"
+"59";"Puerto Rico"
+"60";"Iran"
+"61";"Lebanon"
+"62";"Mongolia"
+"63";"Ireland"
+"64";"Saudi Arabia"
+"65";"Ukraine"
+"66";"China"
+"67";"Russia"

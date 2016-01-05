@@ -1,75 +1,75 @@
-"";"Traffic Index"
-"Kenya";352,17
-"Egypt";323,05
-"Bangladesh";309,81
-"Jordan";286,17
-"Iran";261,8
-"Philippines";230,36
-"Turkey";229,56
-"Russia";221,35
-"India";213,68
-"Israel";204,98
-"Argentina";200,15
-"South Africa";196,69
-"Singapore";192,55
-"Indonesia";187,94
-"Venezuela";181,5
-"Hong Kong";180,46
-"Mexico";174,57
-"Malaysia";174,07
-"Brazil";172,29
-"Colombia";172,01
-"Ecuador";165,8
-"Ukraine";165,39
-"United States";164,78
-"Canada";164,16
-"Qatar";156,36
-"Japan";154,57
-"Chile";153,89
-"Italy";151,67
-"Lebanon";148,72
-"Uruguay";147,57
-"Thailand";144,36
-"Mongolia";143,7
-"United Kingdom";143,41
-"Greece";143,11
-"Australia";141,35
-"Slovakia";135,06
-"Germany";132,35
-"Georgia";129,81
-"Netherlands";129,61
-"Kazakhstan";126,53
-"Finland";122,76
-"Poland";120,55
-"Spain";120,42
-"Romania";118,85
-"Puerto Rico";118,55
-"United Arab Emirates";118,54
-"Hungary";118,16
-"China";117,09
-"Sweden";112,48
-"Pakistan";112,15
-"Belgium";111,96
-"Croatia";110,39
-"Saudi Arabia";107,31
-"Bulgaria";105,12
-"Belarus";103,42
-"Portugal";102,1
-"Armenia";101,88
-"Czech Republic";99,2
-"Denmark";98,32
-"Taiwan";94,67
-"Kuwait";93,61
-"Serbia";88,85
-"New Zealand";87,17
-"Syria";86,67
-"Lithuania";82,41
-"France";82,07
-"Switzerland";79,16
-"Slovenia";76,53
-"Ireland";76,53
-"South Korea";76,37
-"Estonia";72,01
-"Norway";71,57
-"Austria";70,71
-"Bosnia And Herzegovina";63,06
+"";"Country";"Traffic Index"
+"1";"Kenya";352,17
+"2";"Egypt";323,05
+"3";"Bangladesh";309,81
+"4";"Jordan";286,17
+"5";"Iran";261,8
+"6";"Philippines";230,36
+"7";"Turkey";229,56
+"8";"Russia";221,35
+"9";"India";213,68
+"10";"Israel";204,98
+"11";"Argentina";200,15
+"12";"South Africa";196,69
+"13";"Singapore";192,55
+"14";"Indonesia";187,94
+"15";"Venezuela";181,5
+"16";"Hong Kong";180,46
+"17";"Mexico";174,57
+"18";"Malaysia";174,07
+"19";"Brazil";172,29
+"20";"Colombia";172,01
+"21";"Ecuador";165,8
+"22";"Ukraine";165,39
+"23";"United States";164,78
+"24";"Canada";164,16
+"25";"Qatar";156,36
+"26";"Japan";154,57
+"27";"Chile";153,89
+"28";"Italy";151,67
+"29";"Lebanon";148,72
+"30";"Uruguay";147,57
+"31";"Thailand";144,36
+"32";"Mongolia";143,7
+"33";"United Kingdom";143,41
+"34";"Greece";143,11
+"35";"Australia";141,35
+"36";"Slovakia";135,06
+"37";"Germany";132,35
+"38";"Georgia";129,81
+"39";"Netherlands";129,61
+"40";"Kazakhstan";126,53
+"41";"Finland";122,76
+"42";"Poland";120,55
+"43";"Spain";120,42
+"44";"Romania";118,85
+"45";"Puerto Rico";118,55
+"46";"United Arab Emirates";118,54
+"47";"Hungary";118,16
+"48";"China";117,09
+"49";"Sweden";112,48
+"50";"Pakistan";112,15
+"51";"Belgium";111,96
+"52";"Croatia";110,39
+"53";"Saudi Arabia";107,31
+"54";"Bulgaria";105,12
+"55";"Belarus";103,42
+"56";"Portugal";102,1
+"57";"Armenia";101,88
+"58";"Czech Republic";99,2
+"59";"Denmark";98,32
+"60";"Taiwan";94,67
+"61";"Kuwait";93,61
+"62";"Serbia";88,85
+"63";"New Zealand";87,17
+"64";"Syria";86,67
+"65";"Lithuania";82,41
+"66";"France";82,07
+"67";"Switzerland";79,16
+"68";"Slovenia";76,53
+"69";"Ireland";76,53
+"70";"South Korea";76,37
+"71";"Estonia";72,01
+"72";"Norway";71,57
+"73";"Austria";70,71
+"74";"Bosnia And Herzegovina";63,06

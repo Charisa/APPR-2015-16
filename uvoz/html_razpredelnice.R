@@ -4,21 +4,22 @@ html_razpredelnice <- function(shrani, link){
   names(tables)
   tabela = tables[[3]]
   tabela <- tabela[,-1]
-  kategorije <- c(names(tabela))[-1]                      # Vektor imen stolpcev; c je vektor; names(tmp) - imena stolpcev
+  kategorije <- c(names(tabela)) #[-1]                      # Vektor imen stolpcev; c je vektor; names(tmp) - imena stolpcev
                                                           # [-1] - se znebimo Country
   kategorije
   
-  tabela <- data.frame(tabela[, -1],
-                       row.names = tabela[, 1])           # Znebimo se prejšnjega stolpca (držav), vsem
+  #tabela <- data.frame(tabela[, -1],
+                       #row.names = tabela[, 1])           # Znebimo se prejšnjega stolpca (držav), vsem
                                                           # vrsticam (row) damo vektor vseh imen. 
                                                           # Čeprav smo ga že odstranli, ga lahko
                                                           # spet uporabimo, ker smo naredili vse v enem koraku
   
   colnames(tabela) <- kategorije                          # Stolpcem damo imena po kategorijah.
   indx <- sapply(tabela, is.factor)                       # "Vrednosti" so faktorji.
-  tabela[indx] <- lapply(tabela[indx],
+  tabela[,-1] <- lapply(tabela[,-1],
                          function(x) as.numeric(gsub("[.]", ".", x)))
-                                                          # Faktorje spremenimo v numerične vrednosti, da lahko
+                                                          # Faktorje od 2. do končnega stolpca
+                                                          # spremenimo v numerične vrednosti, da lahko
                                                           # z njimi operiramo in rišemo grafe.
   
   

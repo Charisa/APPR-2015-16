@@ -5,7 +5,6 @@ output:
   pdf_document:
     includes:
       in_header: lib/styles.sty
-    latex_engine: xelatex
   html_document: default
   word_document: default
 ---
@@ -64,7 +63,7 @@ graf
 Tabela (prvotno HTML) je v tej fazi bolj kot ne nedotaknjena. Vsebuje 40 vrstic in 6 stolpcev. Vrstice označujejo imena držav, stolpci pa različne indekse (indeks cen življenjskih potrebščin, indeks najemnin, indeks vsote življenjskih potrebščin in najemnin, indeks hrane in pijače, indeks cen restavracijskih ponudb, indeks lokalne moči nakupa).
 
 ```{r uvoz3, echo = FALSE}
-kable(head(tabela))
+kable(head(tabela_traffic_2012))
 ```
 
 

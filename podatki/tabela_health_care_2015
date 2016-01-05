@@ -1,106 +1,106 @@
-"";"Health Care Index"
-"Japan";87,07
-"Bahrain";84,44
-"Taiwan";84,29
-"France";82,58
-"Thailand";82,47
-"Malta";82,18
-"Panama";82,14
-"Hong Kong";80,6
-"Denmark";79,28
-"Dominican Republic";78,7
-"Austria";78,42
-"Cyprus";78,36
-"South Korea";78,15
-"Belgium";77,86
-"Turkmenistan";77,22
-"Israel";76,35
-"Sweden";76,29
-"Luxembourg";76,11
-"Qatar";75,86
-"Germany";75,61
-"Norway";75,46
-"Argentina";75,18
-"Sri Lanka";74,29
-"Cuba";74,03
-"Turkey";74
-"United Kingdom";73,88
-"Spain";73,21
-"Estonia";73,08
-"New Zealand";72,61
-"Australia";71,85
-"Philippines";71,66
-"Tunisia";71,02
-"Lithuania";70,11
-"Jordan";69,71
-"Canada";69,6
-"Finland";69,37
-"Malaysia";69,14
-"Colombia";68,92
-"Uruguay";67,92
-"Mexico";67,79
-"United States";67,75
-"Albania";67,41
-"Czech Republic";67,24
-"Netherlands";67,23
-"Latvia";67,13
-"India";66,86
-"Kuwait";66,57
-"Switzerland";66,31
-"Singapore";66,14
-"Indonesia";66,09
-"Italy";65,78
-"Lebanon";65,78
-"Portugal";65,62
-"Peru";64,68
-"Nepal";63,38
-"Ecuador";63,08
-"Kenya";62,7
-"Georgia";62,59
-"Costa Rica";61,95
-"South Africa";60,09
-"Saudi Arabia";59,02
-"Kazakhstan";58,86
-"Puerto Rico";58,74
-"China";58,74
-"Chile";58,55
-"Bulgaria";58,47
-"Iceland";58,43
-"Poland";58,03
-"Morocco";57,76
-"Slovakia";57,34
-"Croatia";57,26
-"Algeria";57,22
-"Montenegro";56,94
-"Greece";56,73
-"United Arab Emirates";55,6
-"Egypt";54,69
-"Paraguay";54,44
-"Trinidad And Tobago";54,35
-"Cambodia";54,17
-"Serbia";54,12
-"Slovenia";53,93
-"Moldova";52,69
-"Brazil";52,15
-"Bosnia And Herzegovina";52,08
-"Russia";51,8
-"Hungary";51,58
-"Pakistan";51,16
-"Iran";50,12
-"Bolivia";49,75
-"Ireland";49,53
-"Armenia";48,33
-"Oman";48,15
-"Romania";46,57
-"Belarus";45,39
-"Ukraine";44,27
-"Bangladesh";43,25
-"Guam";39,86
-"Venezuela";38,52
-"Nigeria";38,4
-"Macedonia";35,12
-"Vietnam";34,26
-"Iraq";30
-"Mongolia";28,29
-"Azerbaijan";23,94
-"Honduras";16,11
+"";"Country"
+"1";"Japan"
+"2";"Bahrain"
+"3";"Taiwan"
+"4";"France"
+"5";"Thailand"
+"6";"Malta"
+"7";"Panama"
+"8";"Hong Kong"
+"9";"Denmark"
+"10";"Dominican Republic"
+"11";"Austria"
+"12";"Cyprus"
+"13";"South Korea"
+"14";"Belgium"
+"15";"Turkmenistan"
+"16";"Israel"
+"17";"Sweden"
+"18";"Luxembourg"
+"19";"Qatar"
+"20";"Germany"
+"21";"Norway"
+"22";"Argentina"
+"23";"Sri Lanka"
+"24";"Cuba"
+"25";"Turkey"
+"26";"United Kingdom"
+"27";"Spain"
+"28";"Estonia"
+"29";"New Zealand"
+"30";"Australia"
+"31";"Philippines"
+"32";"Tunisia"
+"33";"Lithuania"
+"34";"Jordan"
+"35";"Canada"
+"36";"Finland"
+"37";"Malaysia"
+"38";"Colombia"
+"39";"Uruguay"
+"40";"Mexico"
+"41";"United States"
+"42";"Albania"
+"43";"Czech Republic"
+"44";"Netherlands"
+"45";"Latvia"
+"46";"India"
+"47";"Kuwait"
+"48";"Switzerland"
+"49";"Singapore"
+"50";"Indonesia"
+"51";"Italy"
+"52";"Lebanon"
+"53";"Portugal"
+"54";"Peru"
+"55";"Nepal"
+"56";"Ecuador"
+"57";"Kenya"
+"58";"Georgia"
+"59";"Costa Rica"
+"60";"South Africa"
+"61";"Saudi Arabia"
+"62";"Kazakhstan"
+"63";"Puerto Rico"
+"64";"China"
+"65";"Chile"
+"66";"Bulgaria"
+"67";"Iceland"
+"68";"Poland"
+"69";"Morocco"
+"70";"Slovakia"
+"71";"Croatia"
+"72";"Algeria"
+"73";"Montenegro"
+"74";"Greece"
+"75";"United Arab Emirates"
+"76";"Egypt"
+"77";"Paraguay"
+"78";"Trinidad And Tobago"
+"79";"Cambodia"
+"80";"Serbia"
+"81";"Slovenia"
+"82";"Moldova"
+"83";"Brazil"
+"84";"Bosnia And Herzegovina"
+"85";"Russia"
+"86";"Hungary"
+"87";"Pakistan"
+"88";"Iran"
+"89";"Bolivia"
+"90";"Ireland"
+"91";"Armenia"
+"92";"Oman"
+"93";"Romania"
+"94";"Belarus"
+"95";"Ukraine"
+"96";"Bangladesh"
+"97";"Guam"
+"98";"Venezuela"
+"99";"Nigeria"
+"100";"Macedonia"
+"101";"Vietnam"
+"102";"Iraq"
+"103";"Mongolia"
+"104";"Azerbaijan"
+"105";"Honduras"
