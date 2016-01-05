@@ -1,13 +1,13 @@
 # 2. faza: Uvoz podatkov
 
+# Knjižnice
+
 library(XML)
 library(RCurl)
 library(ggplot2)
 library(plyr)
 library(dplyr)
 library(reshape2)
-
-
 
 
 
@@ -102,20 +102,32 @@ osnovne_dobrine_graf <- melt(osnovne_dobrine_graf, id = row.names(osnovne_dobrin
                                                                   # Imena samo v vrsticah, 
                                                                   # spremenljivke se ponavljajo večkrat.
 
+# S pomočjo konzole poiščemo minimum in maksimum indeksa v celem letu, nato pa jih zapišemo
+# v dobrine_graf.
 
-# RISANJE GRAFA
+dobrine <- subset(razpredelnica, select = grupiranje)             # Nova razpredelnica s stolpci iz grupiranja.
+dobrine_graf <- subset(dobrine, select = (colnames(osnovne_dobrine))[c(1, 5, 7, 11)])
+dobrine_graf <- dobrine_graf[c(7, 21),]
 
-graf <- ggplot(osnovne_dobrine_graf, stat = "identity", main = "Indeksi cen") + 
+dobrine_graf <- t(dobrine_graf)
+dobrine_graf <- melt(dobrine_graf, id = row.names(dobrine_graf))
+
+
+
+# RISANJE GRAFOV
+
+graf_osnovnih_dobrin <- ggplot(osnovne_dobrine_graf, stat = "identity", main = "Indeksi cen") + 
   aes(x = Var1, y = value, fill = Var2, stat = "identity") + 
-  theme(axis.text.x = element_text(angle = 65, vjust = 0.5)) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5)) +
   geom_bar(stat = "identity", position = "dodge") + xlab("obdobja") + ylab("vrednost indeksa") + 
   scale_fill_manual("Dobrine in storitve", values = c("darkred", "darkblue", "yellow", "darkgreen"))
 
 
-
-
-
-
+graf <- ggplot(dobrine_graf, stat = "identity", main = "Indeksi cen") + 
+  aes(x = Var1, y = value, fill = Var2, stat = "identity") + 
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5)) +
+  geom_bar(stat = "identity", position = "dodge") + xlab("obdobja") + ylab("vrednost indeksa") + 
+  scale_fill_manual("Dobrine in storitve", values = c("darkred", "darkblue"))
 
 
 
@@ -380,7 +392,6 @@ write.csv2(leto_2015, "podatki/leto_2015", fileEncoding = "UTF-8")
 
 
 
-
 # Na novo narejene tabele damo v eno, tako da jih ne združujemo,
 # ampak jih zapišemo eno pod drugo v veliko tabelo,
 # nato pa spravimo v tidy.data.
@@ -396,29 +407,5 @@ tabela_tidy[,4] <- as.numeric(tabela_tidy[,4])
 
 tabela_tidy <- rename(tabela_tidy, Index_Value = value, Index = variable)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-#s <- c("Country","Consumer Price Index", "Rent Index", "Groceries Index", "Restaurant Price Index")
-#r <- list(tabela_2012, tabela_2013, tabela_2014, tabela_2015)
-#leta <- 2012:2015
-#names(r) <- leta
-#sk <- lapply(leta, function(ll)
- # lapply(s, function(ss)
-  #  data.frame(leto = ll, index = ss, vrednost = r[[paste0(ll)]][[ss]], stringsAsFactors = FALSE)) %>%
-   # bind_rows()
-  #) %>% bind_rows()
-
-# k <- lapply(r,function(r) r[s])
 
 

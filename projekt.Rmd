@@ -20,8 +20,9 @@ source("lib/libraries.r", encoding = "UTF-8")
 
 # Izbira teme
 
-Indeks cen življenjskih potrebščin v Sloveniji v letošnjem letu (2015). Primerjava z ostalimi evropskimi državami (3. faza).
-Indeks cen življenjskih potrebščin meri spremembe cen izdelkov in storitev glede na sestavo izdatkov, ki jih domače prebivalstvo namenja za nakupe predmetov končne porabe doma in v tujini.
+Indeks cen življenjskih potrebščin v Sloveniji v letošnjem letu (2015). Primerjava z ostalimi državami. (Za ostale države podatki le od leta 2012 do leta 2015.)
+
+__Indeks cen življenjskih potrebščin__ _meri spremembe cen izdelkov in storitev glede na sestavo izdatkov, ki jih domače prebivalstvo namenja za nakupe predmetov končne porabe doma in v tujini_.
 
 ***
 
@@ -31,50 +32,137 @@ Indeks cen življenjskih potrebščin meri spremembe cen izdelkov in storitev gl
 source("uvoz/uvoz.r", encoding = "UTF-8")
 ```
 
+Uvozila sem podatke o indeksih življenjskih potrebščin v Sloveniji v obliki _.csv_ s Statističnega urada Slovenije ter v obliki _HTML_ iz spletne strani, kjer je na voljo več različnih razpredelnic
+(http://www.numbeo.com).
 
-Uvozila sem podatke o indeksih življenjskih potrebščin v Sloveniji v obliki .CSV s Statističnega urada Slovenije ter v obliki HTML iz spletne strani
-(http://www.numbeo.com/cost-of-living/rankings_by_country.jsp?title=2015-mid&region=150).
+## Uvoz in obdelava tabele CSV
 
+Razpredelnica s slovenskimi podatki prikazuje različne indekse cen: 
 
-Razpredelnica s slovenskimi podatki prikazuje različne indekse cen: indeks: tekoči mesec / prejšnji mesec, indeks: tekoči mesec / isti mesec prejšnjega leta, indeks: povprečje mesecev tekočega leta / povprečje istih mesecev prejšnjega leta (spremembe cen od začetka leta do tekočega meseca gleda na enako obdobje).
-Tabela vsebuje 128 vrstic.
-(Vsak četrti stolpec iz originalne tabele, ki je prikazoval povprečno 12-mesečno rast, sem izbrisala.)
+1. tekoči mesec / prejšnji mesec,  
+
+2. tekoči mesec / isti mesec prejšnjega leta, 
+
+3. povprečje mesecev tekočega leta / povprečje istih mesecev prejšnjega leta (spremembe cen od začetka 
+leta do tekočega meseca gleda na enako obdobje).
+
+Tabela vsebuje 128 vrstic. Vsak četrti stolpec iz originalne tabele, ki je prikazoval povprečno 12-mesečno rast, sem izbrisala.
 
 
 ```{r uvoz1, echo = FALSE}
 kable(head(razpredelnica))
 ```
 
+Tabela _osnovne dobrine_ prikazuje le podatke indeksov, izračunanih na podlagi tekočega in prejšnjega meseca (11 stolpcev). Izbrala sem tudi nekaj vsakdanjih dobrin/storitev:
 
-Tabela osnovne_dobrine prikazuje le podatke indeksov, izračunane na podlagi tekočega in prejšnjega meseca (11 stolpcev). Izbrala sem tudi nekaj najosnovnejših dobrin/storitev (13 vrstic).
+1. Hrana
+
+2. Obleka in storitve za obleko
+
+3. Stanovanje
+
+4. Komunalne in druge storitve
+
+5. Goriva in energija
+
+6. Zdravje
+
+7. Prevoz
+
+8. Telefonske in internetne storitve
+
+9. Izobraževanje
+
+10. Gostinske storitve
+
+11. Izdelki za osebno nego
+
+12. Zavarovanje
+
+13. Stanovanjsko zavarovanje
+
  
 ```{r uvoz2, echo = FALSE}
 kable(head(osnovne_dobrine))
 ```
 
-Naredila sem novo tabelo (osnovne_dobrine_graf), ki vsebuje le nekaj informacij (4 dobrine) iz tabele osnovne_dobrine (prikazane zgoraj), s pomočjo katere sem dobila podatke za graf.  Dobrine/storitve sem izbrala na podlagi vrednosti indeksov le-teh (dve največji in najmanjši vrednosti v prvem indeksu). Za vrednost po stolcih sem vzela prva dva in zadnja dva indeksa v letu.
+Naredila sem novo tabelo (_osnovne dobrine graf_), ki vsebuje le nekaj informacij (4 dobrine) iz tabele _osnovne dobrine_ (prikazane zgoraj), s pomočjo katere sem dobila podatke za graf.  Dobrine/storitve sem izbrala na podlagi vrednosti indeksov le-teh (dve največji in najmanjši vrednosti v prvem indeksu). Za vrednost po stolcih sem vzela prva dva in zadnja dva indeksa v letu.
+
+Največji vrednosti indeksa (v 1. mesecu leta 2015):
+
+* Hrana
+ 
+* Obleka in storitve za obleko
+
+Najmanjši vrednosti indeksa (v 1. mesecu leta 2015):
+
+* Zavarovanje
+
+* Stanovanjsko zavarovanje
+
+Vrednosti so prikazane v _grafu osnovnih dobrin_.
 
 
-```{r stolpicni_diagram, echo = FALSE, fig.align = 'center', fig.cap ='Stolpični diagram indeksov cen dveh največjih in dveh najmanjši vrednosti indeksa.'}
+```{r stolpicni_diagram_1, echo = FALSE, fig.align = 'center', fig.cap ='Stolpični diagram indeksov cen dveh največjih in dveh najmanjši vrednosti indeksa v 1. mesecu leta 2015.'}
+graf_osnovnih_dobrin
+```
+
+Podatke sem sicer skrčila na najbolj splošne dobrine/storitve, tukaj pa je še _graf_ dveh dobrin izmed vseh, ki sta imeli največjo oz. najmanjšo vrednost indeksa v celotnem letu. X-os ponazarja vrednosti dobrin v prvem in zadnjem mesecu leta 2015, ter pa v mesecih ekstremnih vrednosti teh dveh dobrin.
+
+
+```{r stolpicni_diagram_2, echo = FALSE, fig.align = 'center', fig.cap ='Stolpični diagram indeksov cen dveh največjih in dveh najmanjši vrednosti indeksa v celotnem letu 2015.'}
 graf
 ```
 
+***
 
-Tabela (prvotno HTML) je v tej fazi bolj kot ne nedotaknjena. Vsebuje 40 vrstic in 6 stolpcev. Vrstice označujejo imena držav, stolpci pa različne indekse (indeks cen življenjskih potrebščin, indeks najemnin, indeks vsote življenjskih potrebščin in najemnin, indeks hrane in pijače, indeks cen restavracijskih ponudb, indeks lokalne moči nakupa).
+## Uvoz in obdelava HTML tabel
 
+
+ Uporabila sem več HTML tabel, ki sem jih nato združila v eno. Zreducirala sem preveliko količino podatkov in obdržala le tiste, ki so se mi zdeli pomembnejši in bolj življenjski.
+ Moj namen primerjanja podatkov - kako so se indeksi različnih dobrin/storitev spreminili (z drugimi besedami, kako so se spremenile cene v zadnjih šritih letih) v različnih državah sveta, za katere so bili podatki na voljo. (V naslednji fazi bom v primerjavi indeksov v različnih državah še posebej poudarila Slovenijo - kje smo na svetovni ravni, katere cene glavnih oz. osnovnih dobrin/storitev pri nas drastično rastejo/padajo v primerjavi z ostalim svetom ...)
+ 
+ Moja glavna in končna tabela (poimenovana tabela) vsebuje vse zbrane podatke. V stolpcih so vrednosti različnih indeksov, ki se sicer izračunavajo različno.
+ Tabelo sem sestavila iz večih tabel, ki so izgledale najprej takole (primer za CPI iz leta 2015):
+ 
 ```{r uvoz3, echo = FALSE}
-kable(head(tabela_traffic_2012))
+kable(head(tabela_CPI_2015))
+```
+ 
+Tabele sem ločila po letih in indeksih, nato pa jih združila po letih (primer za leto 2015):
+ 
+```{r uvoz4, echo = FALSE}
+kable(head(tabela_2015))
+``` 
+ 
+
+Nato sem vse tabele združila v eno:
+ 
+```{r uvoz5, echo = FALSE}
+kable(head(tabela))
 ```
 
+V prvem stolpcu imamo podane države (__Country__), za katere pa nimamo vseh podatkov za vse indekse. Definicije indeksov bom podala direktno iz njihove spletne strani.
 
-V 3. fazi bom analizirala spremembe indeksov določenih dobrin, med katerimi bodo najbolj zanimive ravno tiste z največjimi razlikami v vrednosti indeksa. Seveda pa bom podatke primerjala s podatki drugih evropskih držav. (Za osnovo planiram sicer izbrati tabelo evropskih indeksov (na voljo manj podatkov iz tujine kot pa iz Slovenije), le-te pa bom primerjala z indeksi slovenskih dobrin zadnjega meseca.)
-Primerjala bom tudi podatke ostalih držav med sabo, kakšne so največje razlike v cenah.
-Predvidevam, da imajo revnejše države nižje indekse od bogatejših.
+2. stolpec: __Traffic Index__ _is a composite index of time consumed in traffic due to job commute, estimation of time consumption dissatisfaction, CO2 consumption estimation in traffic and overall inefficiencies in the traffic system_
 
+3. stolpec: __Quality Of Life Index__ _is an estimation of overall quality of life by using empirical formula which takes into account purchasing power index, pollution index, house price to income ratio, consumer price index, safety index, health care index, traffic commute time index and climate index_
 
-Quality of Life Index (higher is better) is an estimation of overall quality of life by using empirical formula which takes into account purchasing power index (higher is better), pollution index (lower is better), house price to income ratio (lower is better), consumer price index (lower is better), safety index (higher is better), health care index (higher is better), traffic commute time index (lower is better) and climate index (higher is better).
-Formula: http://www.numbeo.com/quality-of-life/indices_explained.jsp
+4. stolpec: __Pollution Index__ _is an estimation of the overall pollution in the city. The biggest weight is given to air pollution, than to water pollution/accessibility, two main pollution factors_
 
+5. stolpec: __Health Care Index__ _is an estimation of the overall quality of the health care system, health care professionals, equipment, staff, doctors, cost, etc_
+
+6. stolpec: __Crime Index__ _is an estimation of overall level of crime in a given city or a country. We consider crime levels lower than 20 as very low, crime levels between 20 and 40 as being low, crime levels between 40 and 60 as being moderate, crime levels between 60 and 80 as being high and finally crime levels higher than 80 as being very high_
+
+7. stolpec: __Rent Index__ _is estimation of prices of renting apartments in the city compared to New York City. If Rent index is 80, Numbeo estimates that price for renting in that city is 80% of price in New York_
+
+8. stolpec: __Consumer Price Index__ _is an estimation of consumer goods prices including rent in the city comparing to New York City_
+
+9. stolpec: __Groceries Index__ _is an estimation of grocery prices in the city compared to New York City. To calculate this section, Numbeo uses "Markets" section of each city_
+
+10. stolpec: __Restaurant Price Index__ _is a comparison of prices of meals and drinks in restaurants and bars compared to NYC_
+
+11. stolpec: __Year__ (med 2012 in 2015)
 
 
 ***
