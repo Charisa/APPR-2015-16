@@ -22,7 +22,6 @@ html_razpredelnice <- function(shrani, link){
                                                           # spremenimo v numerične vrednosti, da lahko
                                                           # z njimi operiramo in rišemo grafe.
   
-  
   write.csv2(tabela, shrani, fileEncoding = "UTF-8")      # Ustvarimo datoteko .csv.
   return (tabela)
 }

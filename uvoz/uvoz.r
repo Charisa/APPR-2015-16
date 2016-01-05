@@ -306,15 +306,31 @@ write.csv2(tabela_restaurant_price_2015, "podatki/tabela_restaurant_price_2015",
    #                     "podatki/indeksi_2012", indeksi_2012)
 
 
-s <- c("Country","Consumer Price Index", "Rent Index", "Groceries Index", "Restaurant Price Index")
-r <- list(tabela_2012, tabela_2013, tabela_2014, tabela_2015)
-leta <- 2012:2015
-names(r) <- leta
-sk <- lapply(leta, function(ll)
-  lapply(s, function(ss)
-    data.frame(leto = ll, index = ss, vrednost = r[[paste0(ll)]][[ss]], stringsAsFactors = FALSE)) %>%
-    bind_rows()
-  ) %>% bind_rows()
+
+#tabela_traffic_2012 <- data.frame(tabela_traffic_2012)
+#tabela_quality_of_life_2012 <- data.frame(tabela_quality_of_life_2012)
+#tabela_groceries_2012 <- data.frame(tabela_groceries_2012)
+#tabela_health_care_2012 <- data.frame(tabela_health_care_2012)
+
+#tabela_traffic_2012$Country <- rownames(tabela_traffic_2012)
+#tabela_quality_of_life_2012$Country <- rownames(tabela_quality_of_life_2012)
+#tabela_groceries_2012$Country <- rownames(tabela_groceries_2012)
+#tabela_health_care_2012$Country <- rownames(tabela_health_care_2012)
+
+#df <- join_all(list(tabela_traffic_2012,tabela_quality_of_life_2012,
+ #                   tabela_groceries_2012, tabela_health_care_2012),
+  #             by = 'Country', type = 'full')
+
+
+#s <- c("Country","Consumer Price Index", "Rent Index", "Groceries Index", "Restaurant Price Index")
+#r <- list(tabela_2012, tabela_2013, tabela_2014, tabela_2015)
+#leta <- 2012:2015
+#names(r) <- leta
+#sk <- lapply(leta, function(ll)
+ # lapply(s, function(ss)
+  #  data.frame(leto = ll, index = ss, vrednost = r[[paste0(ll)]][[ss]], stringsAsFactors = FALSE)) %>%
+   # bind_rows()
+  #) %>% bind_rows()
 
 # k <- lapply(r,function(r) r[s])
 

@@ -1,89 +1,89 @@
 "";"Country";"Traffic Index"
-"1";"Kenya";317,24
-"2";"Egypt";293,39
-"3";"Bangladesh";280,43
-"4";"Bolivia";243,93
-"5";"Nigeria";241,71
-"6";"Jordan";232,05
-"7";"Iran";214,14
-"8";"South Africa";208,39
-"9";"Philippines";202,31
-"10";"Thailand";200,79
-"11";"Brazil";199,4
-"12";"Russia";198,51
-"13";"India";195,53
-"14";"Japan";194,55
-"15";"Ecuador";194,39
-"16";"Turkey";194,22
-"17";"Indonesia";186,26
-"18";"Malaysia";181,23
-"19";"Argentina";175,34
-"20";"Israel";175,23
-"21";"Hong Kong";171,92
-"22";"Singapore";170,76
-"23";"Colombia";162,94
-"24";"Canada";161,56
-"25";"Mexico";158,59
-"26";"United States";158,47
-"27";"Ukraine";157,51
-"28";"China";150,98
-"29";"Cambodia";150,01
-"30";"Chile";149,19
-"31";"Lebanon";148,72
-"32";"Uruguay";147,57
-"33";"Kazakhstan";146,9
-"34";"Mongolia";143,7
-"35";"Australia";142,46
-"36";"Italy";142,07
-"37";"Vietnam";141,69
-"38";"Netherlands";140,43
-"39";"Venezuela";139,9
-"40";"Puerto Rico";139,58
-"41";"Qatar";132,56
-"42";"Panama";130,46
-"43";"Georgia";128,99
-"44";"Greece";128,78
-"45";"United Arab Emirates";128,27
-"46";"United Kingdom";127,76
-"47";"Dominican Republic";127,02
-"48";"Sri Lanka";126,82
-"49";"Macedonia";122,58
-"50";"Kuwait";119,48
-"51";"Poland";118,16
-"52";"Bahrain";116,25
-"53";"Saudi Arabia";113,05
-"54";"Belarus";113,05
-"55";"Pakistan";112,61
-"56";"Bulgaria";109,48
-"57";"Romania";108,25
-"58";"Ireland";108,08
-"59";"Moldova";106,98
-"60";"Spain";106,47
-"61";"Taiwan";106,28
-"62";"Lithuania";105,38
-"63";"Belgium";102,46
-"64";"Croatia";102,35
-"65";"Finland";100,39
-"66";"Serbia";99,85
-"67";"Portugal";99,79
-"68";"Germany";98,41
-"69";"Slovakia";98,37
-"70";"South Korea";96,62
-"71";"Denmark";94,37
-"72";"Hungary";92,87
-"73";"New Zealand";92,36
-"74";"Czech Republic";91,65
-"75";"Latvia";90,11
-"76";"Armenia";88,83
-"77";"Syria";86,67
-"78";"France";85,7
-"79";"Sweden";84,03
-"80";"Greenland";82,47
-"81";"Switzerland";80,46
-"82";"Norway";74,58
-"83";"Slovenia";74,57
-"84";"Cyprus";73,72
-"85";"Estonia";69,25
-"86";"Bosnia And Herzegovina";67,19
-"87";"Austria";66,87
-"88";"Turkmenistan";45,49
+"1";"Kenya";"317.24"
+"2";"Egypt";"293.39"
+"3";"Bangladesh";"280.43"
+"4";"Bolivia";"243.93"
+"5";"Nigeria";"241.71"
+"6";"Jordan";"232.05"
+"7";"Iran";"214.14"
+"8";"South Africa";"208.39"
+"9";"Philippines";"202.31"
+"10";"Thailand";"200.79"
+"11";"Brazil";"199.40"
+"12";"Russia";"198.51"
+"13";"India";"195.53"
+"14";"Japan";"194.55"
+"15";"Ecuador";"194.39"
+"16";"Turkey";"194.22"
+"17";"Indonesia";"186.26"
+"18";"Malaysia";"181.23"
+"19";"Argentina";"175.34"
+"20";"Israel";"175.23"
+"21";"Hong Kong";"171.92"
+"22";"Singapore";"170.76"
+"23";"Colombia";"162.94"
+"24";"Canada";"161.56"
+"25";"Mexico";"158.59"
+"26";"United States";"158.47"
+"27";"Ukraine";"157.51"
+"28";"China";"150.98"
+"29";"Cambodia";"150.01"
+"30";"Chile";"149.19"
+"31";"Lebanon";"148.72"
+"32";"Uruguay";"147.57"
+"33";"Kazakhstan";"146.90"
+"34";"Mongolia";"143.70"
+"35";"Australia";"142.46"
+"36";"Italy";"142.07"
+"37";"Vietnam";"141.69"
+"38";"Netherlands";"140.43"
+"39";"Venezuela";"139.90"
+"40";"Puerto Rico";"139.58"
+"41";"Qatar";"132.56"
+"42";"Panama";"130.46"
+"43";"Georgia";"128.99"
+"44";"Greece";"128.78"
+"45";"United Arab Emirates";"128.27"
+"46";"United Kingdom";"127.76"
+"47";"Dominican Republic";"127.02"
+"48";"Sri Lanka";"126.82"
+"49";"Macedonia";"122.58"
+"50";"Kuwait";"119.48"
+"51";"Poland";"118.16"
+"52";"Bahrain";"116.25"
+"53";"Saudi Arabia";"113.05"
+"54";"Belarus";"113.05"
+"55";"Pakistan";"112.61"
+"56";"Bulgaria";"109.48"
+"57";"Romania";"108.25"
+"58";"Ireland";"108.08"
+"59";"Moldova";"106.98"
+"60";"Spain";"106.47"
+"61";"Taiwan";"106.28"
+"62";"Lithuania";"105.38"
+"63";"Belgium";"102.46"
+"64";"Croatia";"102.35"
+"65";"Finland";"100.39"
+"66";"Serbia";"99.85"
+"67";"Portugal";"99.79"
+"68";"Germany";"98.41"
+"69";"Slovakia";"98.37"
+"70";"South Korea";"96.62"
+"71";"Denmark";"94.37"
+"72";"Hungary";"92.87"
+"73";"New Zealand";"92.36"
+"74";"Czech Republic";"91.65"
+"75";"Latvia";"90.11"
+"76";"Armenia";"88.83"
+"77";"Syria";"86.67"
+"78";"France";"85.70"
+"79";"Sweden";"84.03"
+"80";"Greenland";"82.47"
+"81";"Switzerland";"80.46"
+"82";"Norway";"74.58"
+"83";"Slovenia";"74.57"
+"84";"Cyprus";"73.72"
+"85";"Estonia";"69.25"
+"86";"Bosnia And Herzegovina";"67.19"
+"87";"Austria";"66.87"
+"88";"Turkmenistan";"45.49"
