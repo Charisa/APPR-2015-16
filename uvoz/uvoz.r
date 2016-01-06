@@ -15,7 +15,7 @@ library(reshape2)
 
 # Poimenovanje stolpcev:
 
-stolpci <- c("januar2015.december2014","januar2015.januar2014","povprečje_januar_2015.povprečje_januar_2014",
+stolpci <- c("dobrine/storitve","januar2015.december2014","januar2015.januar2014","povprečje_januar_2015.povprečje_januar_2014",
              "povprečna12-mesečna_rast",
              "februar2015.januar2015","februar2015.februar2014",
              "povprečje_januar,februar_2015.povprečje_januar,februar_2014","povprečna12-mesečna_rast",
@@ -40,17 +40,19 @@ stolpci <- c("januar2015.december2014","januar2015.januar2014","povprečje_janua
 
 razpredelnica = read.csv2("podatki/indeksi_cen.csv", fileEncoding = "Windows-1250")
                                                                   # Odpremo datoteko .csv.
-razpredelnica <- data.frame(razpredelnica[, -1], row.names = razpredelnica[, 1])
+razpredelnica <- data.frame(razpredelnica, row.names = razpredelnica[, 1])
                                                                   # Izbrišemo stolpec z imeni dobrin/storitev
                                                                   # in preimenujemo imena vrstic v ta stolpec.
 rownames(razpredelnica) <- gsub("^[0-9]+ ", "", rownames(razpredelnica))
                                                                   # Odstranimo številke v imenih vrstic
+razpredelnica$X01.Hrana.in.brezalkoholne.pijače <- row.names(razpredelnica)
 colnames(razpredelnica) <- stolpci                                # Preimenujemo imena stolpcev z imeni iz vektorja stolpci.
+
 indx <- sapply(razpredelnica, is.factor)                          # 'Vrednosti' so faktorji. 
 razpredelnica[indx] <- lapply(razpredelnica[indx], function(x) as.numeric(gsub("[.]", ".", x)))
                                                                   # Faktorje spremenimo v numerične vrednosti.
 
-razpredelnica <- razpredelnica[seq(-4, -length(stolpci), by = -4)]# Odstranimo vsak četrti stolpec.
+razpredelnica <- razpredelnica[seq(-5, -length(stolpci), by = -4)]# Odstranimo vsak četrti stolpec.
 
 write.csv2(razpredelnica, "podatki/razpredelnica.csv", fileEncoding = "UTF-8", row.names = FALSE)
                                                                   # Ustvarimo datoteko .csv.
@@ -85,7 +87,7 @@ row.names(osnovne_dobrine) <- imena_dobrin
 
 
 
-# NOVA TABELA ZA GRAF osnovne_dobrine_graf: 4 dobrine, spremembe v prvih in zadnjh dveh mesecih
+# NOVI TABELI ZA GRAF osnovne_dobrine_graf, dobrine_graf
 
 osnovne_dobrine_graf <- subset(osnovne_dobrine, select = (colnames(osnovne_dobrine))[c(1, 2, 10, 11)])
                                                                   # Prva in zadnja dva stolpca.
@@ -128,6 +130,13 @@ graf <- ggplot(dobrine_graf, stat = "identity", main = "Indeksi cen") +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5)) +
   geom_bar(stat = "identity", position = "dodge") + xlab("obdobja") + ylab("vrednost indeksa") + 
   scale_fill_manual("Dobrine in storitve", values = c("darkred", "darkblue"))
+
+
+# Preoblikovanje razpredelnice v tidy.data
+
+tidy <- arrange(razpredelnica,desc(januar2015.december2014))
+razpredelnica_tidy <- melt(tidy, id = "dobrine/storitve")
+razpredelnica_tidy <- rename(razpredelnica_tidy, "mesečni indeksi" = variable, "vrednost indeksa" = value)
 
 
 
