@@ -1,7 +1,7 @@
 html_razpredelnice <- function(shrani, link){
-  #if (file.exists(shrani)){                              # Zaradi spremenjenih imen in števila stolpcev,
-  # read.csv2                                             # je uporabnejše in aplikativneje brez "if"-stavka.
-  #}
+  if (file.exists(shrani)){                              # Zaradi spremenjenih imen in števila stolpcev,
+   read.csv2(shrani, row.names = 1)                                             # je uporabnejše in aplikativneje brez "if"-stavka.
+  }
   povezava = getURL(link)
   tables = readHTMLTable(povezava, fileEncoding = "UTF-8")
   names(tables)

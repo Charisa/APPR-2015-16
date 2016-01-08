@@ -18,6 +18,7 @@ html_svetovni_indeksi <- function(shrani, link){
   #                      function(x) as.numeric(gsub("[.]", ".", x)))
   #tabela <- tabela[seq(-3, -length(kategorije))]
   tabela <- tabela[c(1:2)]
+  tabela[2] <- as.numeric(tabela[,2])
   return (tabela)
   
 }
