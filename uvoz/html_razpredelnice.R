@@ -1,7 +1,7 @@
 html_razpredelnice <- function(shrani, link){
-  if (file.exists(shrani)){                              # Zaradi spremenjenih imen in števila stolpcev,
-   read.csv2(shrani, row.names = 1)                                             # je uporabnejše in aplikativneje brez "if"-stavka.
-  }
+  #if (file.exists(shrani)){                              
+   #read.csv2(shrani, row.names = 1)                      
+  #}
   povezava = getURL(link)
   tables = readHTMLTable(povezava, fileEncoding = "UTF-8")
   names(tables)
@@ -24,7 +24,7 @@ html_razpredelnice <- function(shrani, link){
                                                           # Faktorje od 2. do končnega stolpca
                                                           # spremenimo v numerične vrednosti, da lahko
                                                           # z njimi operiramo in rišemo grafe.
-  #write.csv2(tabela, shrani, fileEncoding = "UTF-8")     # Ustvarimo datoteko .csv.
+  #write.csv2(tabela, shrani, fileEncoding = "UTF-8")      # Ustvarimo datoteko .csv.
   return (tabela)
 }
 

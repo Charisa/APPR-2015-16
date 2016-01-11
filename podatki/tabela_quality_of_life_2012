@@ -1,52 +1,52 @@
 "";"Country";"Quality of Life Index"
-"1";"Switzerland";"194.11"
-"2";"Germany";"184.42"
-"3";"Norway";"183.43"
-"4";"United Arab Emirates";"177.07"
-"5";"New Zealand";"174.28"
-"6";"Sweden";"171.72"
-"7";"Canada";"164.99"
-"8";"Denmark";"163.12"
-"9";"Australia";"162.03"
-"10";"Austria";"159.89"
-"11";"Netherlands";"158.07"
-"12";"United States";"140.62"
-"13";"Japan";"130.52"
-"14";"Ireland";"125.14"
-"15";"Slovenia";"121.94"
-"16";"France";"119.51"
-"17";"Israel";"118.25"
-"18";"United Kingdom";"110.09"
-"19";"Portugal";"105.10"
-"20";"Spain";"100.93"
-"21";"Belgium";"100.68"
-"22";"Croatia";"93.06"
-"23";"Czech Republic";"88.14"
-"24";"Singapore";"87.08"
-"25";"South Africa";"83.59"
-"26";"Saudi Arabia";"71.02"
-"27";"Turkey";"66.70"
-"28";"Malaysia";"65.31"
-"29";"Poland";"60.63"
-"30";"Mexico";"60.31"
-"31";"Italy";"49.65"
-"32";"Hungary";"48.74"
-"33";"India";"44.01"
-"34";"Indonesia";"37.22"
-"35";"Serbia";"34.59"
-"36";"Argentina";"32.58"
-"37";"Bulgaria";"30.77"
-"38";"Bosnia And Herzegovina";"28.04"
-"39";"Romania";"25.52"
-"40";"Thailand";"24.89"
-"41";"Colombia";"23.38"
-"42";"Greece";"23.28"
-"43";"Chile";"21.04"
-"44";"Brazil";"10.81"
-"45";"Pakistan";"-3.05"
-"46";"Philippines";"-3.77"
-"47";"Russia";"-7.39"
-"48";"Ukraine";"-14.61"
-"49";"Egypt";"-22.17"
-"50";"Iran";"-35.23"
-"51";"China";"-49.55"
+"1";"Switzerland";29
+"2";"Germany";28
+"3";"Norway";27
+"4";"United Arab Emirates";26
+"5";"New Zealand";25
+"6";"Sweden";24
+"7";"Canada";23
+"8";"Denmark";22
+"9";"Australia";21
+"10";"Austria";20
+"11";"Netherlands";19
+"12";"United States";18
+"13";"Japan";17
+"14";"Ireland";16
+"15";"Slovenia";15
+"16";"France";14
+"17";"Israel";13
+"18";"United Kingdom";12
+"19";"Portugal";11
+"20";"Spain";10
+"21";"Belgium";9
+"22";"Croatia";51
+"23";"Czech Republic";50
+"24";"Singapore";49
+"25";"South Africa";48
+"26";"Saudi Arabia";47
+"27";"Turkey";46
+"28";"Malaysia";45
+"29";"Poland";44
+"30";"Mexico";43
+"31";"Italy";42
+"32";"Hungary";41
+"33";"India";40
+"34";"Indonesia";39
+"35";"Serbia";38
+"36";"Argentina";37
+"37";"Bulgaria";36
+"38";"Bosnia And Herzegovina";35
+"39";"Romania";34
+"40";"Thailand";33
+"41";"Colombia";32
+"42";"Greece";31
+"43";"Chile";30
+"44";"Brazil";8
+"45";"Pakistan";3
+"46";"Philippines";4
+"47";"Russia";7
+"48";"Ukraine";1
+"49";"Egypt";2
+"50";"Iran";5
+"51";"China";6

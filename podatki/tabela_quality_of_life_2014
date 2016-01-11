@@ -1,69 +1,69 @@
 "";"Country";"Quality of Life Index"
-"1";"Switzerland";"206.23"
-"2";"United States";"195.55"
-"3";"Germany";"192.69"
-"4";"Sweden";"180.92"
-"5";"Finland";"178.88"
-"6";"Denmark";"178.55"
-"7";"Canada";"178.29"
-"8";"Australia";"175.98"
-"9";"United Arab Emirates";"173.27"
-"10";"Austria";"171.82"
-"11";"New Zealand";"168.56"
-"12";"Japan";"168.47"
-"13";"Norway";"168.41"
-"14";"Netherlands";"160.98"
-"15";"United Kingdom";"150.97"
-"16";"Estonia";"145.40"
-"17";"Ireland";"142.35"
-"18";"Kuwait";"141.37"
-"19";"Saudi Arabia";"139.88"
-"20";"France";"136.31"
-"21";"Belgium";"134.71"
-"22";"Slovenia";"125.56"
-"23";"Portugal";"124.71"
-"24";"Puerto Rico";"123.64"
-"25";"Spain";"123.64"
-"26";"Czech Republic";"122.99"
-"27";"Lithuania";"121.91"
-"28";"South Korea";"117.90"
-"29";"Taiwan";"114.06"
-"30";"South Africa";"111.61"
-"31";"Slovakia";"108.74"
-"32";"Croatia";"108.70"
-"33";"Poland";"95.19"
-"34";"Uruguay";"91.94"
-"35";"Israel";"91.16"
-"36";"Italy";"90.61"
-"37";"Malaysia";"89.05"
-"38";"Singapore";"87.99"
-"39";"Mexico";"83.47"
-"40";"Hungary";"83.18"
-"41";"Argentina";"81.12"
-"42";"India";"78.01"
-"43";"Greece";"77.48"
-"44";"Bosnia And Herzegovina";"74.60"
-"45";"Belarus";"74.43"
-"46";"Hong Kong";"73.24"
-"47";"Chile";"69.32"
-"48";"Serbia";"69.31"
-"49";"Turkey";"67.82"
-"50";"Romania";"63.27"
-"51";"Bulgaria";"62.60"
-"52";"Thailand";"56.64"
-"53";"Ecuador";"42.25"
-"54";"Kazakhstan";"40.64"
-"55";"Jordan";"39.54"
-"56";"Brazil";"38.76"
-"57";"Colombia";"36.53"
-"58";"China";"30.30"
-"59";"Philippines";"28.09"
-"60";"Pakistan";"22.32"
-"61";"Ukraine";"22.22"
-"62";"Indonesia";"21.85"
-"63";"Lebanon";"18.39"
-"64";"Russia";"16.53"
-"65";"Egypt";"5.41"
-"66";"Iran";"-11.08"
-"67";"Mongolia";"-26.75"
-"68";"Venezuela";"-39.32"
+"1";"Switzerland";36
+"2";"United States";35
+"3";"Germany";34
+"4";"Sweden";33
+"5";"Finland";31
+"6";"Denmark";30
+"7";"Canada";29
+"8";"Australia";28
+"9";"United Arab Emirates";27
+"10";"Austria";26
+"11";"New Zealand";25
+"12";"Japan";24
+"13";"Norway";23
+"14";"Netherlands";22
+"15";"United Kingdom";20
+"16";"Estonia";19
+"17";"Ireland";18
+"18";"Kuwait";17
+"19";"Saudi Arabia";16
+"20";"France";15
+"21";"Belgium";14
+"22";"Slovenia";13
+"23";"Portugal";12
+"24";"Puerto Rico";11
+"25";"Spain";11
+"26";"Czech Republic";10
+"27";"Lithuania";9
+"28";"South Korea";8
+"29";"Taiwan";7
+"30";"South Africa";6
+"31";"Slovakia";5
+"32";"Croatia";4
+"33";"Poland";67
+"34";"Uruguay";66
+"35";"Israel";65
+"36";"Italy";64
+"37";"Malaysia";63
+"38";"Singapore";62
+"39";"Mexico";61
+"40";"Hungary";60
+"41";"Argentina";59
+"42";"India";58
+"43";"Greece";57
+"44";"Bosnia And Herzegovina";56
+"45";"Belarus";55
+"46";"Hong Kong";54
+"47";"Chile";53
+"48";"Serbia";52
+"49";"Turkey";51
+"50";"Romania";50
+"51";"Bulgaria";49
+"52";"Thailand";48
+"53";"Ecuador";46
+"54";"Kazakhstan";45
+"55";"Jordan";44
+"56";"Brazil";43
+"57";"Colombia";42
+"58";"China";41
+"59";"Philippines";40
+"60";"Pakistan";39
+"61";"Ukraine";38
+"62";"Indonesia";37
+"63";"Lebanon";32
+"64";"Russia";21
+"65";"Egypt";47
+"66";"Iran";1
+"67";"Mongolia";2
+"68";"Venezuela";3

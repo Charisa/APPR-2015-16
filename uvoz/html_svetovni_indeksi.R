@@ -1,5 +1,7 @@
 html_svetovni_indeksi <- function(shrani, link){
-  # If -stavek ne uporabljam iz istega razloga kot v funkciji html_razpredelnice.
+  #if (file.exists(shrani)){                              
+    #read.csv2(shrani, row.names = 1)                      
+  #}
   povezava = getURL(link)
   tables = readHTMLTable(povezava, fileEncoding = "UTF-8")
   names(tables)
@@ -19,6 +21,7 @@ html_svetovni_indeksi <- function(shrani, link){
   #tabela <- tabela[seq(-3, -length(kategorije))]
   tabela <- tabela[c(1:2)]
   tabela[2] <- as.numeric(tabela[,2])
+  #write.csv2(tabela, shrani, fileEncoding = "UTF-8")
   return (tabela)
   
 }
