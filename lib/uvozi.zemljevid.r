@@ -3,6 +3,8 @@ library(sp)
 library(maptools)
 library(digest)
 gpclibPermit()
+library(plotly)
+library(ggplot2)
 
 # Funkcija uvozi.zemljevid(url, ime.zemljevida, pot.zemljevida,
 #                         encoding = "Windows-1250", force = FALSE)

@@ -9,7 +9,7 @@ output:
   word_document: default
 ---
 
-```{r setup, echo = FALSE, results = 'hide', message = FALSE}
+```{r setup, echo = FALSE, results = 'hide', message = FALSE, warning=FALSE}
 source("lib/libraries.r", encoding = "UTF-8")
 ```
 

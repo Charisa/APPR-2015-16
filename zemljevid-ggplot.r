@@ -1,6 +1,7 @@
 source("lib/uvozi.zemljevid.r", encoding = "UTF-8")
 library(ggplot2)
 library(dplyr)
+library(rworldmap)
 
 pretvori.zemljevid <- function(zemljevid) {
   fo <- fortify(zemljevid)
