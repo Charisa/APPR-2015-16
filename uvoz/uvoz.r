@@ -2,12 +2,7 @@
 
 # Knjižnice
 
-library(XML)
-library(RCurl)
-library(ggplot2)
-library(plyr)
-library(dplyr)
-library(reshape2)
+source("lib/libraries.r", encoding = "UTF-8")
 
 
 

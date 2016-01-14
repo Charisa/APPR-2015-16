@@ -162,3 +162,15 @@ V prvem stolpcu imamo podane države (__Country__), za katere pa nimamo vseh pod
 
 ***
 
+# Vizualizacija
+
+```{r vizualizacija, echo = FALSE, message=FALSE}
+source("vizualizacija/vizualizacija.r", encoding = "UTF-8")
+```
+
+
+```{r zemljevid1, echo = FALSE, message = FALSE, warning = FALSE, include = FALSE, results = "hide", cache = FALSE}
+zemljevid
+```
+
+
