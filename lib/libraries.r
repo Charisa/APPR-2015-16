@@ -17,10 +17,8 @@ library(rgeos)
 library(scales)
 library(Cairo)
 library(stringr)
+library(gmt)
 
-
-# Uvozimo funkcije za delo z datotekami XML.
-#source("lib/xml.r", encoding = "UTF-8")
 
 # Uvozimo funkcije za pobiranje in uvoz zemljevida.
-#source("lib/uvozi.zemljevid.r", encoding = "UTF-8")
+source("vizualizacija/uvoz_zemljevidov.r", encoding = "UTF-8")

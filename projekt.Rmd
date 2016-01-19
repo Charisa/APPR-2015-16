@@ -170,7 +170,7 @@ source("vizualizacija/vizualizacija.r", encoding = "UTF-8")
 
 
 ```{r zemljevid1, echo = FALSE, message = FALSE, warning = FALSE, include = FALSE, results = "hide", cache = FALSE}
-zemljevid
+zemljevid_traffic
 ```
 
 
