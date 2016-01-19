@@ -7,21 +7,36 @@ source("lib/libraries.r", encoding = "UTF-8")
 # ZEMLJEVIDI ZA POSAMEZNE INDEKSE V LETO 2015
 
 
-classIntervals <- function(var, n, style = "hclust", rtimes = 3, ...){
-  if (any(is.na(var))) 
-    #warning("Podatki niso na voljo za vse države.")
-    error = NULL
-}
+zemljevid_traffic <- uvoz_zemljevidov(leto_2015, "Traffic Index", zemljevid_traffic_index, 
+                                      barva = "RdPu")
+zemljevid_pollution <- uvoz_zemljevidov(leto_2015, "Pollution Index", zemljevid_pollution_index, 
+                                      barva = "Oranges")
+zemljevid_health_care <- uvoz_zemljevidov(leto_2015, "Health Care Index", zemljevid_health_care_index,
+                                      barva = "BuGn")
+zemljevid_crime <- uvoz_zemljevidov(leto_2015, "Crime Index", zemljevid_crime_index,
+                                      barva = "Blues")
+zemljevid_rent <- uvoz_zemljevidov(leto_2015, "Rent Index", zemljevid_rent_index,
+                                      barva = "Reds")
 
-zemljevid_traffic_index <- joinCountryData2Map(leto_2015, joinCode = "NAME", nameJoinColumn = "Country", mapResolution = "coarse")
-classInt <- classIntervals(zemljevid_traffic_index[["Traffic Index"]], 7)
 
-mapParams <- mapCountryData(zemljevid_traffic_index, nameColumnToPlot = "Traffic Index", catMethod = "fixedWidth",
-                          missingCountryCol = "grey", oceanCol = "lightblue", addLegend = FALSE, colourPalette = brewer.pal(7,"RdPu"))
+poskus <- uvoz_zemljevidov(tabela_crime_2013, "Crime Index", zem,
+                           barva = "RdPu")
 
-legenda <- do.call(addMapLegend, c(mapParams,legendLabels = "all", legendWidth = 0.5, legendIntervals = "data",legendMar = 2))
 
-zemljevid <- (legenda)
+# 
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
