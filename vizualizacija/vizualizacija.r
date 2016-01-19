@@ -10,7 +10,6 @@ source("lib/libraries.r", encoding = "UTF-8")
 
 zemljevid_traffic <- uvoz_zemljevidov(tabela_traffic_2015, "Traffic Index", zemljevid_traffic_index, 
                                       barva = "RdPu")
-
 zemljevid_pollution <- uvoz_zemljevidov(tabela_pollution_2015, "Pollution Index", zemljevid_pollution_index, 
                                       barva = "Oranges")
 zemljevid_health_care <- uvoz_zemljevidov(tabela_health_care_2015, "Health Care Index", zemljevid_health_care_index,
@@ -28,7 +27,31 @@ zemljevid_restaurant_price <- uvoz_zemljevidov(tabela_restaurant_price_2015, "Re
 
 
 
-# 
+# Iz tabele leto bom naredila zemljevid (PLOTLY) 
+
+
+
+ISO <- read.csv("https://raw.githubusercontent.com/umpirsky/country-list/master/data/en_US/country.csv", encoding = "UTF-8")           
+                                                            # Uvožena tabela z ISO kraticami.
+
+colnames(ISO)[2] <- "Country"                               # Preimenujemo stolpec "value" v
+colnames(ISO)[1] <- "CODE"                                  # v "Country" in "id" v "CODE".
+
+map_table_2015 <- merge(leto_2015, ISO, by = "Country")     # Dodamo ISO kratice v našo tabelo leto_2015.
+                                                            # Ni kratic za vsa imena, zato posledično
+                                                            # izgubimo podatke za 8 držav.
+                                                            
+                                                            # Dobila sem razpredelnico map_2015, s katero
+                                                            # bom naredila zemljevid.
+ 
+
+crte <- list(color = toRGB("grey"), width = 0.5)
+g <- list(showframe = FALSE, showcoastlines = FALSE, projection = list(type = 'Mercator'))
+
+plot_ly(map_table_2015, z = "Quality of Life Index", text = "Country", locations = CODE,
+                    type = 'choropleth', color = "Quality of Life Index", colors = terrain.colors(5),
+                    marker = list(line = 1), colorbar = list(tickprefix = '$', title = "Indeksi cen zivljenjskih potrebscin")) %>%
+  layout(title = "Indeksi cen zivljenjskih potrebscin po svetu", geo = g)
 
 
 
@@ -49,44 +72,11 @@ zemljevid_restaurant_price <- uvoz_zemljevidov(tabela_restaurant_price_2015, "Re
 
 
 
-#seznam <- list(color = col2rgb("grey", alpha = FALSE), width = 0.5)
-
-#g <- list(showframe = FALSE, showcoastlines = FALSE,
- #         projection = list(type = 'Mercator'))
-
-#plot_ly(drzave, z = "Quality of Life Index", text = Country, locations = Year,
- #       type = "choropleth", color = Quality.of.Life.Index, colors = "Blues",
-  #      marker = list(line = 1), colorbar = list(tickprefix = "$", 
-#                                                 title = "CPI"))
-         
-         
-         
-         #)
-          #    text = "Country", locations = CODE, type = 'choropleth',
-           #   color = "Counsumer Price Index", colors = 'Blues', marker = list(line = l),
-            #  colorbar = list(tickprefix = '$', title = 'CPI'))) %>%
-  #layout(title = '2015 CPI<br>Source:"http://www.numbeo.com/cost-of-living/rankings.jsp">NUMBEO</a>',
-        # geo = g)
 
 
 
 
 
 
-
-
-
-
-
-
-#colnames(drzave) <- colnames(leto_2015)
-#head(drzave)
-
-#library(rworldmap)
-#library(maptools)
-#nov_zemljevid <- getMap(resolution = "low")
-#plot(nov_zemljevid, fill = )
-
-#points(drzave$"Quality of Life Index", drzave$"Consumer Price Index", col = 'red', cex = .6)
 
 

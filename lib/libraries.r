@@ -21,4 +21,4 @@ library(gmt)
 
 
 # Uvozimo funkcije za pobiranje in uvoz zemljevida.
-source("vizualizacija/uvoz_zemljevidov.r", encoding = "UTF-8")
+source("vizualizacija/uvoz_zemljevidov.R", encoding = "UTF-8")
