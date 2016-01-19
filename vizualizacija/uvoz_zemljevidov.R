@@ -13,7 +13,7 @@ uvoz_zemljevidov <- function(tabela, ime_stolpca, ime_zemljevida, barva = "RdPu"
                              mapResolution = "coarse")
   classInt <- classIntervals(ime[[ime_stolpca]], 7)
   
-  mapParams <- mapCountryData(ime, name = ime_stolpca, catMethod = "fixedWidth",
+  mapParams <- mapCountryData(ime, nameColumnToPlot = ime_stolpca, catMethod = "fixedWidth",
                               missingCountryCol = "grey", oceanCol = "lightblue", addLegend = FALSE, 
                               colourPalette = brewer.pal(7,barva))
   
