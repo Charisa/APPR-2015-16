@@ -1,6 +1,7 @@
 library(knitr)
 library(XML)
 library(RCurl)
+library(shiny)
 library(plotly)
 library(ggplot2)
 library(plyr)
@@ -15,10 +16,14 @@ library(devtools)
 library(maptools)
 library(rgeos)
 library(scales)
-library(Cairo)
 library(stringr)
 library(gmt)
+library(graphics)
+library(mapproj)
+library(geosphere)
+library(sp)
 
 
 # Uvozimo funkcije za pobiranje in uvoz zemljevida.
 source("vizualizacija/uvoz_zemljevidov.R", encoding = "UTF-8")
+

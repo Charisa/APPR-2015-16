@@ -2,10 +2,10 @@
 title: "Poročilo pri predmetu Analiza podatkov s programom R"
 author: "Sara Korat"
 output:
-  html_document: default
   pdf_document:
     includes:
       in_header: lib/styles.sty
+  html_document: default
   word_document: default
 ---
 
@@ -141,6 +141,15 @@ V prvem stolpcu imamo podane države (__Country__), za katere pa nimamo vseh pod
 
 2. stolpec: __Traffic Index__ _is a composite index of time consumed in traffic due to job commute, estimation of time consumption dissatisfaction, CO2 consumption estimation in traffic and overall inefficiencies in the traffic system_
 
+co2 = 0.0;
+    co2 += overall.time_bus * 20.0; // bus produces 20g of CO2 per minute (for each passenger)
+    co2 += overall.time_driving * 133.0; // car produces 133g of CO2 per minute (assumes only driver)
+    co2 += overall.time_train * 10.0; // train produces 10g of CO2 per minute (for each passenger)
+    co2 += overall.time_tram * 15.0; // tram produces 15g of CO2 per minute (for each passenger)
+    co2 += overall.time_other * 10.0; // other produces 10g of CO2 per minute
+    co2 += overall.time_motorbike * 80.0; // motorbike produces 80g of CO2 per hour
+    index.co2 = 2 * co2;
+
 3. stolpec: __Quality Of Life Index__ _is an estimation of overall quality of life by using empirical formula which takes into account purchasing power index, pollution index, house price to income ratio, consumer price index, safety index, health care index, traffic commute time index and climate index_
 
 4. stolpec: __Pollution Index__ _is an estimation of the overall pollution in the city. The biggest weight is given to air pollution, than to water pollution/accessibility, two main pollution factors_
@@ -164,29 +173,13 @@ V prvem stolpcu imamo podane države (__Country__), za katere pa nimamo vseh pod
 
 # Vizualizacija
 
+
+
+
+
 ```{r vizualizacija, echo = FALSE, message=FALSE, warning = FALSE, results = 'hide'}
 source("vizualizacija/vizualizacija.r", encoding = "UTF-8")
 
 ```
 
-```{r vizualizacija1, echo = FALSE, message=FALSE, warning = FALSE, results = 'hide'}
-df <- read.csv("https://raw.githubusercontent.com/plotly/datasets/master/2011_us_ag_exports.csv")
-df$hover <- with(df, paste(state, '<br>', "Beef", beef, "Dairy", dairy, "<br>",
-                           "Fruits", total.fruits, "Veggies", total.veggies,
-                           "<br>", "Wheat", wheat, "Corn", corn))
-# give state boundaries a white border
-l <- list(color = toRGB("white"), width = 2)
-# specify some map projection/options
-g <- list(
-  scope = 'usa',
-  projection = list(type = 'albers usa'),
-  showlakes = TRUE,
-  lakecolor = toRGB('white')
-)
 
-plot_ly(df, z = total.exports, text = hover, locations = code, type = 'choropleth',
-        locationmode = 'USA-states', color = total.exports, colors = 'Purples',
-        marker = list(line = l), colorbar = list(title = "Millions USD")) %>%
-  layout(title = '2011 US Agriculture Exports by State<br>(Hover for breakdown)', geo = g)
-
-```
