@@ -10,28 +10,28 @@ source("lib/libraries.r", encoding = "UTF-8")
 
 # Poimenovanje stolpcev:
 
-stolpci <- c("dobrine/storitve","januar2015.december2014","januar2015.januar2014","povprečje_januar_2015.povprečje_januar_2014",
-             "povprečna12-mesečna_rast",
-             "februar2015.januar2015","februar2015.februar2014",
-             "povprečje_januar,februar_2015.povprečje_januar,februar_2014","povprečna12-mesečna_rast",
-             "marec2015.februar2015","marec2015.marec2014",
-             "povprečje_januar-marec_2015.povprečje_januar-marec_2014","povprečna12-mesečna_rast",
-             "april2015.marec2015","april2015.april2014",
-             "povprečje_januar-april_2015.povprečje_januar-april_2014","povprečna12-mesečna_rast",
-             "maj2015.april2015","maj2015.maj2014",
-             "povprečje_januar-maj_2015.povprečje_januar-maj_2014","povprečna12-mesečna_rast",
-             "junij2015.maj2015","junij2015.junij2014",
-             "povprečje_januar-junij_2015.povprečje_januar-junij_2014","povprečna12-mesečna_rast",
-             "julij2015.junij2015","julij2015.julij2014",
-             "povprečje_januar-julij_2015.povprečje_januar-julij_2014","povprečna12-mesečna_rast",
-             "avgust2015.julij2015","avgust2015.avgust2014",
-             "povprečje_januar-avgust_2015.povprečje_januar-avgust_2014","povprečna12-mesečna_rast",
-             "september2015.avgust2015","september2015.september2014",
-             "povprečje_januar-september_2015.povprečje_januar-september_2014","povprečna12-mesečna_rast",
-             "oktober2015.september2015","oktober2015.oktober2014",
-             "povprečje_januar-oktober_2015.povprečje_januar-oktober_2014","povprečna12-mesečna_rast",
-             "november2015.oktober2015","november2015.oktober2014",
-             "povprečje_januar-november_2015.povprečje_januar-november_2014","povprečna12-mesečna_rast")
+stolpci <- c("dobrine/storitve","jan15/dec14","jan15/jan14","avg.jan15/avg.jan14",
+             "avg.12-month",
+             "feb15/jan15","feb15/feb14",
+             "avg.jan-feb15/avg.jan-feb14","avg.12-month",
+             "mar15/feb15","mar15/mar14",
+             "avg.jan-mar15/avg.jan-mar14","avg.12-month",
+             "apr15/mar15","apr15/apr14",
+             "avg.jan-apr15/avg.jan-apr14","avg.12-month",
+             "maj15/apr15","maj15/maj14",
+             "avg.jan-maj15/avg.jan-maj14","avg.12-month",
+             "jun15/maj15","jun15/jun14",
+             "avg.jan-jun15/avg.jan-jun14","avg.12-month",
+             "jul15/jun15","jul15/jul14",
+             "avg.jan-jul15/avg.jan-jul14","avg.12-month",
+             "avgu15/jul15","avgu15/avgu14",
+             "avg.jan-avgu15/avg.jan-avgu14","avg.12-month",
+             "sep15/avgu15","sep15/sep14",
+             "avg.jan-sep15/avg.jan-sep14","avg.12-month",
+             "okt15/sep15","okt15/okt14",
+             "avg.jan-okt15/avg.jan-okt14","avg.12-month",
+             "nov15/okt15","nov15/nov14",
+             "avg.jan-nov15/avg.jan-nov14","avg.12-month")
 
 razpredelnica = read.csv2("podatki/indeksi_cen.csv", fileEncoding = "Windows-1250")
                                                                   # Odpremo datoteko .csv.
@@ -52,12 +52,12 @@ razpredelnica <- razpredelnica[seq(-5, -length(stolpci), by = -4)]# Odstranimo v
 write.csv2(razpredelnica, "podatki/razpredelnica.csv", fileEncoding = "UTF-8", row.names = FALSE)
                                                                   # Ustvarimo datoteko .csv.
 
-grupiranje <- c("januar2015.december2014","februar2015.januar2015",
-                "marec2015.februar2015","april2015.marec2015",
-                "maj2015.april2015","junij2015.maj2015",
-                "julij2015.junij2015","avgust2015.julij2015",
-                "september2015.avgust2015","oktober2015.september2015",
-                "november2015.oktober2015")                       # Ustvarimo nov vektor z imeni stolpcev, ki jih 
+grupiranje <- c("jan15/dec14","feb15/jan15",
+                "mar15/feb15","apr15/mar15",
+                "maj15/apr15","jun15/maj15",
+                "jul15/jun15","avgu15/jul15",
+                "sep15/avgu15","okt15/sep15",
+                "nov15/okt15")                       # Ustvarimo nov vektor z imeni stolpcev, ki jih 
                                                                   # bomo uporabili v novi tabeli.
 
 
@@ -72,8 +72,8 @@ osnovne_dobrine <- osnovne_dobrine[-c(2:20, 22:27, 29:32, 34:37, 39:57, 59:65, 6
                                                                   # Izbrani stolpci originalne razpredelnice
 imena_dobrin <- row.names(osnovne_dobrine)                        # V imena vrstic shranimo dobrine/storitve
 
-osnovne_dobrine <- arrange(osnovne_dobrine, desc(januar2015.december2014), 
-                           desc(februar2015.januar2015))          # Ureditev po velikosti (od največje do najmanjše vrednosti
+osnovne_dobrine <- arrange(osnovne_dobrine, desc(`jan15/dec14`), 
+                           desc(`feb15/jan15`))          # Ureditev po velikosti (od največje do najmanjše vrednosti
                                                                   # po prvem, nato po drugem stolpcu).
 row.names(osnovne_dobrine) <- imena_dobrin     
                                                                   # Ker se v prejšnjem koraku spremenijo imena vrstic, 
@@ -112,7 +112,7 @@ dobrine_graf <- melt(dobrine_graf, id = row.names(dobrine_graf))
 
 # Preoblikovanje razpredelnice v tidy.data
 
-tidy <- arrange(razpredelnica,desc(januar2015.december2014))
+tidy <- arrange(razpredelnica,desc(`jan15/dec14`))
 razpredelnica_tidy <- melt(tidy, id = "dobrine/storitve")
 razpredelnica_tidy <- rename(razpredelnica_tidy, "mesecni indeksi" = variable, "vrednost indeksa" = value)
 
@@ -127,14 +127,14 @@ slovenski_indeksi <- filter(razpredelnica_tidy, `dobrine/storitve` %in% osnovne,
 
 graf_osnovnih_dobrin <- ggplot(osnovne_dobrine_graf, stat = "identity", main = "Indeksi cen") + 
   aes(x = Var1, y = value, fill = Var2, stat = "identity") + 
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5)) +
+  theme(axis.text.x = element_text(angle = 0, vjust = 0.5)) +
   geom_bar(stat = "identity", position = "dodge") + xlab("obdobja") + ylab("vrednost indeksa") + 
   scale_fill_manual("Dobrine in storitve", values = c("darkred", "darkblue", "yellow", "darkgreen"))
 
 
 graf <- ggplot(dobrine_graf, stat = "identity", main = "Indeksi cen") + 
   aes(x = Var1, y = value, fill = Var2, stat = "identity") + 
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5)) +
+  theme(axis.text.x = element_text(angle = 0, vjust = 0.5)) +
   geom_bar(stat = "identity", position = "dodge") + xlab("obdobja") + ylab("vrednost indeksa") + 
   scale_fill_manual("Dobrine in storitve", values = c("darkred", "darkblue"))
 

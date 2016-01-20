@@ -276,7 +276,7 @@ Formula za __restaurant price__ se izračunava na podlagi cen hrane in pijače v
 
 
 
-Druga funkcija, ki sem jo uporabila za izdelavo zemljevidov, pa je _plotly_.
+Druga funkcija, ki sem jo uporabila za izdelavo zemljevidov, pa je _plotly_. Vzela sem vrednosti iz razpredelnice _tabela quality of life index 2015_. 
 
 
 
