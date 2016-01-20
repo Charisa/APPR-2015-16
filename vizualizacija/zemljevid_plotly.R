@@ -11,7 +11,7 @@ map_table_2015 <- merge(leto_2015, ISO, by = "Country")     # Dodamo ISO kratice
 # Dobila sem razpredelnico map_2015, s katero
 # bom naredila zemljevid.
 
-map_table_2015[is.na(map_table_2015)] <- 0                  # V tabeli vse NA spremenimo v ničle.
+# map_table_2015[is.na(map_table_2015)] <- 0                  # V tabeli vse NA spremenimo v ničle.
 
 
 
