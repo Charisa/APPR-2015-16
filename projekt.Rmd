@@ -2,10 +2,10 @@
 title: "Poročilo pri predmetu Analiza podatkov s programom R"
 author: "Sara Korat"
 output:
+  html_document: default
   pdf_document:
     includes:
       in_header: lib/styles.sty
-  html_document: default
   word_document: default
 ---
 
@@ -109,6 +109,14 @@ Podatke sem sicer skrčila na najbolj splošne dobrine/storitve, tukaj pa je še
 graf
 ```
 
+Iz razpredelnice _osnovne dobrine_ sem dobila prvih pet dobrin/storitev in jih (za leto 2015) uredila v tidy data _slovenski indeksi_ in iz podatkov narisala graf.
+
+```{r graf, echo = FALSE, fig.align = 'center'}
+graf_slovenski_indeksi
+```
+
+
+
 ***
 
 ## Uvoz in obdelava HTML tabel
@@ -141,15 +149,6 @@ V prvem stolpcu imamo podane države (__Country__), za katere pa nimamo vseh pod
 
 2. stolpec: __Traffic Index__ _is a composite index of time consumed in traffic due to job commute, estimation of time consumption dissatisfaction, CO2 consumption estimation in traffic and overall inefficiencies in the traffic system_
 
-co2 = 0.0;
-    co2 += overall.time_bus * 20.0; // bus produces 20g of CO2 per minute (for each passenger)
-    co2 += overall.time_driving * 133.0; // car produces 133g of CO2 per minute (assumes only driver)
-    co2 += overall.time_train * 10.0; // train produces 10g of CO2 per minute (for each passenger)
-    co2 += overall.time_tram * 15.0; // tram produces 15g of CO2 per minute (for each passenger)
-    co2 += overall.time_other * 10.0; // other produces 10g of CO2 per minute
-    co2 += overall.time_motorbike * 80.0; // motorbike produces 80g of CO2 per hour
-    index.co2 = 2 * co2;
-
 3. stolpec: __Quality Of Life Index__ _is an estimation of overall quality of life by using empirical formula which takes into account purchasing power index, pollution index, house price to income ratio, consumer price index, safety index, health care index, traffic commute time index and climate index_
 
 4. stolpec: __Pollution Index__ _is an estimation of the overall pollution in the city. The biggest weight is given to air pollution, than to water pollution/accessibility, two main pollution factors_
@@ -169,17 +168,131 @@ co2 = 0.0;
 11. stolpec: __Year__ (med 2012 in 2015)
 
 
+Razpredelnice za slovenske podatke sem spravila v tidy data, prav tako pa tudi vse indekse od leta 2012 do 2015:
+
+```{r uvoz6, echo = FALSE}
+kable(head(tabela_tidy))
+```
+
+
 ***
 
 # Vizualizacija
 
+Za leto 2015 sem za vsak indeks posebej naredila zemljevid, ki barvno prikazuje razlike posameznih indeksov v določenih državah. Pod vsakim zemljevidom je t.i. barvna skala, ki razdeli vrednosti na sedem vrednostnih intervalov, vsakem interval pa je obarvan drugače.
+(Države, za katere ni bilo na voljo podatkov, so obarvane s sivo barvo.)
+Za izdelavo zemljevidov sem uporabila funkcijo _joinCountryData2Map_. Ker sem želela le preprosto predstaviti raznolikost vrednosti v barvah, je ta funkcija zadostovala za izdelavo zemljevidov.
+
+## Zemljevidi 
 
 
-
-
-```{r vizualizacija, echo = FALSE, message=FALSE, warning = FALSE, results = 'hide'}
-source("vizualizacija/vizualizacija.r", encoding = "UTF-8")
+```{r vizualizacija1, echo = FALSE, message=FALSE, warning = FALSE, results = 'hide'}
+zemljevid_traffic <- uvoz_zemljevidov(tabela_traffic_2015, "Traffic Index", zemljevid_traffic_index, barva = "RdPu")
 
 ```
 
 
+Formula za __traffic index__ (primer formule, zapisane v Javi):
+co2 = 0.0;
+
+co2 += overall.time_bus * 20.0; // bus produces 20g of CO2 per minute (for each passenger)
+
+co2 += overall.time_driving * 133.0; // car produces 133g of CO2 per minute (assumes only driver)
+
+co2 += overall.time_train * 10.0; // train produces 10g of CO2 per minute (for each passenger)
+
+co2 += overall.time_tram * 15.0; // tram produces 15g of CO2 per minute (for each passenger)
+
+co2 += overall.time_other * 10.0; // other produces 10g of CO2 per minute
+
+co2 += overall.time_motorbike * 80.0; // motorbike produces 80g of CO2 per hour index.co2 = 2 * co2;
+
+
+Formula upošteva porabo ogljikovega dioksida avtobusov, avtomobilov, vlakov, tramvajev, motoristov in ostalih porabnikov CO2.
+
+
+```{r vizualizacija2, echo = FALSE, message=FALSE, warning = FALSE, results = 'hide'}
+zemljevid_pollution <- uvoz_zemljevidov(tabela_pollution_2015, "Pollution Index", zemljevid_pollution_index, barva = "Oranges")
+
+```
+
+
+Formula za __pollution index__ upošteva kvaliteto zraka, kvaliteto pitne vode, onesnaženost vode, ločevanje in shranjevanje odpadkov, svetlobno in zvočno onesnaževanje, količina zelenih površin in še ostale eksogeno dane konstante.
+
+
+```{r vizualizacija3, echo = FALSE, message=FALSE, warning = FALSE, results = 'hide'}
+zemljevid_health_care <- uvoz_zemljevidov(tabela_health_care_2015, "Health Care Index", zemljevid_health_care_index, barva = "BuGn")
+
+```
+
+
+Formula za __health care index__ upošteva usposobljenost in znanje zdravnikov (na podlagi tamkašnjih fakultet), hitrost oskrbe, modernost opreme, čakalne dobe, lokacijo zdravstvenih ustanov itd.
+
+
+```{r vizualizacija4, echo = FALSE, message=FALSE, warning = FALSE, results = 'hide'}
+zemljevid_crime <- uvoz_zemljevidov(tabela_crime_2015, "Crime Index", zemljevid_crime_index, barva = "Blues")
+```
+
+
+Formula za __crime index__ upošteva med drugim stopnjo kriminala, prisotnost drog, spreminjanje stopnje kriminala, javnomnenjsko zaskrbljenost možnosti ropa, napada, ugrabitve.
+
+
+```{r vizualizacija5, echo = FALSE, message=FALSE, warning = FALSE, results = 'hide'}
+zemljevid_rent <- uvoz_zemljevidov(tabela_rent_2015, "Rent Index", zemljevid_rent_index, barva = "Reds")
+```
+
+
+Formula za __rent index__ se izračunava na podlagi cen najemnin v New Yorku.
+
+
+```{r vizualizacija6, echo = FALSE, message=FALSE, warning = FALSE, results = 'hide'}
+zemljevid_CPI <- uvoz_zemljevidov(tabela_CPI_2015, "Consumer Price Index", zemljevid_CP_index,barva = "YlGn")
+```
+
+
+Formula za __consumer price index__ se izračunava na podlagi cene potrošniške košarice in ostalih storitev (razen najemnin) v New Yorku.
+
+
+```{r vizualizacija7, echo = FALSE, message=FALSE, warning = FALSE, results = 'hide'}
+zemljevid_groceries <- uvoz_zemljevidov(tabela_groceries_2015, "Groceries Index", zemljevid_groceris_index, barva = "BrBG")
+```
+
+
+Formula za __groceries index__ se izračunava na podlagi cene potrošniške košarice v New Yorku.
+
+
+```{r vizualizacija8, echo = FALSE, message=FALSE, warning = FALSE, results = 'hide'}
+zemljevid_restaurant_price <- uvoz_zemljevidov(tabela_restaurant_price_2015, "Restaurant Price Index", zemljevid_restaurant_price_index,barva = "Spectral")
+```
+
+
+Formula za __restaurant price__ se izračunava na podlagi cen hrane in pijače v restavracijah in barih v New Yorku.
+
+
+
+
+
+
+
+
+
+Druga funkcija, ki sem jo uporabila za izdelavo zemljevidov, pa je _plotly_.
+
+
+
+
+
+
+```{r vizualizacija9, echo = FALSE, message = FALSE, warning=FALSE}
+source("vizualizacija/zemljevid_plotly.R", encoding = "UTF-8")
+
+x
+```
+
+
+
+
+## V prihodnje ...
+
+Grupirala bom države po indeksih, tako da bom dobila skupine držav, kjer je kvaliteta življenja približno ista.
+Z uporabo indeksa _quality of life_ bom od leta 2012 do 2015 analizirala, katerim državam se kvaliteta življenja veča oz v katerih državah se kvaliteta življenja ne spreminja.

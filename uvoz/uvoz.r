@@ -110,6 +110,18 @@ dobrine_graf <- t(dobrine_graf)
 dobrine_graf <- melt(dobrine_graf, id = row.names(dobrine_graf))
 
 
+# Preoblikovanje razpredelnice v tidy.data
+
+tidy <- arrange(razpredelnica,desc(januar2015.december2014))
+razpredelnica_tidy <- melt(tidy, id = "dobrine/storitve")
+razpredelnica_tidy <- rename(razpredelnica_tidy, "mesečni indeksi" = variable, "vrednost indeksa" = value)
+
+
+# Priprava za graf graf_slovenski_indeksi
+
+osnovne <- row.names(osnovne_dobrine)[1:5]
+slovenski_indeksi <- filter(razpredelnica_tidy, `dobrine/storitve` %in% osnovne, `mesečni indeksi` %in% grupiranje)
+
 
 # RISANJE GRAFOV
 
@@ -126,12 +138,11 @@ graf <- ggplot(dobrine_graf, stat = "identity", main = "Indeksi cen") +
   geom_bar(stat = "identity", position = "dodge") + xlab("obdobja") + ylab("vrednost indeksa") + 
   scale_fill_manual("Dobrine in storitve", values = c("darkred", "darkblue"))
 
+graf_slovenski_indeksi <- ggplot(data = slovenski_indeksi) + 
+  geom_line(aes(x = `mesečni indeksi`, y = `vrednost indeksa`, group = `dobrine/storitve`, color = `dobrine/storitve`)) +
+  theme(axis.text.x = element_blank())
 
-# Preoblikovanje razpredelnice v tidy.data
 
-tidy <- arrange(razpredelnica,desc(januar2015.december2014))
-razpredelnica_tidy <- melt(tidy, id = "dobrine/storitve")
-razpredelnica_tidy <- rename(razpredelnica_tidy, "mesečni indeksi" = variable, "vrednost indeksa" = value)
 
 
 
