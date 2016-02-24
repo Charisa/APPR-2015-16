@@ -1,4 +1,5 @@
 ISO <- read.csv("https://raw.githubusercontent.com/umpirsky/country-list/master/data/en_US/country.csv", encoding = "UTF-8")           
+
 # Uvožena tabela z ISO kraticami.
 
 colnames(ISO)[2] <- "Country"                               # Preimenujemo stolpec "value" v

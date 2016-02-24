@@ -22,6 +22,8 @@ library(graphics)
 library(mapproj)
 library(geosphere)
 library(sp)
+library(digest)
+gpclibPermit()
 
 
 # Uvozimo funkcije za pobiranje in uvoz zemljevida.

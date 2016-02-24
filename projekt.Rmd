@@ -292,7 +292,16 @@ x
 
 
 
-## V prihodnje ...
+# Napredna analiza podatkov
 
 Grupirala bom države po indeksih, tako da bom dobila skupine držav, kjer je kvaliteta življenja približno ista.
 Z uporabo indeksa _quality of life_ bom od leta 2012 do 2015 analizirala, katerim državam se kvaliteta življenja veča oz v katerih državah se kvaliteta življenja ne spreminja.
+
+Kakšni so ostali indeksi v isti skupini držav, razvrščenih po QL-indeksu?
+
+
+
+
+
+
+## Napoved 

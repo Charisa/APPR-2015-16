@@ -19,11 +19,7 @@ uvoz_zemljevidov <- function(tabela, ime_stolpca, ime_zemljevida, barva = "RdPu"
   
   legenda <- do.call(addMapLegend, c(mapParams,legendLabels = "all", legendWidth = 0.5, 
                                      legendIntervals = "data",legendMar = 2))
-  
-  
-
   zemljevid <- (legenda)
 
-  
   return (zemljevid)
 }

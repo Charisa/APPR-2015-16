@@ -1,3 +1,6 @@
+# Funkcija za uvoz HTML razpredelnic
+
+
 html_razpredelnice <- function(shrani, link){
   #if (file.exists(shrani)){                              
    #read.csv2(shrani, row.names = 1)                      
@@ -24,7 +27,30 @@ html_razpredelnice <- function(shrani, link){
                                                           # Faktorje od 2. do končnega stolpca
                                                           # spremenimo v numerične vrednosti, da lahko
                                                           # z njimi operiramo in rišemo grafe.
-  #write.csv2(tabela, shrani, fileEncoding = "UTF-8")      # Ustvarimo datoteko .csv.
+  #write.csv2(tabela, shrani, fileEncoding = "UTF-8")     # Ustvarimo datoteko .csv.
   return (tabela)
 }
 
+
+
+
+# Funkcija za uvoz razpredelnice Very High Human Development Index
+
+html_razpredelnica <- function(link){
+  povezava = getURL(link)
+  tables = readHTMLTable(povezava, fileEncoding = 'UTF-8')
+  names(tables)
+  tabelca = tables[[3]]
+  tabelca <- tabelca[,c(3:5)]
+  tabelca <- tabelca[-c(1,2, 28, 29),]
+  colnames(tabelca) <- html_stolpci
+  indx <- sapply(tabelca, is.factor)
+  tabelca[,-1] <- lapply(tabelca[,-1],                    # Faktorje v 2. in 3. stolpcu spremenimo 
+                                                          # v numerične vrednosti.
+                        function(x) as.numeric(gsub('[.]', '.', x)))  
+  rownames(tabelca) <- seq(length = nrow(tabelca))        # Osvežimo rownames, da so znova oštevilčene po vrsti.
+  
+  
+  return (tabelca)
+  
+}
