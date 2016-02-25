@@ -15,16 +15,23 @@ zemljevid_2015 <- grupiranje(tabela_quality_of_life_2015, 4, "Quality of Life In
 
 
 
-# Tabela: table_2014
 
-table_2014
+# Uvozimo 4 HTML tabele, ki prikazujejo Human Index Development v letu 2014 (najnovešji podatki na voljo). 
 
-# Tabela: human_development_index
+human_development_index1 <- html_razpredelnica('https://en.wikipedia.org/wiki/List_of_countries_by_Human_Development_Index', 3, c(1, 2, 28, 29))
+human_development_index2 <- html_razpredelnica('https://en.wikipedia.org/wiki/List_of_countries_by_Human_Development_Index', 6, c(1, 2, 32, 33, 55))
+human_development_index3 <- html_razpredelnica('https://en.wikipedia.org/wiki/List_of_countries_by_Human_Development_Index', 9, c(1, 2, 23, 24))
+human_development_index4 <- html_razpredelnica('https://en.wikipedia.org/wiki/List_of_countries_by_Human_Development_Index', 12, c(1, 2, 25, 26))
 
-human_development_index
 
-# Tabela human_development_index vsebuje podatke za HDI vseh dražv, ki imajo visok HDI.
+# Tabela human_development_index1 vsebuje podatke za HDI vseh držav, ki imajo visok HDI.
 # V to skupino spada tudi Slovenija in večino evropskih držav.
+
+
+# Združimo tabele v eno: human_development_index.
+
+human_development_index <- join_all(list(human_development_index1, human_development_index2, human_development_index3, 
+                                         human_development_index4), by = NULL, type = 'full')
 
 
 # Združimo novo tabelo s "tabela_2014", ki vsebuje vse indekse leta 2014. Tabela bo služila
@@ -35,26 +42,20 @@ table_2014 <- table_2014[,-length(table_2014)]
 table_2014 <- table_2014[,-length(table_2014)+1]
 write.csv2(table_2014, "podatki/2014", fileEncoding = "UTF-8")
 
+# Tabelo uredimo po HDI. Pogledamo dve največji in dve najmanjši vrednost HDI pri državah, ki imajo na voljo podatke vseh ostalih indeksov.
+# Dve največji vrednosti sta Norveška in Avstralija (72, 35),
+# dve najmanjši pa Indija in Pakistan (9, 50).
 
-# Naredimo še manjšo tabelo, ki jo bomo uporabili za napovedovanje ostalih indeksov s podobnim
-# HDI (Human Development Index). Izberemo državi z najvišjima vrednostima HDI (Norveška, Avstralija) 
-# in najmanjšima vrednostima HDI pri zbranih podatkih (Črna Gora, Kuvait). 
-# Napoved bomo določili samo za države z visokim HDI.
 
-tabela_HDI <- table_2014[c(72, 35, 61, 112) ,]
+# Naredimo še manjšo tabelo, ki jo bomo uporabili za približno napoved ostalih indeksov na podlagi HDI (največjih in najmanjših vrednosti). 
+
+tabela_HDI <- table_2014[c(72, 35, 9, 50) ,]
 
 tabela_HDI <- data.frame(tabela_HDI, row.names = tabela_HDI[, 1])
 tabela_HDI <- tabela_HDI[,-1]
 
 
-# S podatki iz razpredelnice naredimo 'dotchart'.
-
-dotchart(
-  t(tabela_HDI), 
-  color=c("Red","Blue","Darkgreen", "Midnightblue", "Pink", "Darkmagenta", 
-          "Goldenrod", "Darkorange", "Cyan", "Coral"),
-  main = "Indexes", cex = 0.9, gcolor = "Black", pch = 19)
-
+# S podatki iz razpredelnice tabela_HDI naredimo 'dotchart'. Graf in analizo grafa naredimo v datoteki projekt.Rmd.
 
 
 

@@ -36,13 +36,17 @@ html_razpredelnice <- function(shrani, link){
 
 # Funkcija za uvoz razpredelnice Very High Human Development Index
 
-html_razpredelnica <- function(link){
-  povezava = getURL(link)
+html_stolpci <- c('Country', 'HDI 2014', 'Change from previous year')
+
+html_razpredelnica <- function(link, t, vrstice){
+  setInternet2(use = TRUE)
+  d <<- download.file(url="http://curl.haxx.se/ca/cacert.pem", destfile="cacert.pem")
+  povezava = getURL(link, cainfo="cacert.pem")
   tables = readHTMLTable(povezava, fileEncoding = 'UTF-8')
   names(tables)
-  tabelca = tables[[3]]
+  tabelca = tables[[t]]                                   # Vzamemo t-to tabelo iz spletne strani.
   tabelca <- tabelca[,c(3:5)]
-  tabelca <- tabelca[-c(1,2, 28, 29),]
+  tabelca <- tabelca[-vrstice,]
   colnames(tabelca) <- html_stolpci
   indx <- sapply(tabelca, is.factor)
   tabelca[,-1] <- lapply(tabelca[,-1],                    # Faktorje v 2. in 3. stolpcu spremenimo 

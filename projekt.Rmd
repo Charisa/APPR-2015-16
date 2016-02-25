@@ -23,7 +23,7 @@ __Indeks cen življenjskih potrebščin__ _meri spremembe cen izdelkov in storit
 
 # Obdelava, uvoz in čiščenje podatkov
 
-```{r uvoz, echo = FALSE, message=FALSE}
+```{r uvoz, echo = FALSE, message = FALSE, warning = FALSE}
 source("uvoz/uvoz.r", encoding = "UTF-8")
 ```
 
@@ -301,7 +301,36 @@ Kakšni so ostali indeksi v isti skupini držav, razvrščenih po QL-indeksu?
 
 
 
-
-
-
 ## Napoved 
+
+Za boljšo predstavo, kako se razlikujejo indeksi razvitih držav si poglejmo naslednji diagram.
+
+```{r analiza2, echo = FALSE, message = FALSE, warning = FALSE}
+dotchart(
+  t(tabela_HDI), 
+  color=c("Red","Blue","Darkgreen", "Midnightblue", "Pink", "Darkmagenta", 
+          "Goldenrod", "Darkorange", "Cyan", "Coral"),
+  main = "Indexes", cex = 0.6, gcolor = "Black", pch = 19)
+```
+
+Kaj nam izmerjeni indeksi povedo o državi in razliki med bolj in manj razvitimi državami?
+
+Pri državah z nizko vrednostjo HDI (Human Development Index) so indeksi, ki se jim z večjo vrednostjo veča kvaliteta, manjši in obratno.
+__Kvaliteta življenja__ (ki se meri na podlagi _kupne moči_ (večja je boljša), _onesnaževanja_ (manjše je boljše), _cene hiš na podlagi dohodka_ (manjša je boljša), _CPI_ (manjši je boljši), _varnosti_ (večja je boljša), _zdravstvene oskrbe_ (večja je boljša), _gostote prometa_ (manjša je boljša)) je višja pri bolj razvitih državah, ki imajo boljšo varnost, zdravstveno oskrbo, večji BDP, večjo kupno moč. V manj razvitih državah je posledično kvaliteta življenja manjša.
+
+__Cene v restavracijah__ (ki se merijo na podlagi cen v restavracijah v New Yorku) pa so zaradi višjega standarda (višje plače, višje cene surovih dobrin in storitev) v razvitejših državah višje.
+
+__Vsakdanji nakupi__ (tudi __CPI__) so v bolj razvitih državah večji, prav tako zaradi višjega standarda (plač, cene dobrin in storitev).
+
+__Najemninski stroški__ so manjši v manj razvitih državah, saj imajo nižje plače, manjše stroške komunalnih storitev, prav tako pa ponujajo manj luksuzna bivališča kot v razvitih državah, kjer so posledično cene najemnin višje. V bolj razvitih državah je razpoložljivost prostora manjša (npr. Tokio), zato zaradi večjih povpraševanj in prostorske stiske. 
+
+__Kriminal__ je približno enak v bolj in manj razvitih državah. Je pa za nekaj odstotkov manjši  v bolj razvitih državah, saj bogatejše države bolj poskrbijo za varnost prebivalcev, medtem ko revnejše nimajo dovolj sredstev za dovoljšno zaviranje kriminala. Prav tako je v revnejših državah več kriminila prav zaradi pomanjkanja denarja in drugih življenjsko pomembnih dobrin.
+
+__Zdravstvena oskrba__ je zelo odvisna od države. Vsekakor je oskrba boljša v razvitejših državah, ki imajo dovolj sredstev za zdravila, medicinsko opremo in pa visoko izobraženo osebje (ki lahko pridobi tako visoko izobrazbo v državah, kjer so boljše univerzo, torej v bolj razvitih). So pa tudi izjeme. Na primer Irska, ki spada pod visoko razvite države, indeks zdravstvene oskrbe pa je peti najmanjši od vseh držav sveta, za katere imamo podatke. V Tailandu pa je ravno obratno. Je druga država, v kateri je najbolje priskrbljeno z zdravstveno oskrbo, njen HDI pa ni tako zelo visok, ampak povprečen.
+
+__Onesnaževanje__ je v razvitejših državah manjši, saj so prebivalci bolj osveščeni o problemu onesnaževanja, prav tako imajo novejša prevozna sredstva, ki izgorevajo manj nevarne pline. Razvite države spodbujajo in nagrajujejo ločevanje odpadkov.
+
+__Promet__ v višje razvitih državah je sicer večji, ampak so emisije CO2 toliko manjše, da je indeks prometa v bolj razvitih državah v večini bistveno manjši od tistih v manj razvitih državah. 
+
+
+

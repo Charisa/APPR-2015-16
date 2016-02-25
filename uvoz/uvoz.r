@@ -427,9 +427,6 @@ tabela_tidy <- rename(tabela_tidy, Index_Value = value, Index = variable)
 
 
 
-# HTML TABELA ZA 4. FAZO (Human Development Index, 2014)
 
-html_stolpci <- c('Country', 'HDI 2014', 'Change from previous year')
-
-human_development_index <- html_razpredelnica('https://en.wikipedia.org/wiki/List_of_countries_by_Human_Development_Index')
+source("analiza/analiza.r", encoding = "UTF-8")
 
