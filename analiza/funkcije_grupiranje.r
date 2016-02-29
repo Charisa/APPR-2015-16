@@ -1,34 +1,61 @@
 source("lib/uvozi.zemljevid.r", encoding = "UTF-8")
-
-
-# Uvozimo zemljevid sveta
-
-svet <- uvozi.zemljevid("http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/50m/cultural/ne_50m_admin_0_countries.zip",
-                        "ne_50m_admin_0_countries", encoding = "Windows-1252")
+source("uvoz/iso_kratice.R", encoding = "UTF-8")
 
 
 grupiranje <- function(tabelek, stevilo_kategorij, naslov){
-  #tabelek <- data.frame(tabelica, row.names = tabelica[, 1])
+  tabelek <- tabelek[,-3]
+  row.names(tabelek) <-tabelek[,1]
+  tabelek1 <- tabelek[-1]
+  tabelek.tree <- hclust(dist(tabelek1, method = "euclidian"), method = "ward.D2")
   
+  obrezano <- cutree(tabelek.tree, k=stevilo_kategorij)
+  tabelek$skupina <- obrezano
   
-  tabelek.norm <- scale(tabelek$`Quality of Life Index`)
-  k <- kmeans(tabelek.norm, stevilo_kategorij, 1000)
-  drzave <- tabelek$Country
-  m <- match(svet$name_long, drzave)
+  tabelek$region <- tolower(rownames(tabelek))
   
-  svet$skupina <<- factor(k$cluster[drzave[m]])
-  sv <- pretvori.zemljevid(svet)
-  l <- levels(svet$skupina)
+  tabelek <- merge(tabelek, iso, by = "Country")
+  tabelek$hover <- with(tabelek,paste(`Country`,"<br>", "Index:",`Quality of Life Index`))
   
-  znj <- (ggplot(sv, aes(x = long, y = lat, group = group, fill = skupina))  
-  + geom_polygon(color = "Grey")
-  + scale_fill_manual(name = 'Categories', limits = c('1', '2', '3', '4'),
-                      values = c('1' = 'Red', '3' = 'Blue', '4' = 'Green', '2' = 'Yellow'))
-  + theme_nothing(legend = TRUE)
-  + labs(title = naslov))
-  return(znj)
+  l <- list(color = toRGB("grey"), width = 0.5)
+
+  g <- list(
+    showframe = FALSE,
+    projection = list(type = 'Mercator')
+  )
   
+  graf <- plot_ly(data=tabelek, z = `skupina`, text = hover, locations = CODE, type = 'choropleth',
+                  color = skupina, colors = 'Blues', marker = list(line = l), showscale = FALSE) %>%
+    layout(title = naslov,
+           geo = g)
+  return(graf)
 }
 
 
+# Funkcija za izris grafov (posamezni indeksi in njihova napoved za izbrane države v
+# vektorju drzave_10) v shiny-ju.
 
+indeks_graf <- function(indeks){
+  tabelek <- subset(tabela_indeksov_10, select = c("Country", "Year", indeks))
+  colnames(tabelek)[3] <- "Index"
+  for (i in unique(tabelek$Country)){
+    indeksiranje <- napovedovanje(i, indeks)
+    tabelek <- rbind(tabelek, indeksiranje)
+  }
+  grafica <- plot_ly(tabelek, x = Year, y = Index, name = "index", 
+                     line = list(shape = "spline"), color = Country)
+    
+  return(grafica)
+}
+
+
+napovedovanje <- function(drzava, indeks){
+  tabelek <- subset(tabela_indeksov_10, select = c("Country", "Year", indeks))
+  colnames(tabelek)[3] <- "Index"
+  tabelek <- dplyr::filter(tabelek, Country %in% drzava)
+  tabelek.lo <- loess(Index ~ Year, tabelek, control = loess.control(surface = "direct"))
+  Index <- predict(tabelek.lo, data.frame(Year = 2016))
+  tabelcica <- data.frame(Index)
+  tabelcica$Country <- drzava
+  tabelcica$Year <- 2016
+  return(tabelcica)
+}

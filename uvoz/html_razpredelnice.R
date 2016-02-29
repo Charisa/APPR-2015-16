@@ -27,6 +27,7 @@ html_razpredelnice <- function(shrani, link){
                                                           # Faktorje od 2. do končnega stolpca
                                                           # spremenimo v numerične vrednosti, da lahko
                                                           # z njimi operiramo in rišemo grafe.
+  tabela <- merge(tabela, ISO)
   #write.csv2(tabela, shrani, fileEncoding = "UTF-8")     # Ustvarimo datoteko .csv.
   return (tabela)
 }

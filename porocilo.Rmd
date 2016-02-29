@@ -1,12 +1,9 @@
 ---
-title: "Poročilo pri predmetu Analiza podatkov s programom R"
+title: "Indeksi cen življenjsih potrebščin"
 author: "Sara Korat"
-output:
-  html_document: default
-  pdf_document:
-    includes:
-      in_header: lib/styles.sty
-  word_document: default
+date: "29. februar 2016"
+output: html_document
+runtime: shiny
 ---
 
 ```{r setup, echo = FALSE, results = 'hide', message = FALSE, warning=FALSE}
@@ -318,11 +315,11 @@ zemljevid_2015
 Za boljšo predstavo, kako se razlikujejo indeksi različno razvitih držav si poglejmo naslednji diagram.
 
 ```{r analiza2, echo = FALSE, message = FALSE, warning = FALSE}
-dotchart(
+try(dotchart(
   t(tabela_HDI), 
   color=c("Red","Blue","Darkgreen", "Midnightblue", "Pink", "Darkmagenta", 
           "Goldenrod", "Darkorange", "Cyan", "Coral"),
-  main = "Indexes", cex = 0.6, gcolor = "Black", pch = 19)
+  main = "Indexes", cex = 0.6, gcolor = "Black", pch = 19),silent = TRUE)
 ```
 
 Kaj nam izmerjeni indeksi povedo o državi in razliki med bolj in manj razvitimi državami?
@@ -345,6 +342,67 @@ __Onesnaževanje__ je v razvitejših državah manjši, saj so prebivalci bolj os
 
 __Promet__ v višje razvitih državah je sicer večji, ampak so emisije CO2 toliko manjše, da je indeks prometa v bolj razvitih državah v večini bistveno manjši od tistih v manj razvitih državah. 
 
+
+
+
+
+
+
+```{r shiny1, echo=FALSE}
+inputPanel(
+  fluidRow(
+    selectInput("select1", label = h5(strong("Select Index"), style = 'color:darkgreen'),
+                choices = list("Traffic Index", "Quality of Life Index",
+                                   "Pollution Index", "Health Care Index",
+                                   "Crime Index", "Rent Index", "Consumer Price Index",
+                                   "Groceries Index", "Restaurant Price Index"), 
+                selected = "Quality of Life Index"), 
+  
+   sliderInput("slider", label = h5(strong("Year"), style = "color:blue"),
+                    min = 2012, max = 2015, step = 1, value = 2015, sep = "")
+))
+
+# Shranimo izbran indeks v choice1.
+choice1 <- reactive({
+  input$select1
+})
+
+# Shranimo izbrano leto v choice2.
+choice2 <- reactive({
+  input$slider
+})
+
+renderPlotly({
+  indeks = choice1()
+  leto = choice2()
+  #get(paste("year", leto, gsub(" ", "", indeks), sep = "_"))
+  vrni_zemljevid(indeks, leto)
+  
+})
+```
+
+
+```{r shiny2, echo = FALSE, warning = FALSE}
+inputPanel(
+  fluidRow(
+    selectInput("select2", label = h5(strong("Select Index"), style = 'color:darkgreen'),
+                choices = list("Traffic Index", "Quality of Life Index",
+                                   "Pollution Index", "Health Care Index",
+                                   "Crime Index", "Rent Index", "Consumer Price Index",
+                                   "Groceries Index", "Restaurant Price Index"), 
+                selected = "Quality of Life Index")
+))
+
+# Shranimo izbran indeks v choice3.
+choice3 <- reactive({
+  input$select2
+})
+
+renderPlotly({
+  indeks_graf(choice3())
+  
+})
+```
 
 
 

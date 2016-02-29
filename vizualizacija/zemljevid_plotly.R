@@ -1,11 +1,5 @@
-ISO <- read.csv("https://raw.githubusercontent.com/umpirsky/country-list/master/data/en_US/country.csv", encoding = "UTF-8")           
-
-# Uvožena tabela z ISO kraticami.
-
-colnames(ISO)[2] <- "Country"                               # Preimenujemo stolpec "value" v
-colnames(ISO)[1] <- "CODE"                                  # v "Country" in "id" v "CODE".
-
 map_table_2015 <- merge(leto_2015, ISO, by = "Country")     # Dodamo ISO kratice v našo tabelo leto_2015.
+
 # Ni kratic za vsa imena, zato posledično
 # izgubimo podatke za 8 držav.
 
@@ -13,7 +7,6 @@ map_table_2015 <- merge(leto_2015, ISO, by = "Country")     # Dodamo ISO kratice
 # bom naredila zemljevid.
 
 # map_table_2015[is.na(map_table_2015)] <- 0                  # V tabeli vse NA spremenimo v ničle.
-
 
 
 crte <- list(color = toRGB("grey"), width = 2)
