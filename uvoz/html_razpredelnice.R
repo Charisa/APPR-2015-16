@@ -38,12 +38,14 @@ html_razpredelnice <- function(shrani, link){
 # Funkcija za uvoz razpredelnice Very High Human Development Index
 
 html_stolpci <- c('Country', 'HDI 2014', 'Change from previous year')
+d <<- download.file(url="http://curl.haxx.se/ca/cacert.pem", destfile="cacert.pem")
 
 html_razpredelnica <- function(link, t, vrstice){
-  setInternet2(use = TRUE)
-  d <<- download.file(url="http://curl.haxx.se/ca/cacert.pem", destfile="cacert.pem")
-  povezava = getURL(link, cainfo="cacert.pem")
-  tables = readHTMLTable(povezava, fileEncoding = 'UTF-8')
+  if (existsFunction("setInternet2")) {
+    setInternet2(use = TRUE)
+  }
+  povezava = GET(link, cainfo="cacert.pem")
+  tables = readHTMLTable(content(povezava), fileEncoding = 'UTF-8')
   names(tables)
   tabelca = tables[[t]]                                   # Vzamemo t-to tabelo iz spletne strani.
   tabelca <- tabelca[,c(3:5)]

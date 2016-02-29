@@ -315,12 +315,14 @@ zemljevid_2015
 Za boljšo predstavo, kako se razlikujejo indeksi različno razvitih držav si poglejmo naslednji diagram.
 
 ```{r analiza2, echo = FALSE, message = FALSE, warning = FALSE}
-try(dotchart(
-  t(tabela_HDI), 
+dotchart(
+  as.matrix(tabela_HDI), 
   color=c("Red","Blue","Darkgreen", "Midnightblue", "Pink", "Darkmagenta", 
           "Goldenrod", "Darkorange", "Cyan", "Coral"),
-  main = "Indexes", cex = 0.6, gcolor = "Black", pch = 19),silent = TRUE)
+  main = "Indexes", cex = 0.6, gcolor = "Black", pch = 19)
 ```
+
+
 
 Kaj nam izmerjeni indeksi povedo o državi in razliki med bolj in manj razvitimi državami?
 
@@ -345,10 +347,11 @@ __Promet__ v višje razvitih državah je sicer večji, ampak so emisije CO2 toli
 
 
 
+Naslednji zemljevid nam prikazuje indeks _quality of life_ v letu 2012. Če zaženemo časovno skalo, ki gre od leta 2012 do 2015, vidimo, kako so se indeksi kvalitete življenja v določenih državah spreminjali skozi leta.
+Prav tako lahko izberemo katerikoli indeks, ki je med izborom pod "select index" in za vsak indeks posebej vidimo spreminjanje v zadnjih štirih letih.
 
 
-
-```{r shiny1, echo=FALSE}
+```{r shiny1, echo = FALSE, warning = FALSE}
 inputPanel(
   fluidRow(
     selectInput("select1", label = h5(strong("Select Index"), style = 'color:darkgreen'),
@@ -359,7 +362,8 @@ inputPanel(
                 selected = "Quality of Life Index"), 
   
    sliderInput("slider", label = h5(strong("Year"), style = "color:blue"),
-                    min = 2012, max = 2015, step = 1, value = 2015, sep = "")
+                    min = 2012, max = 2015, step = 1, value = 2015, sep = "",
+               animate = animationOptions(interval = 2000, loop = FALSE))
 ))
 
 # Shranimo izbran indeks v choice1.
@@ -375,11 +379,22 @@ choice2 <- reactive({
 renderPlotly({
   indeks = choice1()
   leto = choice2()
-  #get(paste("year", leto, gsub(" ", "", indeks), sep = "_"))
-  vrni_zemljevid(indeks, leto)
+  opla <- vrni_zemljevid(indeks, leto)
+  opla
   
 })
 ```
+
+
+
+#### Napovedovanje
+
+Pomembna stvar, ki jo je dobro vedeti pri indesih življenjskih potrebščin, pa je, kako se bodo cene v bodoče spreminjale v določenih državah. Ker je podatkov za preteklost malo (le štiri leta), je zaradi tega tudi napoved slabša. Vendar pa vseeno lahko vsaj približno predvidevamo spremembe cen določenih dobrin (še posebej tistih, ki so ostali fiksnejši skozi leta). 
+V Sloveniji so cene, ki se najbolj drastično spreminjajo, cene oblek. Vendar pa v ostalih državah lahko gre za katerikoli drug izdelek/storitev. 
+
+Naslednji graf prikazuje indekse v zadnjih štirih letih v državah, ki so za Slovence (po moji presoji) pomembne ali dovolj blizu, da vplivajo na naša življenja. Izbrala sem samo deset držav, njihove indekse pa napovedala le za leto 2016 (za to leto še seveda ni podatkov). 
+Lahko pogledamo, kako se razlikujejo spremembe cen oz. vrednosti indeksov, ki jih merijo na zelo različne načine (opisano zgoraj) v teh desetih državah. Prav tako se lahko vidimo, kje, kot država smo pri določenih cenah. 
+
 
 
 ```{r shiny2, echo = FALSE, warning = FALSE}
@@ -403,6 +418,8 @@ renderPlotly({
   
 })
 ```
+
+
 
 
 

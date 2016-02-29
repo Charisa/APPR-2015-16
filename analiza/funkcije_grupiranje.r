@@ -1,6 +1,7 @@
 source("lib/uvozi.zemljevid.r", encoding = "UTF-8")
 source("uvoz/iso_kratice.R", encoding = "UTF-8")
 
+# Funkcija za grupiranje podatkov (klicana v analiza/analiza.R)
 
 grupiranje <- function(tabelek, stevilo_kategorij, naslov){
   tabelek <- tabelek[,-3]
@@ -8,25 +9,20 @@ grupiranje <- function(tabelek, stevilo_kategorij, naslov){
   tabelek1 <- tabelek[-1]
   tabelek.tree <- hclust(dist(tabelek1, method = "euclidian"), method = "ward.D2")
   
-  obrezano <- cutree(tabelek.tree, k=stevilo_kategorij)
+  # Grupira v dano število kategorij.
+  obrezano <- cutree(tabelek.tree, k = stevilo_kategorij)             
   tabelek$skupina <- obrezano
-  
   tabelek$region <- tolower(rownames(tabelek))
-  
   tabelek <- merge(tabelek, iso, by = "Country")
   tabelek$hover <- with(tabelek,paste(`Country`,"<br>", "Index:",`Quality of Life Index`))
   
   l <- list(color = toRGB("grey"), width = 0.5)
-
-  g <- list(
-    showframe = FALSE,
-    projection = list(type = 'Mercator')
-  )
-  
+  g <- list(showframe = FALSE, projection = list(type = 'Mercator'))
   graf <- plot_ly(data=tabelek, z = `skupina`, text = hover, locations = CODE, type = 'choropleth',
                   color = skupina, colors = 'Blues', marker = list(line = l), showscale = FALSE) %>%
     layout(title = naslov,
            geo = g)
+  
   return(graf)
 }
 
@@ -43,7 +39,6 @@ indeks_graf <- function(indeks){
   }
   grafica <- plot_ly(tabelek, x = Year, y = Index, name = "index", 
                      line = list(shape = "spline"), color = Country)
-    
   return(grafica)
 }
 

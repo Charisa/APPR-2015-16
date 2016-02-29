@@ -15,10 +15,10 @@ zemljevid_2015 <- grupiranje(tabela_quality_of_life_2015, 4, "Quality of Life In
 
 # Uvozimo 4 HTML tabele, ki prikazujejo Human Index Development v letu 2014 (najnovešji podatki na voljo). 
 
-human_development_index1 <- html_razpredelnica('https://en.wikipedia.org/wiki/List_of_countries_by_Human_Development_Index', 3, c(1, 2, 28, 29))
-human_development_index2 <- html_razpredelnica('https://en.wikipedia.org/wiki/List_of_countries_by_Human_Development_Index', 6, c(1, 2, 32, 33, 55))
-human_development_index3 <- html_razpredelnica('https://en.wikipedia.org/wiki/List_of_countries_by_Human_Development_Index', 9, c(1, 2, 23, 24))
-human_development_index4 <- html_razpredelnica('https://en.wikipedia.org/wiki/List_of_countries_by_Human_Development_Index', 12, c(1, 2, 25, 26))
+human_development_index1 <- html_razpredelnica('http://en.wikipedia.org/wiki/List_of_countries_by_Human_Development_Index', 3, c(1, 2, 28, 29))
+human_development_index2 <- html_razpredelnica('http://en.wikipedia.org/wiki/List_of_countries_by_Human_Development_Index', 6, c(1, 2, 32, 33, 55))
+human_development_index3 <- html_razpredelnica('http://en.wikipedia.org/wiki/List_of_countries_by_Human_Development_Index', 9, c(1, 2, 23, 24))
+human_development_index4 <- html_razpredelnica('http://en.wikipedia.org/wiki/List_of_countries_by_Human_Development_Index', 12, c(1, 2, 25, 26))
 
 
 # Tabela human_development_index1 vsebuje podatke za HDI vseh držav, ki imajo visok HDI.

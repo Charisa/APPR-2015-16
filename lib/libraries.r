@@ -23,6 +23,7 @@ library(mapproj)
 library(geosphere)
 library(sp)
 library(digest)
+library(httr)
 gpclibPermit()
 
 
