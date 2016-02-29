@@ -4,8 +4,6 @@ source("lib/libraries.r", encoding = "UTF-8")
 source("vizualizacija/uvoz_zemljevidov.R", encoding = "UTF-8")
 
 
-
-
 # ZEMLJEVIDI ZA POSAMEZNE INDEKSE V LETU 2015
 # zakomentirani, da jih ne izpisuje v projekt.Rmd
 
@@ -31,8 +29,6 @@ source("vizualizacija/uvoz_zemljevidov.R", encoding = "UTF-8")
 
 # Iz tabele leto bom naredila zemljevid (PLOTLY) 
 
-
-
 ISO <- read.csv("https://raw.githubusercontent.com/umpirsky/country-list/master/data/en_US/country.csv", encoding = "UTF-8")           
                                                             # Uvožena tabela z ISO kraticami.
 
@@ -48,14 +44,11 @@ map_table_2015 <- merge(leto_2015, ISO, by = "Country")     # Dodamo ISO kratice
 
 map_table_2015[is.na(map_table_2015)] <- 0                  # V tabeli vse NA spremenimo v ničle.
  
-
-
-crte <- list(color = toRGB("grey"), width = 2)
-g <- list(showcoastlines = TRUE, projection = list(type = 'mercator'), resolution = "100",
-         scope = "world", showland = "boolean")
-
+crte <- list(color = toRGB("grey"), width = 0.5)
+g <- list(showcoastlines = FALSE, projection = list(type = 'Mercator'), scope = "world", 
+          showland = "boolean", showframe = FALSE)
 plot_ly_1 <- plot_ly(map_table_2015, z = `Quality of Life Index`, text = Country, locations = Country,
-                    type = 'choropleth',locationmode="country names", color = `Quality of Life Index`, colors = terrain.colors(5), 
+                    type = 'choropleth',locationmode="country names", color = `Quality of Life Index`, colors = "Blues", 
                     marker = list(line = crte), colorbar = list(tickprefix = '', title = "Vrednosti indeksov")) %>%
   layout(title = "Indeksi cen zivljenjskih potrebscin", geo = g)
 

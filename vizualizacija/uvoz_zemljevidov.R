@@ -33,12 +33,12 @@ vrni_zemljevid <- function(indeks, leto){
   tabelica <- tabelica[,c(1, indeks)]
   tabelica$index <- tabelica[,2]
   
-  crte_1 <- list(color = toRGB("grey"), width = 2)
+  crte_1 <- list(color = toRGB("grey"), width = 0.5)
   gr <- list(showcoastlines = TRUE, projection = list(type = 'mercator'), resolution = "100",
             scope = "world", showland = "boolean")
   
   poker <- plot_ly(tabelica, z = index, text = Country, locations = Country,
-                       type = 'choropleth',locationmode="country names", color = index, colors = "Blues", 
+                       type = 'choropleth',locationmode="country names", color = index, colors = "Greens", 
                        marker = list(line = crte_1), showscale = FALSE) %>%
     layout(title = paste(colnames(tabelica)[2], leto), geo = g)
   return(poker)

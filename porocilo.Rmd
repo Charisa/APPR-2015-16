@@ -15,6 +15,7 @@ source("lib/libraries.r", encoding = "UTF-8")
 Indeks cen življenjskih potrebščin v Sloveniji v letošnjem letu (2015). Primerjava z ostalimi državami. (Za ostale države podatki le od leta 2012 do leta 2015.)
 
 __Indeks cen življenjskih potrebščin__ _meri spremembe cen izdelkov in storitev glede na sestavo izdatkov, ki jih domače prebivalstvo namenja za nakupe predmetov končne porabe doma in v tujini_.
+Različni indeksi se merijo drugače, predvsem tisti iz tujine, ki jih merijo z različnimi formulami, ki so preveč zapletene, da bi jih vse zapisala in razložila.
 
 ***
 
@@ -35,9 +36,9 @@ source("analiza/analiza.r", encoding = "UTF-8")
 Uvozila sem podatke o indeksih življenjskih potrebščin v Sloveniji v obliki _.csv_ s Statističnega urada Slovenije ter v obliki _HTML_ iz spletne strani, kjer je na voljo več različnih razpredelnic
 (http://www.numbeo.com).
 
-## Uvoz in obdelava tabele CSV
+## Uvoz in obdelava tabele CSV (slovenski indeksi)
 
-Razpredelnica s slovenskimi podatki prikazuje različne indekse cen: 
+Razpredelnica s slovenskimi podatki prikazuje različne indekse cen (vrednosti v stolpcih): 
 
 1. tekoči mesec / prejšnji mesec,  
 
@@ -47,11 +48,14 @@ Razpredelnica s slovenskimi podatki prikazuje različne indekse cen:
 leta do tekočega meseca gleda na enako obdobje).
 
 Tabela vsebuje 128 vrstic. Vsak četrti stolpec iz originalne tabele, ki je prikazoval povprečno 12-mesečno rast, sem izbrisala.
+Podatki se nanašajo na leto 2005 (torej so vsi indeksi so izvedeni in izračunani na podlagi leta 2005).
+Z letošnjim letom pa so na SURS-u za novo bazno leto vzeli povprečje leta 2015 (torej povprečje 2015 = 100).
 
 
 ```{r uvoz1, echo = FALSE}
 kable(head(razpredelnica))
 ```
+
 
 Tabela _osnovne dobrine_ prikazuje le podatke indeksov, izračunanih na podlagi tekočega in prejšnjega meseca (11 stolpcev). Izbrala sem tudi nekaj vsakdanjih dobrin/storitev:
 
@@ -86,15 +90,15 @@ Tabela _osnovne dobrine_ prikazuje le podatke indeksov, izračunanih na podlagi 
 kable(head(osnovne_dobrine))
 ```
 
-Naredila sem novo tabelo (_osnovne dobrine graf_), ki vsebuje le nekaj informacij (4 dobrine) iz tabele _osnovne dobrine_ (prikazane zgoraj), s pomočjo katere sem dobila podatke za graf.  Dobrine/storitve sem izbrala na podlagi vrednosti indeksov le-teh (dve največji in najmanjši vrednosti v prvem indeksu). Za vrednost po stolcih sem vzela prva dva in zadnja dva indeksa v letu.
+Naredila sem novo tabelo (_osnovne dobrine graf_), ki vsebuje le nekaj informacij (4 dobrine) iz tabele _osnovne dobrine_ (prikazane zgoraj), s pomočjo katere sem dobila podatke za graf.  Dobrine/storitve sem izbrala na podlagi vrednosti indeksov le-teh (dve največji in najmanjši vrednosti v prvem indeksu). Za vrednost po stolcih sem vzela prva dva in zadnja dva indeksa v letu, da bi videla, kakšne so razlike v indeksih ekstremnih osnovnih dobrin in jih primerjala z vrednostmi na začetku in koncu leta.
 
-Največji vrednosti indeksa (v 1. mesecu leta 2015):
+Največji vrednosti indeksa osnovnih dobrin (v 1. mesecu leta 2015):
 
 * Hrana
  
 * Obleka in storitve za obleko
 
-Najmanjši vrednosti indeksa (v 1. mesecu leta 2015):
+Najmanjši vrednosti indeksa osnovnih dobrin (v 1. mesecu leta 2015):
 
 * Zavarovanje
 
@@ -108,17 +112,26 @@ graf_osnovnih_dobrin
 ```
 
 Podatke sem sicer skrčila na najbolj splošne dobrine/storitve, tukaj pa je še _graf_ dveh dobrin izmed vseh, ki sta imeli največjo oz. najmanjšo vrednost indeksa v celotnem letu. X-os ponazarja vrednosti dobrin v prvem in zadnjem mesecu leta 2015, ter pa v mesecih ekstremnih vrednosti teh dveh dobrin.
+Zanimivo je, da sta ti dobrini obleka in pa sadje. Kot bomo v naslednjem grafu videli, se cene oblek najbolj spreminjajo. 
 
 
 ```{r stolpicni_diagram_2, echo = FALSE, fig.align = 'center', fig.cap ='Stolpični diagram indeksov cen dveh največjih in dveh najmanjši vrednosti indeksa v celotnem letu 2015.'}
 graf
 ```
 
-Iz razpredelnice _osnovne dobrine_ sem dobila prvih pet dobrin/storitev in jih (za leto 2015) uredila v tidy data _slovenski indeksi_ in iz podatkov narisala graf.
+Iz razpredelnice _osnovne dobrine_ sem dobila prvih pet dobrin/storitev in jih (za leto 2015) uredila v tidy data _slovenski indeksi_.
+
+```{r tidy_data, echo = FALSE}
+kable(head(slovenski_indeksi))
+```
+
+S podatki iz razpredelnice v tidy obliki sem narisala graf, ki znova prikazuje drastično nihanje cen oblek, medtem ko so ostale cene (goriv in energije, hrane, komunale in drugih storitev, oblek in storitev za obleko ter stanovanje) relativno stabilne. Vrednosti indeksa oblek niha kar med 85.6 in 111.0. 
 
 ```{r graf, echo = FALSE, fig.align = 'center'}
 graf_slovenski_indeksi
 ```
+
+
 
 
 
@@ -128,9 +141,9 @@ graf_slovenski_indeksi
 
 
  Uporabila sem več HTML tabel, ki sem jih nato združila v eno. Zreducirala sem preveliko količino podatkov in obdržala le tiste, ki so se mi zdeli pomembnejši in bolj življenjski.
- Moj namen primerjanja podatkov - kako so se indeksi različnih dobrin/storitev spreminili (z drugimi besedami, kako so se spremenile cene v zadnjih šritih letih) v različnih državah sveta, za katere so bili podatki na voljo. (V naslednji fazi bom v primerjavi indeksov v različnih državah še posebej poudarila Slovenijo - kje smo na svetovni ravni, katere cene glavnih oz. osnovnih dobrin/storitev pri nas drastično rastejo/padajo v primerjavi z ostalim svetom ...)
+ Moj namen primerjanja podatkov - kako so se indeksi različnih dobrin/storitev spreminili (z drugimi besedami, kako so se spremenile cene v zadnjih šritih letih) v različnih državah sveta, za katere so bili podatki na voljo. V kolikor bo to dopuščala količina podatkov, bom poskušala primerjati Slovenijo z ostalimi državami, torej kako se indeksi pri nas razlikujejo od tistih v ostalih državah sveta.
  
- Moja glavna in končna tabela (poimenovana tabela) vsebuje vse zbrane podatke. V stolpcih so vrednosti različnih indeksov, ki se sicer izračunavajo različno.
+ Moja glavna in končna tabela (poimenovana tabela) vsebuje vse zbrane podatke. V stolpcih so vrednosti različnih indeksov, ki se sicer izračunavajo različno. Za sigurnejšo kasnejšo branje podatkov in risanje grafov sem dodala tudi stolpec CODE, z ISO kraticami držav.
  Tabelo sem sestavila iz večih tabel, ki so izgledale najprej takole (primer za CPI iz leta 2015):
  
 ```{r uvoz3, echo = FALSE}
@@ -144,11 +157,12 @@ kable(head(tabela_2015))
 ``` 
  
 
-Nato sem vse tabele združila v eno:
+Nato sem vse tabele združila v eno, ter jim na koncu dodala še stolpec Year:
  
 ```{r uvoz5, echo = FALSE}
 kable(head(tabela))
 ```
+
 
 V prvem stolpcu imamo podane države (__Country__), za katere pa nimamo vseh podatkov za vse indekse. Definicije indeksov bom podala direktno iz njihove spletne strani.
 
@@ -173,7 +187,7 @@ V prvem stolpcu imamo podane države (__Country__), za katere pa nimamo vseh pod
 11. stolpec: __Year__ (med 2012 in 2015)
 
 
-Razpredelnice za slovenske podatke sem spravila v tidy data, prav tako pa tudi vse indekse od leta 2012 do 2015:
+Razpredelnice za vse indekse od leta 2012 do 2015 sem spravila v tidy data.
 
 ```{r uvoz6, echo = FALSE}
 kable(head(tabela_tidy))
@@ -184,9 +198,10 @@ kable(head(tabela_tidy))
 
 # Vizualizacija
 
-Za leto 2015 sem za vsak indeks posebej naredila zemljevid, ki barvno prikazuje razlike posameznih indeksov v določenih državah. Pod vsakim zemljevidom je t.i. barvna skala, ki razdeli vrednosti na sedem vrednostnih intervalov, vsakem interval pa je obarvan drugače.
+Za leto 2015 sem za vsak indeks posebej naredila zemljevid, ki barvno prikazuje razlike posameznih indeksov v določenih državah. Pod vsakim zemljevidom je t.i. barvna skala, ki razdeli vrednosti na sedem vrednostnih intervalov, vsak interval pa je obarvan drugače.
 (Države, za katere ni bilo na voljo podatkov, so obarvane s sivo barvo.)
 Za izdelavo zemljevidov sem uporabila funkcijo _joinCountryData2Map_. Ker sem želela le preprosto predstaviti raznolikost vrednosti v barvah, je ta funkcija zadostovala za izdelavo zemljevidov.
+Pod vsak zemljevid sem dodala tudi kratek opis, kako se določen indeks izračuna.
 
 ## Zemljevidi 
 
@@ -299,7 +314,7 @@ plot_ly_1
 # Napredna analiza podatkov
 
 Grupirala sem države po indeksih, tako da sem dobila skupine držav, kjer je kvaliteta življenja približno ista.
-Z uporabo indeksa _quality of life_ sem od leta 2012 do 2015 analizirala, katere države spadajo v iste kategorije, kar se tiče kvalitete življenja. Rezultati so za vsa leta isti, saj v 4-ih letih nobena od držav, za katere imamo podatke, ni drastično spremenila življenjskih standardov, s katerimmi bi se posledično uvrstila v drugo kategorijo kvalitete življenja. 
+Z uporabo indeksa _quality of life_ sem od leta 2012 do 2015 analizirala, katere države spadajo v iste kategorije, kar se tiče kvalitete življenja. Rezultati so za vsa leta približno isti, saj v 4-ih letih nobena od držav, za katere imamo podatke, ni drastično spremenila življenjskih standardov, s katerimmi bi se posledično uvrstila v drugo kategorijo kvalitete življenja. 
 
 Podajam samo en zemljevid od štirih, in to za leto 2015.
 
@@ -315,11 +330,11 @@ zemljevid_2015
 Za boljšo predstavo, kako se razlikujejo indeksi različno razvitih držav si poglejmo naslednji diagram.
 
 ```{r analiza2, echo = FALSE, message = FALSE, warning = FALSE}
-dotchart(
+try(dotchart(
   as.matrix(tabela_HDI), 
   color=c("Red","Blue","Darkgreen", "Midnightblue", "Pink", "Darkmagenta", 
           "Goldenrod", "Darkorange", "Cyan", "Coral"),
-  main = "Indexes", cex = 0.6, gcolor = "Black", pch = 19)
+  main = "Indexes", cex = 0.6, gcolor = "Black", pch = 19), silent = TRUE)
 ```
 
 
@@ -420,6 +435,25 @@ renderPlotly({
 ```
 
 
+# Zaključek
+
+V različnih državah so drugačni standardi, drugačni indeksi življenjsjih potrebščin, drugačni pogoji za življenje, drugačne razmere, različno geografsko okolje ... 
 
 
+```{r zakljucek1, echo = FALSE}
+kable(head(sort_quality_of_life_2015))
+```
 
+
+Glede na dano tabelo, je najvišja kvaliteta življenja v Švici, ki kar za 27 enot vodi za drugouvrščeno Nemčijo. Za podatke, ki jih imamo na voljo, je Slovenija na 25. mestu, kar je kar nekaj mest pred najbližjimi sosedami (Hrvaško, Italijo in Madržarsko).
+Zelo zanimivo je raziskovati, kako se življenjski standardi in pogoji ter kvaliteta storitev razlikuje v bližnjih državah. 
+Spletna stran _http://www.numbeo.com_ ima tudi možnost izračuna določenih stroškov v posameznih mestih. Za primerjavo sem vzela nekaj dobrin/storitev (poceni kosilo v povprečni restavraciji, 1/3 liter vode, 1 liter kravjega mleka, 1 kg jabolk in banan, 1 kg paradižnika in krompirja, enosmerna vozovnica javnega prevoza, mesečna vozovnica, tarifa za 1 km vožnje s taksijem, 1 liter bencina, osnovne storitve (voda, komunala, elektrika, ogrevanje ...) v povprečnem 85-kvadratnih metrov velikem stanovanju (brez vključene cene najemnine), tarifa za eno minuto klica v omrežju, internet, mesečna karta za fitnes, obisk kina za eno osebo, par kavbojk, poletna obleka, enosobno stanovanje v centru, enosobno stanovanje izven centra).
+
+```{r zakljucek2, echo = FALSE}
+kable(head(cost_of_living_cities))
+```
+
+Vsota cen vseh dobrin je v različnih državah zelo drugačna. V Švici, ki je država z največjo kvaliteto življenja, se cene vseh prej naštetih dobrin gibljejo med 2.500 in 4.100 €, medtem ko je pri nas v Sloveniji cena med 995 in 1.200 €. 
+Na cene teh dobrin vpliva veliko dejavnikov. Vendar pa se vseeno lahko zanesemo na visoko razvitost določenih držav (kar je razvidno v tabeli _human development index_) in visoko kvaliteto življenja ter ugotovimo, v katerih državah je življenje boljše, v katerih manj.
+
+Da pa končam v pozitivnem duhu - Slovenija ima v primerjavi z ostalimi državami visoko kvaliteto življenja, prav tako razvitost (na področju izobrazbe, naravnega okolja, cen, plač). V nobeni državi pa ne bomo našli rožnatega neba. Zato še misel za na konec: __Povsod je lepo, a doma je najlepše__.

@@ -52,12 +52,9 @@ razpredelnica <- razpredelnica[seq(-5, -length(stolpci), by = -4)]# Odstranimo v
 write.csv2(razpredelnica, "podatki/razpredelnica.csv", fileEncoding = "UTF-8", row.names = FALSE)
                                                                   # Ustvarimo datoteko .csv.
 
-grupiranje <- c("jan15/dec14","feb15/jan15",
-                "mar15/feb15","apr15/mar15",
-                "maj15/apr15","jun15/maj15",
-                "jul15/jun15","avgu15/jul15",
-                "sep15/avgu15","okt15/sep15",
-                "nov15/okt15")                       # Ustvarimo nov vektor z imeni stolpcev, ki jih 
+izbira <- c("jan15/dec14","feb15/jan15", "mar15/feb15","apr15/mar15",
+            "maj15/apr15","jun15/maj15", "jul15/jun15","avgu15/jul15",
+            "sep15/avgu15","okt15/sep15", "nov15/okt15")          # Ustvarimo nov vektor z imeni stolpcev, ki jih 
                                                                   # bomo uporabili v novi tabeli.
 
 
@@ -65,7 +62,7 @@ grupiranje <- c("jan15/dec14","feb15/jan15",
 
 # NOVA TABELA osnovne_dobrine: spreminjanje indeksa 16-ih dobrin/storitev v letu 2015 (po mesecih)
 
-osnovne_dobrine <- subset(razpredelnica, select = grupiranje)     # Podrazpredelnica (spremembe po zaporednih mesecih)
+osnovne_dobrine <- subset(razpredelnica, select = izbira)         # Podrazpredelnica (spremembe po zaporednih mesecih)
 osnovne_dobrine <- osnovne_dobrine[-c(2:20, 22:27, 29:32, 34:37, 39:57, 59:65, 67:84, 
                                       86:104, 106:109, 111:118, 120:123, 126:128),]    
                                                                   # Izbrani stolpci originalne razpredelnice
@@ -98,7 +95,7 @@ osnovne_dobrine_graf <- melt(osnovne_dobrine_graf, id = row.names(osnovne_dobrin
 # S pomočjo konzole poiščemo minimum in maksimum indeksa v celem letu, nato pa jih zapišemo
 # v dobrine_graf.
 
-dobrine <- subset(razpredelnica, select = grupiranje)             # Nova razpredelnica s stolpci iz grupiranja.
+dobrine <- subset(razpredelnica, select = izbira)                  # Nova razpredelnica s stolpci iz grupiranja.
 dobrine_graf <- subset(dobrine, select = (colnames(osnovne_dobrine))[c(1, 5, 7, 11)])
 dobrine_graf <- dobrine_graf[c(7, 21),]
 dobrine_graf <- t(dobrine_graf)
@@ -115,7 +112,7 @@ razpredelnica_tidy <- rename(razpredelnica_tidy, "mesecni indeksi" = variable, "
 # Priprava za graf graf_slovenski_indeksi
 
 osnovne <- row.names(osnovne_dobrine)[1:5]
-slovenski_indeksi <- filter(razpredelnica_tidy, `dobrine/storitve` %in% osnovne, `mesecni indeksi` %in% grupiranje)
+slovenski_indeksi <- filter(razpredelnica_tidy, `dobrine/storitve` %in% osnovne, `mesecni indeksi` %in% izbira)
 
 
 # RISANJE GRAFOV
@@ -380,6 +377,14 @@ tabela_tidy[,4] <- as.numeric(tabela_tidy[,4])
 tabela_tidy <- rename(tabela_tidy, Index_Value = value, Index = variable)
 
 
+# Tabeli za zaključek
 
-#source("analiza/analiza.r", encoding = "UTF-8")
+sort_quality_of_life_2015 <- arrange(tabela_quality_of_life_2015, desc(`Quality of Life Index`))
+sort_quality_of_life_2015 <- sort_quality_of_life_2015[,-3]
 
+
+
+povezava = getURL("http://www.numbeo.com/cost-of-living/basket_of_goods.jsp?currency=EUR&quantity_itemId_1=1&quantity_itemId_2=&quantity_itemId_3=&quantity_itemId_4=&quantity_itemId_5=&quantity_itemId_114=&quantity_itemId_6=&quantity_itemId_7=1&quantity_itemId_8=1&quantity_itemId_9=&quantity_itemId_115=&quantity_itemId_11=&quantity_itemId_12=&quantity_itemId_19=&quantity_itemId_121=&quantity_itemId_110=1&quantity_itemId_118=1&quantity_itemId_111=&quantity_itemId_116=1&quantity_itemId_112=1&quantity_itemId_119=&quantity_itemId_113=&quantity_itemId_13=&quantity_itemId_14=&quantity_itemId_15=&quantity_itemId_16=&quantity_itemId_17=&quantity_itemId_18=1&quantity_itemId_20=1&quantity_itemId_107=&quantity_itemId_108=1&quantity_itemId_109=&quantity_itemId_24=1&quantity_itemId_25=&quantity_itemId_30=1&quantity_itemId_32=1&quantity_itemId_33=1&quantity_itemId_40=1&quantity_itemId_42=&quantity_itemId_44=1&quantity_itemId_60=1&quantity_itemId_62=1&quantity_itemId_64=&quantity_itemId_66=&quantity_itemId_26=1&quantity_itemId_27=1&quantity_itemId_28=&quantity_itemId_29=&quantity_itemId_100=&quantity_itemId_101=")
+tables = readHTMLTable(povezava, fileEncoding = "UTF-8")
+tabelicek = tables[[3]]
+cost_of_living_cities <- tabelicek[,-c(1,4)]

@@ -49,7 +49,8 @@ write.csv2(table_2014, "podatki/2014", fileEncoding = "UTF-8")
 tabela_HDI <- table_2014[c(72, 35, 9, 50) ,]
 
 tabela_HDI <- data.frame(tabela_HDI, row.names = tabela_HDI[, 1])
-tabela_HDI <- tabela_HDI[,-1]
+tabela_HDI <- tabela_HDI[,- c(1)]
+
 
 # S podatki iz razpredelnice tabela_HDI naredimo 'dotchart'. 
 # Graf in analizo grafa naredimo v datoteki projekt.Rmd.
