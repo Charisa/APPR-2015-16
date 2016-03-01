@@ -46,7 +46,7 @@ write.csv2(table_2014, "podatki/2014", fileEncoding = "UTF-8")
 # Naredimo še manjšo tabelo, ki jo bomo uporabili za približno napoved ostalih indeksov 
 # na podlagi HDI (največjih in najmanjših vrednosti). 
 
-tabela_HDI <- table_2014[c(72, 35, 9, 50) ,]
+tabela_HDI <- filter(table_2014, Country %in% c("Norway", "Australia", "India", "Pakistan"))
 
 tabela_HDI <- data.frame(tabela_HDI, row.names = tabela_HDI[, 1])
 tabela_HDI <- tabela_HDI[,- c(1)]
