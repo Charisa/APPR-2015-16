@@ -1,7 +1,6 @@
 ---
 title: "Indeksi cen življenjsih potrebščin"
-author: "Sara Korat"
-date: "29. februar 2016"
+author: "Sara Korat (korat.sara7@gmail.com)"
 output: html_document
 runtime: shiny
 ---
@@ -331,7 +330,7 @@ Za boljšo predstavo, kako se razlikujejo indeksi različno razvitih držav si p
 
 ```{r analiza2, echo = FALSE, message = FALSE, warning = FALSE}
 try(dotchart(
-  as.matrix(tabela_HDI), 
+  t(tabela_HDI), 
   color=c("Red","Blue","Darkgreen", "Midnightblue", "Pink", "Darkmagenta", 
           "Goldenrod", "Darkorange", "Cyan", "Coral"),
   main = "Indexes", cex = 0.6, gcolor = "Black", pch = 19), silent = TRUE)
@@ -435,25 +434,132 @@ renderPlotly({
 ```
 
 
-# Zaključek
+## Kam naj se preseli uspešni finančni matematik Albert?
 
-V različnih državah so drugačni standardi, drugačni indeksi življenjsjih potrebščin, drugačni pogoji za življenje, drugačne razmere, različno geografsko okolje ... 
+Albert se odloča za selitev. Zaveda se, da se, da so v različnih državah drugačni standardi, drugačni indeksi življenjskih potrebščin, drugačni pogoji za življenje, drugačne razmere, različno geografsko okolje ... 
 
 
-```{r zakljucek1, echo = FALSE}
+```{r Albert1, echo = FALSE}
 kable(head(sort_quality_of_life_2015))
 ```
 
 
-Glede na dano tabelo, je najvišja kvaliteta življenja v Švici, ki kar za 27 enot vodi za drugouvrščeno Nemčijo. Za podatke, ki jih imamo na voljo, je Slovenija na 25. mestu, kar je kar nekaj mest pred najbližjimi sosedami (Hrvaško, Italijo in Madržarsko).
-Zelo zanimivo je raziskovati, kako se življenjski standardi in pogoji ter kvaliteta storitev razlikuje v bližnjih državah. 
-Spletna stran _http://www.numbeo.com_ ima tudi možnost izračuna določenih stroškov v posameznih mestih. Za primerjavo sem vzela nekaj dobrin/storitev (poceni kosilo v povprečni restavraciji, 1/3 liter vode, 1 liter kravjega mleka, 1 kg jabolk in banan, 1 kg paradižnika in krompirja, enosmerna vozovnica javnega prevoza, mesečna vozovnica, tarifa za 1 km vožnje s taksijem, 1 liter bencina, osnovne storitve (voda, komunala, elektrika, ogrevanje ...) v povprečnem 85-kvadratnih metrov velikem stanovanju (brez vključene cene najemnine), tarifa za eno minuto klica v omrežju, internet, mesečna karta za fitnes, obisk kina za eno osebo, par kavbojk, poletna obleka, enosobno stanovanje v centru, enosobno stanovanje izven centra).
+Glede na tabelo, ki jo je našel na internet, je najvišja kvaliteta življenja v Švici, ki kar za 27 enot vodi za drugouvrščeno Nemčijo. Za podatke, ki jih imamo na voljo, je Slovenija na 25. mestu, kar je kar nekaj mest pred najbližjimi sosedami (Hrvaško, Italijo in Madržarsko).
 
-```{r zakljucek2, echo = FALSE}
-kable(head(cost_of_living_cities))
+
+Matematik Albert se je odločil, da ne bo gledal samo na kvaliteto življenja, ampak tudi na cene dobrin. Ker je uspešen v svojem poklicu, zasluži dovolj, da si privošči nekaj razvad (recimo 2 uri tenisa čez vikend ipd). Da bi ugotovil, koliko bi ga stalo življenje v različnih mestih, je obiskal spletno stran http://www.numbeo.com  za primerjavo med državami oz. mesti. Ker je Albert zelo hitro učljiv, kar se tiče jezikov, je glede te kategorije indiferenten in neznan jezik ne vpliva na njegovo izbiro.
+
+Albert je izbral sledeče dobrine/storitve, ki jih potrebuje za preživetje enega meseca:
+
+1. kosilo/večerja v povprečni restavraciji za eno osebo (30-krat),
+
+2. kosilo/večerja v povprečni restavraciji za dve osebi (4-krat),
+
+3. skodelica kave (20-krat),
+
+4. kravje mleko (4 litre),
+
+5. kruh (4 kg),
+
+6. jajca (24 kosov),
+
+7. piščanjčja prsa (4 kg),
+
+8. rdeče meso (2 kg),
+
+9. jabolka (1 kg),
+
+10. banane (10 kg),
+
+11. pomarančne (1 kg),
+
+12. paradižnik (2 kg),
+
+13. krompir (2 kg),
+
+14. čebula (1 kg),
+
+15. solata (3 glave),
+
+16. ustekleničena voda (4,5 litra),
+
+17. obrok v Mc'Donaldsu (3-krat), 
+
+18. vino (2 litra (ob večerji)),
+
+19. uvoženo pivo (5 litrov),
+
+20. bencin (Toyota Prius, 50 litrov),
+
+21. elektrika, ogrevanje, voda, komunala (170 kvadratnih metrov bivalne površine),
+
+22. telefonski pogovori (500 minut),
+
+23. internet (10 Mbps, neomejena poraba),
+
+24. mesečna članarina za fitnes,
+
+25. tenis ob vikendih (2 uri na vikend),
+
+26. kavbojke (2 para na mesec),
+
+27. športna obutev (1 par),
+
+28. poslovni čevlji (1 par),
+
+29. najemnina za trosobno stanovanje v centru mesta.
+
+
+Pogledal si je tabelo in ugotovil, da se strošek njegovega bivanja v različnih mestih zelo razlikuje.
+
+```{r Albert2, echo = FALSE}
+fluidPage(
+  fluidRow(
+    DT::dataTableOutput("Albert")
+  )
+)
+output$Albert <- DT::renderDataTable(DT::datatable({
+  cost_of_living_cities_Albert
+}))
 ```
 
-Vsota cen vseh dobrin je v različnih državah zelo drugačna. V Švici, ki je država z največjo kvaliteto življenja, se cene vseh prej naštetih dobrin gibljejo med 2.500 in 4.100 €, medtem ko je pri nas v Sloveniji cena med 995 in 1.200 €. 
-Na cene teh dobrin vpliva veliko dejavnikov. Vendar pa se vseeno lahko zanesemo na visoko razvitost določenih držav (kar je razvidno v tabeli _human development index_) in visoko kvaliteto življenja ter ugotovimo, v katerih državah je življenje boljše, v katerih manj.
 
-Da pa končam v pozitivnem duhu - Slovenija ima v primerjavi z ostalimi državami visoko kvaliteto življenja, prav tako razvitost (na področju izobrazbe, naravnega okolja, cen, plač). V nobeni državi pa ne bomo našli rožnatega neba. Zato še misel za na konec: __Povsod je lepo, a doma je najlepše__.
+Albert je dolge noči premleval, kaj narediti, nato pa se je odločil, da bi vseeno rad ostal v Evropi. Ker je velik porabnik banan (na mesec jih poje kar 10 kg). Zato je naredil razpredelnico in graf, ki prikazujeta cene banan (v kg) v različnih evropskih državah. 
+
+
+```{r Albert3, echo = FALSE}
+kable(banane_Albert)
+```
+
+
+
+
+```{r Albert5, echo = FALSE, warning = FALSE}
+
+xx <- list(title = " ", showticklabels = FALSE)
+yy <- list(title = " ")
+
+plot_ly(x = banane_Albert$Country, y = banane_Albert$`Banana_Price (1 kg)`, type = "bar", color = banane_Albert$`Banana_Price (1 kg)`,  showlegend = FALSE) %>%
+  layout(title = "Cene enega kilograma banan v Evropi (v evrih)", xaxis = xx, yaxis = yy, xlab = FALSE)
+
+```
+
+
+Albert se je nekaj časa odločal, pretehtal možnosti, razmislil o ceni banan in na koncu sprejel odločitev - cena banan ne sme biti ne predraga, ne prepoceni. Vzel je navečjo in najmanjšo ceno in izračunal njuno povprečje. Izračun mu je pokazal __1.74 €__, kar pomeni, da bo izbral državo, ki je najbližje dobljeni vrednosti - Belgijo.   
+Albert je sedaj že v Belgiji, zadovoljen s svojo odločitvijo in vesel, da se je na FMF-ju naučil uporabljati __R__, ki mu je pomagal sprejeti težko odločitev.
+Po indeksih lahko vidimo, na katerih področjih se ima boljše kot v Sloveniji.
+
+```{r Albert4, echo = FALSE}
+kable(filter(tabela, Year == 2015, Country %in% c("Belgium", "Slovenia")))
+
+```
+
+
+***
+
+# Zaključek
+
+Vsota cen vseh dobrin je v različnih državah zelo drugačna. V Švici, ki je država z največjo kvaliteto življenja, se cene vseh dobrin, ki jih je izbral Albert, gibljejo med 4936.92 € in 6794.51 €, medtem ko je pri nas v Sloveniji cena med 2370.11 €  in 1966.04 €. 
+Na cene teh dobrin vpliva veliko dejavnikov. Vendar pa se vseeno lahko zanesemo na visoko razvitost določenih držav (kar je razvidno v tabeli _human development index_) in visoko kvaliteto življenja ter ugotovimo (na podlagi naših preferenc, kot je recimo Albert storil z bananami), v katerih državah je življenje boljše, v katerih manj.
+
+Da pa končam v pozitivnem duhu - Slovenija ima v primerjavi z ostalimi državami visoko kvaliteto življenja, prav tako razvitost (na področju izobrazbe, naravnega okolja, cen, plač). V nobeni državi pa ne bomo našli rožnatega neba (tudi v Belgiji ne). Zato še misel za na konec: __Povsod je lepo, a doma je najlepše__.

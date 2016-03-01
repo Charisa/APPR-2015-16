@@ -24,6 +24,7 @@ library(geosphere)
 library(sp)
 library(digest)
 library(httr)
+library(DT)
 gpclibPermit()
 
 

@@ -1,6 +1,6 @@
 # 4. faza: Analiza podatkov
 
-source("analiza/funkcije_grupiranje.r", encoding = "UTF-8")
+source("analiza/funkcije_analiza.r", encoding = "UTF-8")
 source("lib/libraries.r", encoding = "UTF-8")
 
 
@@ -13,18 +13,18 @@ zemljevid_2015 <- grupiranje(tabela_quality_of_life_2015, 4, "Quality of Life In
 
 
 
-# Uvozimo 4 HTML tabele, ki prikazujejo Human Index Development v letu 2014 (najnovešji podatki na voljo). 
+# Uvozimo 4 HTML tabele, ki prikazujejo Human Index Development v letu 2014 (najnovešji podatki na voljo).
 
-human_development_index1 <- html_razpredelnica('http://en.wikipedia.org/wiki/List_of_countries_by_Human_Development_Index', 3, c(1, 2, 28, 29))
-human_development_index2 <- html_razpredelnica('http://en.wikipedia.org/wiki/List_of_countries_by_Human_Development_Index', 6, c(1, 2, 32, 33, 55))
-human_development_index3 <- html_razpredelnica('http://en.wikipedia.org/wiki/List_of_countries_by_Human_Development_Index', 9, c(1, 2, 23, 24))
-human_development_index4 <- html_razpredelnica('http://en.wikipedia.org/wiki/List_of_countries_by_Human_Development_Index', 12, c(1, 2, 25, 26))
+human_development_index1 <- html_razpredelnica('podatki/human_development_index1.csv','http://en.wikipedia.org/wiki/List_of_countries_by_Human_Development_Index', 3, c(1, 2, 28, 29))
+human_development_index2 <- html_razpredelnica('podatki/human_development_index2.csv','http://en.wikipedia.org/wiki/List_of_countries_by_Human_Development_Index', 6, c(1, 2, 32, 33, 55))
+human_development_index3 <- html_razpredelnica('podatki/human_development_index3.csv','http://en.wikipedia.org/wiki/List_of_countries_by_Human_Development_Index', 9, c(1, 2, 23, 24))
+human_development_index4 <- html_razpredelnica('podatki/human_development_index4.csv','http://en.wikipedia.org/wiki/List_of_countries_by_Human_Development_Index', 12, c(1, 2, 25, 26))
 
 
 # Tabela human_development_index1 vsebuje podatke za HDI vseh držav, ki imajo visok HDI.
 # V to skupino spada tudi Slovenija in večino evropskih držav.
 
-# Združimo tabele v eno: human_development_index.
+# Združimo tabele z vsemi kategorijami indeksov v eno tabelo: human_development_index.
 
 human_development_index <- join_all(list(human_development_index1, human_development_index2, human_development_index3, 
                                          human_development_index4), by = NULL, type = 'full')
@@ -50,10 +50,12 @@ tabela_HDI <- table_2014[c(72, 35, 9, 50) ,]
 
 tabela_HDI <- data.frame(tabela_HDI, row.names = tabela_HDI[, 1])
 tabela_HDI <- tabela_HDI[,- c(1)]
+tabela_HDI$CODE <- NULL
 
 
 # S podatki iz razpredelnice tabela_HDI naredimo 'dotchart'. 
 # Graf in analizo grafa naredimo v datoteki projekt.Rmd.
+
 
 
 # Iz razpredelnice 'tabela' sem izbrala 10 držav, katerih indekse bom napovedala (s pomočjo grafa).

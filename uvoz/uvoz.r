@@ -157,23 +157,17 @@ source("uvoz/html_razpredelnice.R", encoding = "UTF-8")
 
 # Uvoz razpredelnic po letih
 
-tabela_2012 <- html_razpredelnice("podatki/tabela_2012",
+tabela_2012 <- html_razpredelnice("podatki/tabela_2012.csv",
                                   "http://www.numbeo.com/cost-of-living/rankings_by_country.jsp?title=2012")
-tabela_2013 <- html_razpredelnice("podatki/tabela_2013",
+tabela_2013 <- html_razpredelnice("podatki/tabela_2013.csv",
                                   "http://www.numbeo.com/cost-of-living/rankings_by_country.jsp?title=2013")
-tabela_2014 <- html_razpredelnice("podatki/tabela_2014", 
+tabela_2014 <- html_razpredelnice("podatki/tabela_2014.csv", 
                                   "http://www.numbeo.com/cost-of-living/rankings_by_country.jsp?title=2014")
-tabela_2015 <- html_razpredelnice("podatki/tabela_2015",
+tabela_2015 <- html_razpredelnice("podatki/tabela_2015.csv",
                                   "http://www.numbeo.com/cost-of-living/rankings_by_country.jsp?title=2015")
 
 
 # Izbrane razpredelnice po določenih indeksih in letih
-
-
-# Zaženemo funkcijo html_svetovni_indeksi, ki sprejme podatke, kam naj tabelo shrani
-# in iz katere spletne strani naj sploh dobi tabelo.
-
-source("uvoz/html_svetovni_indeksi.R", encoding = "UTF-8")
 
 
 # Uvoz razpredelnic po indeksih in letih (od leta 2012 do leta 2015).
@@ -296,19 +290,16 @@ tabela_restaurant_price_2015 <- subset(tabela_2015, select = c("Country", "Resta
 leto_2012_1 <- join_all(list(tabela_traffic_2012,tabela_quality_of_life_2012,
                              tabela_pollution_2012, tabela_health_care_2012,tabela_crime_2012),
                     by = NULL, type = 'full')
-
 # Leto 2013
 
 leto_2013_1 <- join_all(list(tabela_traffic_2013,tabela_quality_of_life_2013,
                              tabela_pollution_2013, tabela_health_care_2013,tabela_crime_2013),
                     by = NULL, type = 'full')
-
 # Leto 2014
 
 leto_2014_1 <- join_all(list(tabela_traffic_2014,tabela_quality_of_life_2014,
                              tabela_pollution_2014, tabela_health_care_2014,tabela_crime_2014),
                     by = NULL, type = 'full')
-
 # Leto 2015
 
 leto_2015_1 <- join_all(list(tabela_traffic_2015,tabela_quality_of_life_2015,
@@ -330,7 +321,7 @@ leto_2012 <- join_all(list(leto_2012_1, tabela_rent_2012, tabela_CPI_2012, tabel
                     by = NULL, type = 'full')
 leto_2012 <- leto_2012[, c(1, 2, 4:11, 3)]
 leto_2012$Year <- as.numeric(2012)        # Dodamo stolpec Year, ki v vsaki vrstici zapiše leto.
-write.csv2(leto_2012, "podatki/leto_2012", fileEncoding = "UTF-8")
+write.csv2(leto_2012, "podatki/leto_2012.csv", fileEncoding = "UTF-8")
 
 
 # Leto 2013
@@ -340,7 +331,7 @@ leto_2013 <- join_all(list(leto_2013_1, tabela_rent_2013, tabela_CPI_2013, tabel
                       by = NULL, type = 'full')
 leto_2013 <- leto_2013[, c(1, 2, 4:11, 3)]
 leto_2013$Year <- as.numeric(2013)        # Dodamo stolpec Year, ki v vsaki vrstici zapiše leto.
-write.csv2(leto_2013, "podatki/leto_2013", fileEncoding = "UTF-8")
+write.csv2(leto_2013, "podatki/leto_2013.csv", fileEncoding = "UTF-8")
 
 
 # Leto 2014
@@ -350,7 +341,7 @@ leto_2014 <- join_all(list(leto_2014_1, tabela_rent_2014, tabela_CPI_2014, tabel
                       by = NULL, type = 'full')
 leto_2014 <- leto_2014[, c(1, 2, 4:11, 3)]
 leto_2014$Year <- as.numeric(2014)        # Dodamo stolpec Year, ki v vsaki vrstici zapiše leto.
-write.csv2(leto_2014, "podatki/leto_2014", fileEncoding = "UTF-8")
+write.csv2(leto_2014, "podatki/leto_2014.csv", fileEncoding = "UTF-8")
 
 
 # Leto 2015
@@ -360,7 +351,7 @@ leto_2015 <- join_all(list(leto_2015_1, tabela_rent_2015, tabela_CPI_2015, tabel
                       by = NULL, type = 'full')
 leto_2015 <- leto_2015[, c(1, 2, 4:11, 3)]
 leto_2015$Year <- as.numeric(2015)        # Dodamo stolpec Year, ki v vsaki vrstici zapiše leto.
-write.csv2(leto_2015, "podatki/leto_2015", fileEncoding = "UTF-8")
+write.csv2(leto_2015, "podatki/leto_2015.csv", fileEncoding = "UTF-8")
 
 
 # Na novo narejene tabele damo v eno, tako da jih ne združujemo,
@@ -368,23 +359,48 @@ write.csv2(leto_2015, "podatki/leto_2015", fileEncoding = "UTF-8")
 # nato pa spravimo v tidy.data.
 
 tabela <- rbind(leto_2012, leto_2013, leto_2014, leto_2015)
-
 tabela_tidy <- melt(tabela, id = c("Country", "Year"))
 tabela_tidy[,4] <- as.numeric(tabela_tidy[,4])
-
-# Preimenujemo imena stolpcev value in variable.
-
+                                          # Preimenujemo imena stolpcev value in variable.
 tabela_tidy <- rename(tabela_tidy, Index_Value = value, Index = variable)
+                                                                          
 
 
-# Tabeli za zaključek
+# Tabele za Albertov problem
 
 sort_quality_of_life_2015 <- arrange(tabela_quality_of_life_2015, desc(`Quality of Life Index`))
 sort_quality_of_life_2015 <- sort_quality_of_life_2015[,-3]
 
 
+# Izbrano tabelo uvozimo in jo razvrstimo po ceni bivanja (od najvišje do najnižje).
+# Uporabimo "if", da tabele ne vsakič uvažamo iz interneta, ampak jo samo preberemo.
 
-povezava = getURL("http://www.numbeo.com/cost-of-living/basket_of_goods.jsp?currency=EUR&quantity_itemId_1=1&quantity_itemId_2=&quantity_itemId_3=&quantity_itemId_4=&quantity_itemId_5=&quantity_itemId_114=&quantity_itemId_6=&quantity_itemId_7=1&quantity_itemId_8=1&quantity_itemId_9=&quantity_itemId_115=&quantity_itemId_11=&quantity_itemId_12=&quantity_itemId_19=&quantity_itemId_121=&quantity_itemId_110=1&quantity_itemId_118=1&quantity_itemId_111=&quantity_itemId_116=1&quantity_itemId_112=1&quantity_itemId_119=&quantity_itemId_113=&quantity_itemId_13=&quantity_itemId_14=&quantity_itemId_15=&quantity_itemId_16=&quantity_itemId_17=&quantity_itemId_18=1&quantity_itemId_20=1&quantity_itemId_107=&quantity_itemId_108=1&quantity_itemId_109=&quantity_itemId_24=1&quantity_itemId_25=&quantity_itemId_30=1&quantity_itemId_32=1&quantity_itemId_33=1&quantity_itemId_40=1&quantity_itemId_42=&quantity_itemId_44=1&quantity_itemId_60=1&quantity_itemId_62=1&quantity_itemId_64=&quantity_itemId_66=&quantity_itemId_26=1&quantity_itemId_27=1&quantity_itemId_28=&quantity_itemId_29=&quantity_itemId_100=&quantity_itemId_101=")
-tables = readHTMLTable(povezava, fileEncoding = "UTF-8")
-tabelicek = tables[[3]]
-cost_of_living_cities <- tabelicek[,-c(1,4)]
+if(file.exists("podatki/cost_of_living_cities_Albert.csv")){
+  cost_of_living_cities_Albert <- read.csv2("podatki/cost_of_living_cities_Albert.csv", fileEncoding = "UTF-8", stringsAsFactors = FALSE)
+  names(cost_of_living_cities_Albert) <- base::gsub("\\.", " ", names(cost_of_living_cities_Albert))
+}else{
+  povezava = getURL("http://www.numbeo.com/cost-of-living/basket_of_goods.jsp?currency=EUR&quantity_itemId_1=30&quantity_itemId_2=4&quantity_itemId_3=3&quantity_itemId_4=&quantity_itemId_5=&quantity_itemId_114=20&quantity_itemId_6=&quantity_itemId_7=&quantity_itemId_8=4&quantity_itemId_9=8&quantity_itemId_115=&quantity_itemId_11=2&quantity_itemId_12=&quantity_itemId_19=4&quantity_itemId_121=2&quantity_itemId_110=1&quantity_itemId_118=10&quantity_itemId_111=1&quantity_itemId_116=2&quantity_itemId_112=2&quantity_itemId_119=1&quantity_itemId_113=3&quantity_itemId_13=3&quantity_itemId_14=2&quantity_itemId_15=&quantity_itemId_16=16&quantity_itemId_17=&quantity_itemId_18=&quantity_itemId_20=&quantity_itemId_107=&quantity_itemId_108=&quantity_itemId_109=&quantity_itemId_24=50&quantity_itemId_25=&quantity_itemId_30=2&quantity_itemId_32=500&quantity_itemId_33=1&quantity_itemId_40=1&quantity_itemId_42=8&quantity_itemId_44=&quantity_itemId_60=2&quantity_itemId_62=&quantity_itemId_64=1&quantity_itemId_66=1&quantity_itemId_26=&quantity_itemId_27=&quantity_itemId_28=1&quantity_itemId_29=&quantity_itemId_100=&quantity_itemId_101=")
+  tables = readHTMLTable(povezava, fileEncoding = "UTF-8")
+  cost_of_living_cities_Albert = tables[[3]]
+  cost_of_living_cities_Albert <- cost_of_living_cities_Albert[,-c(1,4)]            # Izbrišemo odvečna stolpca, vrednosti v stolpcu s 
+  # cenami banan spremenimo v class numeric.
+  cost_of_living_cities_Albert$`Custom Basket Price` <- as.numeric(as.character(cost_of_living_cities_Albert$`Custom Basket Price`))
+  # Uredimo tabelo po vrednostih cen.
+  cost_of_living_cities_Albert <- arrange(cost_of_living_cities_Albert, desc(`Custom Basket Price`))
+  write.csv2(cost_of_living_cities_Albert, "podatki/cost_of_living_cities_Albert.csv", fileEncoding = "UTF-8", row.names = FALSE)
+}
+
+
+
+# Tabela cen banan v evropskih državah (razpredelnica .csv).
+
+banane_Albert <- read.csv2("podatki/banane.csv", fileEncoding = "UTF-8", stringsAsFactors = FALSE)
+                                                        # Izberemo library "dplyr", iz katere kličemo
+                                                        # funkcijo "rename", s katero spremenimo imena stolpcev.
+banane_Albert <- dplyr::rename(banane_Albert, Country = X, `Banana_Price (1 kg)` = X.1)
+                                                        # Tabela ima še prazne stolpce, zato izberemo samo 
+                                                        # tiste z vrednostmi.
+banane_Albert <- subset(banane_Albert, select = c(Country, `Banana_Price (1 kg)`))
+                                                        # Zadnjemu stolpcu spremenimo class v numeric,
+                                                        # za kasnejšo pravilno rabo vrednosti.
+banane_Albert$`Banana_Price (1 kg)` <- as.numeric(as.character(banane_Albert$`Banana_Price (1 kg)`))
